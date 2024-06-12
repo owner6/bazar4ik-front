@@ -36,46 +36,76 @@ export default {
 };
 </script>
 
+// HeaderComponent.vue
 <style lang="scss">
-@import "@/assets/variables.scss";
+@import "@/assets/scss/main.scss";
 
 .listings-header {
   background-color: $light-color;
-  box-shadow: 0 2px 4px $shadow-color;
+  padding: $spacing-unit 0;
 
   .navbar {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: $navbar-padding;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: $dark-color;
+    color: $light-color;
+    font-family: $font-family;
 
     .navbar-brand {
       .navbar-item {
+        padding: $spacing-unit;
+
         img {
-          max-height: $navbar-height;
+          max-height: 40px;
         }
       }
     }
 
     .navbar-menu {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      width: 100%;
+      align-items: center;
 
-      .navbar-start {
-        .navbar-item {
-          margin-right: 20px;
-        }
-      }
-
+      .navbar-start,
       .navbar-end {
+        display: flex;
+        align-items: center;
+
         .navbar-item {
-          .buttons {
-            .button {
-              margin-left: 10px;
+          color: $light-color;
+          padding: $spacing-unit;
+
+          &:hover {
+            background-color: lighten($dark-color, 10%);
+            color: $primary-color;
+          }
+        }
+
+        .buttons {
+          display: flex;
+          align-items: center;
+
+          .button {
+            margin-left: $spacing-unit / 2;
+            padding: $spacing-unit;
+            border: none;
+            border-radius: 4px;
+            font-family: $font-family;
+
+            &.is-light {
+              background-color: $light-color;
+              color: $dark-color;
+
+              &:hover {
+                background-color: darken($light-color, 10%);
+              }
+            }
+
+            &.is-primary {
+              background-color: $primary-color;
+              color: $light-color;
+
+              &:hover {
+                background-color: darken($primary-color, 10%);
+              }
             }
           }
         }

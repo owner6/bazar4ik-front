@@ -21,6 +21,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/assets/scss/main.scss";
+
 .footer {
   background-color: #f5f5f5;
   padding: 20px;
