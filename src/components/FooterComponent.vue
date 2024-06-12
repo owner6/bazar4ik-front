@@ -25,9 +25,12 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .footer {
+  display: flex;
+  justify-content: center;
   background-color: $dark-color;
   color: $light-color;
-  padding: $spacing-unit * 2;
+  padding-top: $spacing-unit * 2;
+  padding-bottom: $spacing-unit;
   font-family: $font-family;
   position: fixed;
   bottom: 0;
@@ -35,7 +38,6 @@ export default {
 
   .content {
     max-width: 800px;
-    margin: 0 auto;
 
     p {
       margin-bottom: $spacing-unit;
