@@ -20,27 +20,49 @@ export default {
 };
 </script>
 
+// FooterComponent.vue
 <style lang="scss">
 @import "@/assets/scss/main.scss";
 
 .footer {
-  background-color: #f5f5f5;
-  padding: 20px;
-  text-align: center;
-  border-top: 1px solid #e5e5e5;
-}
+  background-color: $dark-color;
+  color: $light-color;
+  padding: $spacing-unit * 2;
+  font-family: $font-family;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 
-.footer .content {
-  max-width: 800px;
-  margin: 0 auto;
-}
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
 
-.footer a {
-  color: #42b983;
-  text-decoration: none;
-}
+    p {
+      margin-bottom: $spacing-unit;
+      font-size: 14px;
 
-.footer a:hover {
-  text-decoration: underline;
+      a {
+        color: $primary-color;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      strong {
+        font-weight: bold;
+      }
+    }
+
+    .router-link {
+      color: $primary-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 </style>

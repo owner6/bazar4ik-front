@@ -31,12 +31,10 @@
 
 <script>
 export default {
-  name: "ListingsHeader",
-  // Other component options...
+  name: "HeaderComponent",
 };
 </script>
 
-// HeaderComponent.vue
 <style lang="scss">
 @import "@/assets/scss/main.scss";
 

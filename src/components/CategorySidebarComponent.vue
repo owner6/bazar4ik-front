@@ -29,34 +29,31 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/main.scss";
-
 .sidebar {
-  background-color: #f5f5f5;
-  padding: 20px;
-  border-right: 1px solid #e5e5e5;
-  height: 100vh;
-  position: fixed;
+  background-color: #f4f4f4;
   width: 200px;
-  overflow-y: auto;
-}
+  padding: 20px;
 
-.sidebar-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
+  .sidebar-nav {
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
 
-.sidebar-nav ul li {
-  margin: 10px 0;
-}
+      li {
+        margin-bottom: 10px;
 
-.sidebar-nav ul li a {
-  color: #42b983;
-  text-decoration: none;
-  font-weight: bold;
-}
+        router-link {
+          text-decoration: none;
+          color: #333;
+          font-size: 16px;
 
-.sidebar-nav ul li a:hover {
-  text-decoration: underline;
+          &:hover {
+            color: #555;
+          }
+        }
+      }
+    }
+  }
 }
 </style>
