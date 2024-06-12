@@ -1,13 +1,13 @@
 <template>
   <div class="listings-header">
     <nav class="navbar">
-      <div class="navbar-brand">
-        <router-link to="/" class="navbar-item">
-          <img src="@/assets/logo.png" alt="Logo" />
-        </router-link>
-      </div>
       <div class="navbar-menu">
         <div class="navbar-start">
+          <div class="navbar-brand">
+            <router-link to="/" class="navbar-item">
+              <img src="@/assets/logo.png" alt="Logo" />
+            </router-link>
+          </div>
           <router-link to="/" class="navbar-item">Home</router-link>
           <router-link to="/listings" class="navbar-item">Listings</router-link>
           <router-link to="/about" class="navbar-item">About</router-link>
@@ -42,7 +42,7 @@ export default {
 
 .listings-header {
   background-color: $light-color;
-  padding: $spacing-unit 0;
+  padding: 0;
 
   .navbar {
     background-color: $dark-color;
@@ -74,7 +74,7 @@ export default {
           padding: $spacing-unit;
 
           &:hover {
-            background-color: lighten($dark-color, 10%);
+            background-color: lighten($dark-color, 0%);
             color: $primary-color;
           }
         }
