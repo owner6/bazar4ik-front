@@ -50,7 +50,7 @@ export default {
   }
 
   .search-button {
-    padding: $spacing-unit / 2;
+    padding: $spacing-unit / 2 $spacing-unit;
     background-color: $primary-color;
     color: $light-color;
     border: none;
