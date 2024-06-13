@@ -13,6 +13,7 @@
           <router-link to="/about" class="navbar-item">About</router-link>
         </div>
         <div class="navbar-end">
+          <search-component @search="handleSearch"></search-component>
           <div class="navbar-item">
             <div class="buttons">
               <router-link to="/profile" class="button is-light"
@@ -30,8 +31,13 @@
 </template>
 
 <script>
+import SearchComponent from "./SearchComponent.vue";
+
 export default {
   name: "HeaderComponent",
+  components: {
+    SearchComponent,
+  },
 };
 </script>
 
