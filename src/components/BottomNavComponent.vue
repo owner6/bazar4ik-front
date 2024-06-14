@@ -21,4 +21,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss">
+@import "@/assets/scss/main.scss";
+
+.bottom-nav {
+  background-color: $light-gray-color;
+  padding: $spacing-unit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+</style>

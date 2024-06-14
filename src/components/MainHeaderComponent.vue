@@ -18,7 +18,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/scss/main.scss";
+
 .main-header {
   width: 100%;
 }

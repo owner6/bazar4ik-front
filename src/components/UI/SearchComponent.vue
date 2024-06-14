@@ -1,13 +1,13 @@
 <template>
-  <div class="search-component">
+  <div class="search">
     <input
       type="text"
-      v-model="query"
-      @input="onInput"
-      placeholder="Search for products..."
       class="search-input"
+      v-model="query"
+      @keyup.enter="onSearch"
+      placeholder="Search..."
     />
-    <button @click="onSearch" class="search-button">Search</button>
+    <button class="search-button" @click="onSearch">Search</button>
   </div>
 </template>
 
@@ -20,9 +20,6 @@ export default {
     };
   },
   methods: {
-    onInput() {
-      this.$emit("input", this.query);
-    },
     onSearch() {
       this.$emit("search", this.query);
     },
@@ -30,36 +27,33 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
 
-.search-component {
+.search {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: $spacing-unit;
+}
 
-  .search-input {
-    width: 100%;
-    max-width: 400px;
-    padding: $spacing-unit / 2;
-    margin-right: $spacing-unit;
-    border: 1px solid $light-gray-color;
-    border-radius: 4px;
-    font-size: 16px;
-  }
+.search-input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  font-size: 1rem;
+}
 
-  .search-button {
-    padding: $spacing-unit / 2 $spacing-unit;
-    background-color: $primary-color;
-    color: $light-color;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.search-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: $primary-color;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  font-size: 1rem;
 
-    &:hover {
-      background-color: darken($primary-color, 10%);
-    }
+  &:hover {
+    background-color: darken($primary-color, 10%);
   }
 }
 </style>

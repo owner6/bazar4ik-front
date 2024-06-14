@@ -29,6 +29,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/assets/scss/main.scss";
+
 .sidebar {
   background-color: #f4f4f4;
   width: 200px;
