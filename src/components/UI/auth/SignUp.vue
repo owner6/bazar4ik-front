@@ -2,8 +2,8 @@
   <div v-if="isVisible" class="modal">
     <div class="modal-content">
       <span class="close" @click="close">&times;</span>
-      <h2>Login</h2>
-      <form @submit.prevent="login">
+      <h2>Sign Up</h2>
+      <form @submit.prevent="register">
         <div>
           <label for="email">Email:</label>
           <input type="email" v-model="email" required />
@@ -12,7 +12,15 @@
           <label for="password">Password:</label>
           <input type="password" v-model="password" required />
         </div>
-        <button type="submit">Login</button>
+        <div>
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" v-model="confirmPassword" required />
+        </div>
+        <button type="submit">Sign Up</button>
+        <span>
+          Already registered?
+          <router-link to="/auth/signin">Login here</router-link>
+        </span>
       </form>
     </div>
   </div>
@@ -30,14 +38,19 @@ export default {
     return {
       email: "",
       password: "",
+      confirmPassword: "",
     };
   },
   methods: {
     close() {
       this.$emit("close");
     },
-    login() {
-      // added logic autorization
+    register() {
+      if (this.password !== this.confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+      // Add registration logic here
       console.log("Email:", this.email);
       console.log("Password:", this.password);
       this.close();
