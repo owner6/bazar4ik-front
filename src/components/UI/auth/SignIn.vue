@@ -1,97 +1,50 @@
 <template>
-  <div class="modal" v-show="isVisible">
-    <div class="modal-background" @click="$emit('close')"></div>
+  <div v-if="isVisible" class="modal">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">
-          {{ isLogin ? "Authorization" : "Registration" }}
-        </h5>
-        <button type="button" class="close" @click="$emit('close')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form @submit.prevent="handleSubmit">
-          <div class="field">
-            <label class="label">Username or Email</label>
-            <div class="control">
-              <input
-                class="input"
-                type="text"
-                v-model="formData.username"
-                required
-              />
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-              <input
-                class="input"
-                type="password"
-                v-model="formData.password"
-                required
-              />
-            </div>
-          </div>
-          <div class="field">
-            <div class="control">
-              <label class="checkbox">
-                <input type="checkbox" v-model="formData.rememberMe" /> Remember
-                Me
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="button is-primary">
-            {{ isLogin ? "Login" : "Register" }}
-          </button>
-        </form>
-        <div class="modal-footer">
-          <button class="button" @click="toggleLogin">
-            {{ isLogin ? "Register" : "Login" }}
-          </button>
+      <span class="close" @click="close">&times;</span>
+      <h2>Login</h2>
+      <form @submit.prevent="login">
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" v-model="email" required />
         </div>
-      </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" v-model="password" required />
+        </div>
+        <button type="submit">Login</button>
+        <span>
+          Not registered yet?
+          <router-link to="/auth/signup">Sign Up</router-link>
+        </span>
+      </form>
     </div>
-    <SignUp v-if="!isLogin" @submit="toggleLogin" />
-  </div>
-  <div>
-    <RegistrationModal v-if="showModal" @close="showModal = false" />
   </div>
 </template>
 
 <script>
-import SignUp from "@/components/UI/auth/SignUp.vue";
-
 export default {
   props: {
-    isVisible: Boolean,
-  },
-  components: {
-    SignUp,
+    isVisible: {
+      type: Boolean,
+      required: true,
+    },
   },
   data() {
     return {
-      isLogin: true,
-      formData: {
-        username: "",
-        password: "",
-        rememberMe: false,
-        showModal: false,
-      },
+      email: "",
+      password: "",
     };
   },
   methods: {
-    handleSubmit() {
-      // Implement logic to handle login or registration form submission
-      // (e.g., call API, handle errors)
-      console.log("Form submitted:", this.formData);
-      this.$emit("close"); // Close the modal after submission (optional)
+    close() {
+      this.$emit("close");
     },
-    toggleLogin() {
-      this.isLogin = !this.isLogin;
-      this.formData.username = ""; // Clear username when switching modes
-      this.formData.password = ""; // Clear password when switching modes
+    login() {
+      // Added logic for authorization
+      console.log("Email:", this.email);
+      console.log("Password:", this.password);
+      this.close();
     },
   },
 };

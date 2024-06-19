@@ -34,7 +34,6 @@
 <script>
 import SignIn from "@/components/UI/auth/SignIn.vue";
 import SignUp from "@/components/UI/auth/SignUp.vue";
-
 export default {
   name: "HeaderComponent",
   components: {
