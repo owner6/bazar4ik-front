@@ -13,6 +13,10 @@
           <input type="password" v-model="password" required />
         </div>
         <button type="submit">Login</button>
+        <span>
+          Not registered yet?
+          <router-link to="/auth/signup">Sign Up</router-link>
+        </span>
       </form>
     </div>
   </div>
@@ -37,7 +41,7 @@ export default {
       this.$emit("close");
     },
     login() {
-      // added logic autorization
+      // Added logic for authorization
       console.log("Email:", this.email);
       console.log("Password:", this.password);
       this.close();

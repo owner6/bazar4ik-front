@@ -18,13 +18,10 @@
               <router-link to="/profile" class="button is-light"
                 >Profile</router-link
               >
-              <button class="button is-light" @click="showLoginModal = true">
+              <button class="button is-light" @click="showSignIn = true">
                 Login
               </button>
-              <LoginModal
-                :isVisible="showLoginModal"
-                @close="showLoginModal = false"
-              />
+              <SignUp :isVisible="showSignUp" @close="showSignUp = false" />
             </div>
           </div>
         </div>
@@ -34,16 +31,18 @@
 </template>
 
 <script>
-import LoginModal from "@/components/UI/LoginModal.vue";
+import SignIn from "@/components/UI/auth/SignIn.vue";
+import SignUp from "@/components/UI/auth/SignUp.vue";
 export default {
   name: "HeaderComponent",
   components: {
-    LoginModal,
+    SignIn,
+    SignUp,
   },
   data() {
     return {
-      showLoginModal: false,
-      showRegisterModal: false,
+      showSignIn: false,
+      showSignUp: false,
     };
   },
 };
