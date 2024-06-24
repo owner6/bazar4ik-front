@@ -12,7 +12,12 @@
       <label for="password">Password:</label>
       <input type="password" v-model="password" required />
     </div>
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" v-model="confirmPassword" required />
+    </div>
     <button type="submit">Register</button>
+    <p v-if="error" class="error">{{ error }}</p>
     <p class="toggle" @click="$emit('toggle')">
       Already have an account? Login
     </p>
@@ -26,10 +31,16 @@ export default {
       name: "",
       email: "",
       password: "",
+      confirmPassword: "",
+      error: null,
     };
   },
   methods: {
     register() {
+      if (this.password !== this.confirmPassword) {
+        this.error = "Passwords do not match.";
+        return;
+      }
       // Added logic for registration
       console.log("Name:", this.name);
       console.log("Email:", this.email);
@@ -78,5 +89,9 @@ form {
   &:hover {
     text-decoration: underline;
   }
+}
+.error {
+  color: red;
+  margin-top: $spacing-unit;
 }
 </style>
