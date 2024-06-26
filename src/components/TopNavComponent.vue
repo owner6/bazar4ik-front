@@ -3,12 +3,9 @@
     <nav class="navbar">
       <div class="navbar-menu">
         <div class="navbar-start">
-          <div class="navbar-brand">
-            <router-link to="/" class="navbar-item">
-              <img src="@/assets/logo.png" alt="Logo" />
-            </router-link>
-          </div>
-          <router-link to="/" class="navbar-item">Home</router-link>
+          <router-link to="/" class="branded-inscription"
+            >BAzaRChiK</router-link
+          >
           <router-link to="/listings" class="navbar-item">Listings</router-link>
           <router-link to="/about" class="navbar-item">About</router-link>
         </div>
@@ -61,16 +58,6 @@ export default {
     color: $light-color;
     font-family: $font-family;
 
-    .navbar-brand {
-      .navbar-item {
-        padding: $spacing-unit;
-
-        img {
-          max-height: 40px;
-        }
-      }
-    }
-
     .navbar-menu {
       display: flex;
       justify-content: space-between;
@@ -80,6 +67,14 @@ export default {
       .navbar-end {
         display: flex;
         align-items: center;
+
+        .branded-inscription {
+          color: $secondary-color;
+          padding: $spacing-unit;
+          text-decoration: none;
+          font-size: 1.5rem;
+          font-family: $font-brand;
+        }
 
         .navbar-item {
           color: $light-color;

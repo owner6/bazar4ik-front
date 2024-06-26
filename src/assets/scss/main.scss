@@ -30,5 +30,8 @@
 @import 'themes/default';
 @import 'themes/dark';
 
-// Import vendors
-@import 'vendors/bootstrap';
+// fonts
+@font-face {
+  font-family: 'PPNikkeiJournal';
+  src: url('/public/fonts/PPNikkeiJournal-Light-BF660e1da30c581.otf') format('opentype');
+}
