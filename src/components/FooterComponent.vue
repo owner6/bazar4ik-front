@@ -27,44 +27,42 @@ export default {
 .footer {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: $dark-color;
-  color: $light-color;
   font-family: $font-family;
   position: fixed;
   bottom: 0;
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
-  padding-top: 15px;
-  justify-content: center;
+  padding: 15px 15px 0px 0px;
+}
 
-  .content {
-    max-width: 100%;
+.content {
+  p {
+    margin-bottom: $spacing-unit;
+    font-size: 14px;
 
-    p {
-      margin-bottom: $spacing-unit;
-      font-size: 14px;
-
-      a {
-        color: $primary-color;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
-      strong {
-        font-weight: bold;
-      }
-    }
-
-    .router-link {
+    a {
       color: $primary-color;
       text-decoration: none;
 
       &:hover {
         text-decoration: underline;
       }
+    }
+
+    strong {
+      font-weight: bold;
+    }
+  }
+
+  .router-link {
+    color: $primary-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

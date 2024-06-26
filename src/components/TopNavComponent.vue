@@ -7,17 +7,19 @@
             >BAzaRChiK</router-link
           >
           <router-link to="/listings" class="navbar-item">Listings</router-link>
-          <router-link to="/about" class="navbar-item">About</router-link>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <router-link to="/profile" class="button is-light"
-                >Profile</router-link
+              <button
+                class="button-auth is-light"
+                @click="showLoginModal = true"
               >
-              <button class="button is-light" @click="showLoginModal = true">
-                Login
+                SIGN UP | LOG IN
               </button>
+              <router-link to="/profile" class="sell-now is-light"
+                >SELL NOW</router-link
+              >
               <LoginModal
                 :isVisible="showLoginModal"
                 @close="showLoginModal = false"
@@ -48,6 +50,7 @@ export default {
 
 <style lang="scss">
 @import "@/assets/scss/main.scss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 .listings-header {
   background-color: $light-color;
@@ -55,13 +58,12 @@ export default {
 
   .navbar {
     background-color: $dark-color;
-    color: $light-color;
-    font-family: $font-family;
 
     .navbar-menu {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      height: 70px;
 
       .navbar-start,
       .navbar-end {
@@ -71,17 +73,16 @@ export default {
         .branded-inscription {
           color: $secondary-color;
           padding: $spacing-unit;
+          font-size: 24px;
           text-decoration: none;
-          font-size: 1.5rem;
           font-family: $font-brand;
         }
 
         .navbar-item {
-          color: $light-color;
+          color: $text-color;
           padding: $spacing-unit;
 
           &:hover {
-            background-color: lighten($dark-color, 0%);
             color: $primary-color;
           }
         }
@@ -90,18 +91,18 @@ export default {
           display: flex;
           align-items: center;
 
-          .button {
-            margin-left: $spacing-unit / 2;
+          .sell-now {
             padding: $spacing-unit;
-            border: none;
-            border-radius: 4px;
-            font-family: $font-family;
+            border-radius: 7px;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 12px;
+            border: 1px solid black;
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+            font-style: normal;
 
             &.is-light {
-              background-color: $light-color;
-              color: $dark-color;
+              color: $text-color;
 
               &:hover {
                 background-color: darken($light-color, 10%);
@@ -114,6 +115,27 @@ export default {
 
               &:hover {
                 background-color: darken($primary-color, 10%);
+              }
+            }
+          }
+
+          .button-auth {
+            padding: $spacing-unit;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            background-color: #f4f4f4;
+
+            &.is-light {
+              color: $text-color;
+
+              &:hover {
+                background-color: darken($light-color, 10%);
               }
             }
           }

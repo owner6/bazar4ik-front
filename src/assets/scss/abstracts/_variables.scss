@@ -1,15 +1,13 @@
 // Colors
 $primary-color: #3498db;                              // base color
 $secondary-color: #F7AA77;                           // 2 lelvel color
-$text-color: #333;                                    // tht-color
-$dark-color: #333;                                    // dark-color
-$light-gray-color: #d3d3d3;                           // light gray color
-$light-color: #ffffff;                                // white color                          
+$text-color: #000000;                                    // tht-color
+$dark-color: #F4F4F4;                                    // dark-color
+$light-gray-color: #000000;                           // light gray color
+$light-color: #000000;                                // white color                          
 
 // Fonts
-$font-primary: 'Helvetica Neue', Arial, sans-serif;     // основний шрифт
-$font-secondary: 'Georgia', serif;                      // шрифт вторинний
-$font-brand: 'PPNikkeiJournal', sans-serif;
+$font-brand: 'PPNikkeiJournal';
 
 // Spacing
-$spacing-unit: 16px                                     // одиниця інтервалу
+$spacing-unit: 12px                                     // одиниця інтервалу

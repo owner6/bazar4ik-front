@@ -89,7 +89,6 @@ export default {
   right: $spacing-unit / 2;
   font-size: 1.5rem;
   font-weight: bold;
-  color: $dark-color;
   cursor: pointer;
   &:hover {
     color: $primary-color;
