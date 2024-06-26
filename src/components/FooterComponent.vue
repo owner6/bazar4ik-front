@@ -29,15 +29,16 @@ export default {
   justify-content: center;
   background-color: $dark-color;
   color: $light-color;
-  padding-top: $spacing-unit * 2;
-  padding-bottom: $spacing-unit;
   font-family: $font-family;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 1440px;
+  margin: 0 auto;
+  padding-top: 15px;
+  justify-content: center;
 
   .content {
-    max-width: 800px;
+    max-width: 100%;
 
     p {
       margin-bottom: $spacing-unit;

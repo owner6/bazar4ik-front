@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <MainHeaderComponent />
+    <MainNavComponent />
     <Footer />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import MainHeaderComponent from "./components/MainNavComponent.vue";
+import MainNavComponent from "./components/MainNavComponent.vue";
 import Footer from "./components/FooterComponent.vue";
 
 export default {
   name: "App",
   components: {
-    MainHeaderComponent,
+    MainNavComponent,
     Footer,
   },
 };
@@ -28,5 +28,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 </style>

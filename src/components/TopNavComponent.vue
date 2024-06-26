@@ -18,9 +18,13 @@
               <router-link to="/profile" class="button is-light"
                 >Profile</router-link
               >
-              <router-link to="/login" class="button is-primary"
-                >Login</router-link
-              >
+              <button class="button is-light" @click="showLoginModal = true">
+                Login
+              </button>
+              <LoginModal
+                :isVisible="showLoginModal"
+                @close="showLoginModal = false"
+              />
             </div>
           </div>
         </div>
@@ -30,8 +34,18 @@
 </template>
 
 <script>
+import LoginModal from "@/components/UI/auth/LoginModal.vue";
 export default {
   name: "HeaderComponent",
+  components: {
+    LoginModal,
+  },
+  data() {
+    return {
+      showLoginModal: false,
+      showRegisterModal: false,
+    };
+  },
 };
 </script>
 
@@ -87,6 +101,8 @@ export default {
             border: none;
             border-radius: 4px;
             font-family: $font-family;
+            text-decoration: none;
+            font-size: 16px;
 
             &.is-light {
               background-color: $light-color;
