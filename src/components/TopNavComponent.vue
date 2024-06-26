@@ -54,7 +54,7 @@ export default {
 
 .listings-header {
   background-color: #f4f4f4;
-  padding: 0px 75px 0px 75px;
+  padding: 0 4.688rem 0 4.688rem;
 
   .navbar {
     background-color: $dark-color;
@@ -71,7 +71,6 @@ export default {
 
         .branded-inscription {
           color: $secondary-color;
-          padding: $spacing-unit;
           font-size: 24px;
           text-decoration: none;
           font-family: $font-brand;
