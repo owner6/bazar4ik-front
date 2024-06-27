@@ -27,8 +27,8 @@ export default {
 .listings-view {
   padding: $spacing-unit * 2;
 
-  h1 {
-    font-size: 36px;
+  h4 {
+    font-size: $H4;
     margin-bottom: $spacing-unit;
     color: $primary-color;
   }
