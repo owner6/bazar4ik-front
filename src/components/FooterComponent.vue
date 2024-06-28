@@ -29,7 +29,6 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: $dark-color;
-  font-family: $font-family;
   position: fixed;
   bottom: 0;
   width: 100%;

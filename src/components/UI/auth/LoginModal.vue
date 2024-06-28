@@ -97,6 +97,7 @@ export default {
 h2 {
   margin-top: 0;
   color: $primary-color;
+  font-family: "Open Sans", sans-serif;
 }
 form {
   display: flex;

@@ -73,7 +73,6 @@ export default {
           color: $secondary-color;
           font-size: 24px;
           text-decoration: none;
-          font-family: $font-brand;
         }
 
         .navbar-item {
