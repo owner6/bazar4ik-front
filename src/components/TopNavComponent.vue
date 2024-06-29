@@ -53,11 +53,11 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 .listings-header {
-  background-color: #f4f4f4;
+  background-color: $primary-color-LightGray;
   padding: 0 4.688rem 0 4.688rem;
 
   .navbar {
-    background-color: $dark-color;
+    background-color: $primary-color-LightGray;
 
     .navbar-menu {
       display: flex;
@@ -70,7 +70,7 @@ export default {
         align-items: center;
 
         .branded-inscription {
-          color: $secondary-color;
+          color: $primary-color-LightGray;
           font-size: 24px;
           text-decoration: none;
         }
@@ -80,7 +80,7 @@ export default {
           padding: $spacing-unit;
 
           &:hover {
-            color: $primary-color;
+            color: $primary-color-LightGray;
           }
         }
 
@@ -102,16 +102,16 @@ export default {
               color: $text-color;
 
               &:hover {
-                background-color: darken($light-color, 10%);
+                background-color: darken($primary-color-LightGray, 10%);
               }
             }
 
             &.is-primary {
-              background-color: $primary-color;
+              background-color: $primary-color-LightGray;
               color: $light-color;
 
               &:hover {
-                background-color: darken($primary-color, 10%);
+                background-color: darken($primary-color-LightGray, 10%);
               }
             }
           }
@@ -126,13 +126,13 @@ export default {
             font-family: "Poppins", sans-serif;
             font-weight: 400;
             font-style: normal;
-            background-color: #f4f4f4;
+            background-color: $primary-color-LightGray;
 
             &.is-light {
               color: $text-color;
 
               &:hover {
-                background-color: darken($light-color, 10%);
+                background-color: darken($primary-color-LightGray, 10%);
               }
             }
           }
