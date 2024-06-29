@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import CategorySidebar from "../components/CategorySidebarComponent.vue";
+import CategorySidebar from "../components/CategorySidebar.vue";
 
 export default {
   name: "ListingsView",

@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import SearchComponent from "../components/UI/SearchComponent.vue";
-import BottomNavComponent from "../components/BottomNavComponent.vue";
+import SearchComponent from "../components/UI/SearchPanel.vue";
+import BottomNavComponent from "../components/NavCategories.vue";
 
 export default {
   name: "HomeView",

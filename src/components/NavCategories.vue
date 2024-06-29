@@ -1,5 +1,5 @@
 <template>
-  <nav class="bottom-nav"></nav>
+  <nav class="nav-categories"></nav>
 </template>
 
 <script>
@@ -18,11 +18,11 @@ export default {
 <style lang="scss">
 @import "@/assets/scss/main.scss";
 
-.bottom-nav {
+.nav-categories {
   background-color: $extra-color-LightGreenPastel;
   padding: $spacing-unit;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 }
 </style>

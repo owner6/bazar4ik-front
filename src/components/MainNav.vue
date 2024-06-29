@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import TopNavComponent from "./TopNavComponent.vue";
+import TopNavComponent from "./TopNav.vue";
 
 export default {
   name: "MainHeaderComponent",
