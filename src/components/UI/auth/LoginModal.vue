@@ -75,13 +75,13 @@ export default {
   z-index: 1000;
 }
 .modal-content {
-  background-color: $light-color;
+  background-color: $primary-color-LightGray;
   padding: $spacing-unit * 2;
   border-radius: 8px;
   width: 90%;
   max-width: 400px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;
+  color: $text-color;
 }
 .close {
   position: absolute;
@@ -90,13 +90,10 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
-  &:hover {
-    color: $primary-color;
-  }
 }
 h2 {
   margin-top: 0;
-  color: $primary-color;
+  color: $H2;
   font-family: "Open Sans", sans-serif;
 }
 form {
@@ -111,26 +108,30 @@ form {
   }
   input {
     padding: $spacing-unit / 2;
-    border: 1px solid #ccc;
+    border: 1px solid #ffffff;
     border-radius: 4px;
     font-size: 1rem;
+    background-color: $primary-color-LightGray;
+    &:hover {
+      background-color: #888888;
+    }
   }
   button {
     padding: $spacing-unit;
     border: none;
     border-radius: 4px;
-    background-color: $primary-color;
-    color: $light-color;
+    background-color: $extra-color-Peach;
+    color: $text-color;
     font-size: 1rem;
     cursor: pointer;
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: ($button-primary-hover);
     }
   }
 }
 .toggle {
   margin-top: $spacing-unit;
-  color: $primary-color;
+  color: $text-color;
   cursor: pointer;
   &:hover {
     text-decoration: underline;

@@ -46,14 +46,14 @@ export default {
 .search-button {
   padding: 0.5rem 1rem;
   border: none;
-  background-color: $primary-color;
-  color: #fff;
+  background-color: $extra-color-Peach;
+  color: $text-color;
   cursor: pointer;
   border-radius: 0 4px 4px 0;
   font-size: 1rem;
 
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: $button-primary-hover;
   }
 }
 </style>

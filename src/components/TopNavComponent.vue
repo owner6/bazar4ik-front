@@ -70,7 +70,7 @@ export default {
         align-items: center;
 
         .branded-inscription {
-          color: $primary-color-LightGray;
+          color: $extra-color-Peach;
           font-size: 24px;
           text-decoration: none;
         }
@@ -108,7 +108,7 @@ export default {
 
             &.is-primary {
               background-color: $primary-color-LightGray;
-              color: $light-color;
+              color: $text-color;
 
               &:hover {
                 background-color: darken($primary-color-LightGray, 10%);

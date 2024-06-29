@@ -1,15 +1,21 @@
 // Colors
-$primary-color-PureWhite: #FFFFFF;                 
-$primary-color-LightGray: #F4F4F4;                 
-$primary-color-SoftGray: #DCDEDF;                  
+$primary-color-PureWhite: #FFFFFF;                   // backgroundContent       
+$primary-color-LightGray: #F4F4F4;                   // backgroundPanels
+$primary-color-SoftGray: #DCDEDF;                   // Soft
 
+$extra-color-LightLemonGreen: #E9FCA1;
+$extra-color-Peach: #F7AA77;
+$extra-color-LightGreenPastel: #D4F4CC;
+$extra-color-LightBluePastel: #C6E6E8;
 
-$text-color: #000000;                                // tht-color                              // dark-color
-$light-gray-color: #000000;                          // light gray color
-$light-color: #000000;                               // white color                          
+$text-color: #000000;                                // tht-color                              // dark-color                                 // light gray color                             // white color                          
 
 // Fonts
-$H4: 24px;
+$H2: 48px;                                             // РазмерFonts48px
+$H4: 24px;                                             // РазмерFonts24px
+
+//Button
+$button-primary-hover: #FECBA9;
 
 // Spacing
-$spacing-unit: 12px                                     // одиниця інтервалу
+$spacing-unit: 12px;

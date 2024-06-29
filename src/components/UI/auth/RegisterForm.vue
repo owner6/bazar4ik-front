@@ -81,21 +81,21 @@ form {
     padding: $spacing-unit;
     border: none;
     border-radius: 4px;
-    background-color: $primary-color;
-    color: $light-color;
+    background-color: $extra-color-Peach;
+    color: $text-color;
     font-size: 1rem;
     cursor: pointer;
     font-family: "Open Sans", sans-serif; /* Apply Open Sans font */
 
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: $button-primary-hover;
     }
   }
 }
 
 .toggle {
   margin-top: $spacing-unit;
-  color: $primary-color;
+  color: $text-color;
   cursor: pointer;
   font-family: "Roboto", sans-serif; /* Apply Roboto font */
 

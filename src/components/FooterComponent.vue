@@ -28,7 +28,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $dark-color;
+  background-color: $extra-color-Peach;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -40,10 +40,9 @@ export default {
 .content {
   p {
     margin-bottom: $spacing-unit;
-    font-size: 14px;
 
     a {
-      color: $primary-color;
+      color: $text-color;
       text-decoration: none;
 
       &:hover {
@@ -57,7 +56,7 @@ export default {
   }
 
   .router-link {
-    color: $primary-color;
+    color: $text-color;
     text-decoration: none;
 
     &:hover {

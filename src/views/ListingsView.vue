@@ -30,12 +30,12 @@ export default {
   h4 {
     font-size: $H4;
     margin-bottom: $spacing-unit;
-    color: $primary-color;
+    color: $text-color;
   }
 
   p {
     font-size: 18px;
-    color: $dark-color;
+    color: $text-color;
   }
 }
 </style>

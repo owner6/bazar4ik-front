@@ -33,8 +33,8 @@ export default {
 
 .home-view {
   .hero {
-    background-color: $primary-color;
-    color: $light-color;
+    background-color: $extra-color-Peach;
+    color: $text-color;
     text-align: center;
     padding: $spacing-unit * 4;
 
@@ -56,12 +56,12 @@ export default {
         padding: $spacing-unit;
         border: none;
         border-radius: 4px;
-        background-color: $secondary-color;
-        color: $light-color;
+        background-color: $extra-color-Peach;
+        color: $extra-color-Peach;
         font-size: 16px;
 
         &:hover {
-          background-color: darken($secondary-color, 10%);
+          background-color: $button-primary-hover;
         }
       }
     }
@@ -71,7 +71,7 @@ export default {
     display: flex;
     justify-content: space-around;
     padding: $spacing-unit * 4;
-    background-color: $light-color;
+    background-color: $extra-color-Peach;
 
     .feature {
       text-align: center;
@@ -80,12 +80,12 @@ export default {
       h2 {
         font-size: 24px;
         margin-bottom: $spacing-unit;
-        color: $dark-color;
+        color: $text-color;
       }
 
       p {
         font-size: 16px;
-        color: $dark-color;
+        color: $text-color;
       }
     }
   }
