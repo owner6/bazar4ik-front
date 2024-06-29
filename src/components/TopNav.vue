@@ -10,6 +10,10 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
+              <router-link to="/" class=""
+                ><img
+                  src="../assets/icons/heart--reward-social-rating-media-heart-it-like-favorite-love.svg"
+              /></router-link>
               <button
                 class="button-auth is-light"
                 @click="showLoginModal = true"
@@ -19,6 +23,13 @@
               <router-link to="/profile" class="sell-now is-light"
                 >SELL NOW</router-link
               >
+              <router-link to="/" class="item-help-chat">
+                <img
+                  src="../assets/icons/chat-bubble-square-question--bubble-square-messages-notification-chat-message-question-help.svg"
+                  alt="Help Chat"
+                />
+              </router-link>
+
               <LoginModal
                 :isVisible="showLoginModal"
                 @close="showLoginModal = false"
@@ -49,11 +60,10 @@ export default {
 
 <style lang="scss">
 @import "@/assets/scss/main.scss";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 .listings-header {
   background-color: $primary-color-LightGray;
-  padding: 0 4.688rem 0 4.688rem;
+  padding: 0 75px 0 75px;
 
   .navbar {
     background-color: $primary-color-LightGray;
@@ -86,6 +96,7 @@ export default {
         .buttons {
           display: flex;
           align-items: center;
+          gap: 24px;
 
           .sell-now {
             padding: $spacing-unit;
@@ -131,10 +142,15 @@ export default {
               color: $text-color;
 
               &:hover {
-                background-color: darken($primary-color-LightGray, 10%);
+                background-color: ($primary-color-LightGray);
               }
             }
           }
+        }
+        .router-link-active,
+        .router-link-exact-active {
+          display: inline-block;
+          line-height: 0;
         }
       }
     }
