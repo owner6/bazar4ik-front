@@ -1,5 +1,6 @@
 <template>
   <div class="home-view">
+    <bottom-nav-component />
     <section class="hero">
       <div class="hero-content">
         <h1>Welcome to Our Marketplace</h1>
@@ -18,13 +19,21 @@
         <h2>Best Prices</h2>
         <p>Compare prices and get the best deals on the market.</p>
       </div>
+      <search-component @search="handleSearch"></search-component>
     </section>
   </div>
 </template>
 
 <script>
+import SearchComponent from "../components/UI/SearchComponent.vue";
+import BottomNavComponent from "../components/BottomNavComponent.vue";
+
 export default {
   name: "HomeView",
+  components: {
+    SearchComponent,
+    BottomNavComponent,
+  },
 };
 </script>
 
@@ -33,7 +42,7 @@ export default {
 
 .home-view {
   .hero {
-    background-color: $extra-color-Peach;
+    background-color: $extra-color-LightGreenPastel;
     color: $text-color;
     text-align: center;
     padding: $spacing-unit * 4;
@@ -59,6 +68,7 @@ export default {
         background-color: $extra-color-Peach;
         color: $extra-color-Peach;
         font-size: 16px;
+        color: $text-color;
 
         &:hover {
           background-color: $button-primary-hover;
@@ -71,7 +81,7 @@ export default {
     display: flex;
     justify-content: space-around;
     padding: $spacing-unit * 4;
-    background-color: $extra-color-Peach;
+    background-color: $extra-color-LightGreenPastel;
 
     .feature {
       text-align: center;

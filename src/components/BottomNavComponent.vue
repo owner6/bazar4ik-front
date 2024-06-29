@@ -1,17 +1,11 @@
 <template>
-  <nav class="bottom-nav">
-    <search-component @search="handleSearch"></search-component>
-  </nav>
+  <nav class="bottom-nav"></nav>
 </template>
 
 <script>
-import SearchComponent from "./UI/SearchComponent.vue";
-
 export default {
   name: "BottomNavComponent",
-  components: {
-    SearchComponent,
-  },
+  components: {},
   methods: {
     handleSearch(query) {
       // logic обробки search
