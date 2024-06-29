@@ -1,5 +1,7 @@
 <template>
-  <nav class="nav-categories"></nav>
+  <nav class="nav-categories">
+    <router-link to="/listings" class="navbar-item">Listings</router-link>
+  </nav>
 </template>
 
 <script>

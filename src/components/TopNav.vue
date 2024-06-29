@@ -6,7 +6,6 @@
           <router-link to="/" class="branded-inscription"
             >BAzaRChiK</router-link
           >
-          <router-link to="/listings" class="navbar-item">Listings</router-link>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
