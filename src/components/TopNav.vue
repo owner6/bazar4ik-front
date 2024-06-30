@@ -64,10 +64,9 @@ export default {
 .listings-header {
   background-color: $primary-color-LightGray;
   padding: 0 75px 0 75px;
+  border-bottom: 0.5px solid $primary-color-SoftGray;
 
   .navbar {
-    background-color: $primary-color-LightGray;
-
     .navbar-menu {
       display: flex;
       justify-content: space-between;

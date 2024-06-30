@@ -31,10 +31,12 @@ export default {
 .home-view {
   display: flex;
   padding: 0 27px;
+  gap: 16px;
 
   .section-right {
     flex: 1 1 45%;
     border-radius: 24px;
+    padding-left: 5px;
   }
 
   .section-left {
