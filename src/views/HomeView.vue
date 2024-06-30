@@ -31,23 +31,27 @@ export default {
 .home-view {
   display: flex;
   padding: 0 27px;
-  height: 626px;
 
   .section-right {
-    flex: 1;
+    flex: 1 1 45%;
     border-radius: 24px;
   }
 
   .section-left {
-    flex: 1;
+    flex: 1 1 45%;
     background-color: $extra-color-LightGreenPastel;
     border-radius: 24px;
     padding: 150px 45px;
     text-align: left;
 
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    height: auto;
+
     .section-content {
       width: 410px;
-      height: 310px;
+      height: auto;
 
       h1 {
         font-size: $H1;
@@ -76,12 +80,13 @@ export default {
 
   .section-right {
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: center;
 
     img {
-      max-width: 626px;
       border-radius: 24px;
+      max-width: auto;
+      height: auto;
     }
   }
 }

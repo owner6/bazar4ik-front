@@ -112,7 +112,7 @@ export default {
               color: $text-color;
 
               &:hover {
-                background-color: darken($primary-color-LightGray, 10%);
+                background-color: $primary-color-LightGray;
               }
             }
 
@@ -121,7 +121,7 @@ export default {
               color: $text-color;
 
               &:hover {
-                background-color: darken($primary-color-LightGray, 10%);
+                background-color: $primary-color-LightGray;
               }
             }
           }
@@ -142,7 +142,7 @@ export default {
               color: $text-color;
 
               &:hover {
-                background-color: ($primary-color-LightGray);
+                background-color: $primary-color-LightGray;
               }
             }
           }
