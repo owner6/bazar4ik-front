@@ -33,24 +33,29 @@ export default {
 .search {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .search-input {
   flex: 1;
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
-  font-size: 1rem;
+  padding: 10px 0 10px 0;
+  border: 0.5px solid $border;
+  border-radius: 7px;
+  background-color: $extra-color-LightGreenPastel;
+  width: 307px;
+  height: 22px;
 }
 
 .search-button {
-  padding: 0.5rem 1rem;
+  padding: 12px 24px 12px 24px;
   border: none;
   background-color: $extra-color-Peach;
   color: $text-color;
   cursor: pointer;
-  border-radius: 0 4px 4px 0;
-  font-size: 1rem;
+  border-radius: 7px;
+  width: 95px;
+  height: 42px;
+  font-family: $PoppinsFonts;
 
   &:hover {
     background-color: $button-primary-hover;

@@ -1,38 +1,26 @@
 <template>
   <div class="home-view">
-    <bottom-nav-component />
     <section class="hero">
+      <NavCategories class="nav-categories" />
       <div class="hero-content">
-        <h1>Welcome to Our Marketplace</h1>
-        <p>Your one-stop shop for everything you need.</p>
-        <router-link to="/listings" class="button is-primary"
-          >Start Shopping</router-link
-        >
+        <h1>Everything can be bought and sold here!</h1>
+        <div class="search">
+          <search-component @search="handleSearch"></search-component>
+        </div>
       </div>
-    </section>
-    <section class="features">
-      <div class="feature">
-        <h2>Wide Selection</h2>
-        <p>Find products from thousands of vendors all in one place.</p>
-      </div>
-      <div class="feature">
-        <h2>Best Prices</h2>
-        <p>Compare prices and get the best deals on the market.</p>
-      </div>
-      <search-component @search="handleSearch"></search-component>
     </section>
   </div>
 </template>
 
 <script>
 import SearchComponent from "../components/UI/SearchPanel.vue";
-import BottomNavComponent from "../components/NavCategories.vue";
+import NavCategories from "../components/NavCategories.vue";
 
 export default {
   name: "HomeView",
   components: {
     SearchComponent,
-    BottomNavComponent,
+    NavCategories,
   },
 };
 </script>
@@ -42,23 +30,26 @@ export default {
 
 .home-view {
   .hero {
+    position: relative;
     background-color: $extra-color-LightGreenPastel;
     color: $text-color;
     text-align: center;
-    padding: $spacing-unit * 4;
+    padding: 150px 235px 150px 45px;
+    border-radius: 24px;
+    height: 626px;
+
+    h1 {
+      font-size: $H1;
+      font-weight: 400;
+    }
 
     .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
+      width: 410px;
+      height: 310px;
+      text-align: start;
 
-      h1 {
-        font-size: 36px;
-        margin-bottom: $spacing-unit;
-      }
-
-      p {
-        font-size: 18px;
-        margin-bottom: $spacing-unit * 2;
+      .search {
+        margin-top: 16px;
       }
 
       .button {
@@ -75,6 +66,12 @@ export default {
         }
       }
     }
+
+    .nav-categories {
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
   }
 
   .features {
@@ -86,6 +83,11 @@ export default {
     .feature {
       text-align: center;
       max-width: 250px;
+
+      h1 {
+        font-size: $H1;
+        color: $text-color;
+      }
 
       h2 {
         font-size: 24px;

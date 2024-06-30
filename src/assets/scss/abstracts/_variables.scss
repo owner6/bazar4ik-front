@@ -8,11 +8,15 @@ $extra-color-Peach: #F7AA77;
 $extra-color-LightGreenPastel: #D4F4CC;
 $extra-color-LightBluePastel: #C6E6E8;
 
-$text-color: #000000;                                // tht-color                              // dark-color                                 // light gray color                             // white color                          
+$text-color: #000000;
+$border: #888888;                                             
 
 // Fonts
-$H2: 48px;                                             // РазмерFonts48px
+$H1: 64px;
+$H2: 48px;                                              // РазмерFonts48px
 $H4: 24px;                                             // РазмерFonts24px
+
+$PoppinsFonts: "Poppins", sans-serif;
 
 //Button
 $button-primary-hover: #FECBA9;
