@@ -1,34 +1,15 @@
 <template>
-  <div id="app">
-    <MainNavComponent />
-    <Footer />
-    <router-view></router-view>
-  </div>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld msg="Hello Vue 3.0 + Vite" />
 </template>
 
 <script>
-import MainNavComponent from "./components/MainNavComponent.vue";
-import Footer from "./components/FooterComponent.vue";
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    MainNavComponent,
-    Footer,
-  },
-};
+    HelloWorld
+  }
+}
 </script>
-
-<style>
-* {
-  margin: 0px;
-}
-
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-</style>
