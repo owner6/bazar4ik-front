@@ -9,7 +9,14 @@
     "vue": "^3.0.4"
   },
   "devDependencies": {
-    "vite": "^1.0.0-rc.13",
-    "@vue/compiler-sfc": "^3.0.4"
-  }
+    "@vue/compiler-sfc": "^3.0.4",
+    "autoprefixer": "^10.4.19",
+    "saas": "^1.0.0",
+    "sass": "^1.77.6",
+    "vite": "^1.0.0-rc.13"
+  },
+  "browserlist": [
+    "last 1 version",
+    "> 1%"
+  ]
 }
