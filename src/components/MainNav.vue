@@ -1,24 +1,12 @@
 <template>
   <header class="main-header">
-    <top-nav-component />
+test
   </header>
 </template>
 
 <script>
-import TopNavComponent from "./TopNav.vue";
-
 export default {
   name: "MainHeaderComponent",
-  components: {
-    TopNavComponent,
-  },
+  components: {},
 };
 </script>
-
-<style lang="scss" scoped>
-@import "@/assets/scss/main.scss";
-
-.main-header {
-  width: 100%;
-}
-</style>
