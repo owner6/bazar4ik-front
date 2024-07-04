@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import LoginModal from "@/components/UI/auth/LoginModal.vue";
+import LoginModal from "@/components/auth/LoginModal.vue";
 export default {
   name: "HeaderComponent",
   components: {

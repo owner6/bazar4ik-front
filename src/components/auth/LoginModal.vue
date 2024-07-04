@@ -85,7 +85,7 @@ export default {
 }
 .close {
   position: absolute;
-  top: $spacing-unit / 2;
+  top: 0;
   right: $spacing-unit / 2;
   font-size: 1.5rem;
   font-weight: bold;

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import SearchComponent from "../components/UI/SearchPanel.vue";
+import SearchComponent from "../components/SearchPanel.vue";
 
 export default {
   name: "HomeView",

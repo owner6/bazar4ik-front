@@ -44,6 +44,11 @@ export default {
   background-color: $extra-color-LightGreenPastel;
   width: 307px;
   height: 22px;
+  background-image: url("/src/assets/icons/magnifying-glass--glass-search-magnifying.svg");
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  text-indent: 32px;
+  font-family: $PoppinsFonts;
 }
 
 .search-button {
