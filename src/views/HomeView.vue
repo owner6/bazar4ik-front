@@ -1,30 +1,27 @@
 <template>
   <div class="home-view">
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Welcome to Our Marketplace</h1>
-        <p>Your one-stop shop for everything you need.</p>
-        <router-link to="/listings" class="button is-primary"
-          >Start Shopping</router-link
-        >
+    <section class="section-left">
+      <div class="section-content">
+        <h1>Everything can be bought and sold here!</h1>
+        <div class="search">
+          <search-component @search="handleSearch"></search-component>
+        </div>
       </div>
     </section>
-    <section class="features">
-      <div class="feature">
-        <h2>Wide Selection</h2>
-        <p>Find products from thousands of vendors all in one place.</p>
-      </div>
-      <div class="feature">
-        <h2>Best Prices</h2>
-        <p>Compare prices and get the best deals on the market.</p>
-      </div>
+    <section class="section-right">
+      <img src="@/assets/images/image-section-right.jpg" />
     </section>
   </div>
 </template>
 
 <script>
+import SearchComponent from "../components/SearchPanel.vue";
+
 export default {
   name: "HomeView",
+  components: {
+    SearchComponent,
+  },
 };
 </script>
 
@@ -32,61 +29,66 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .home-view {
-  .hero {
-    background-color: $primary-color;
-    color: $light-color;
-    text-align: center;
-    padding: $spacing-unit * 4;
+  display: flex;
+  padding: 0 27px;
+  gap: 16px;
 
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
+  .section-right {
+    flex: 1 1 45%;
+    border-radius: 24px;
+    padding-left: 5px;
+  }
+
+  .section-left {
+    flex: 1 1 45%;
+    background-color: $extra-color-LightGreenPastel;
+    border-radius: 24px;
+    padding: 150px 45px;
+    text-align: left;
+
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    height: auto;
+
+    .section-content {
+      width: 410px;
+      height: auto;
 
       h1 {
-        font-size: 36px;
-        margin-bottom: $spacing-unit;
+        font-size: $H1;
+        font-weight: 400;
       }
 
-      p {
-        font-size: 18px;
-        margin-bottom: $spacing-unit * 2;
+      .search {
+        margin-top: 16px;
       }
 
       .button {
         padding: $spacing-unit;
         border: none;
         border-radius: 4px;
-        background-color: $secondary-color;
-        color: $light-color;
+        background-color: $extra-color-Peach;
+        color: $extra-color-Peach;
         font-size: 16px;
+        color: $text-color;
 
         &:hover {
-          background-color: darken($secondary-color, 10%);
+          background-color: $button-primary-hover;
         }
       }
     }
   }
 
-  .features {
+  .section-right {
     display: flex;
-    justify-content: space-around;
-    padding: $spacing-unit * 4;
-    background-color: $light-color;
+    align-items: center;
+    justify-content: center;
 
-    .feature {
-      text-align: center;
-      max-width: 250px;
-
-      h2 {
-        font-size: 24px;
-        margin-bottom: $spacing-unit;
-        color: $dark-color;
-      }
-
-      p {
-        font-size: 16px;
-        color: $dark-color;
-      }
+    img {
+      border-radius: 24px;
+      max-width: auto;
+      height: auto;
     }
   }
 }

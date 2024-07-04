@@ -1,14 +1,25 @@
 // Colors
-$primary-color: #3498db;                              // base color
-$secondary-color: #2ecc71;                            // 2 lelvel color
-$text-color: #333;                                    // tht-color
-$dark-color: #333;                                    // dark-color
-$light-gray-color: #d3d3d3;                           // light gray color
-$light-color: #ffffff;                                // white color                          
+$primary-color-PureWhite: #FFFFFF;                   // backgroundContent       
+$primary-color-LightGray: #F4F4F4;                   // backgroundPanels
+$primary-color-SoftGray: #DCDEDF;                   // Soft
+
+$extra-color-LightLemonGreen: #E9FCA1;
+$extra-color-Peach: #F7AA77;
+$extra-color-LightGreenPastel: #D4F4CC;
+$extra-color-LightBluePastel: #C6E6E8;
+
+$text-color: #000000;
+$border: #888888;                                             
 
 // Fonts
-$font-primary: 'Helvetica Neue', Arial, sans-serif;     // основний шрифт
-$font-secondary: 'Georgia', serif;                      // шрифт вторинний
+$H1: 64px;
+$H2: 48px;                                              // РазмерFonts48px
+$H4: 24px;                                             // РазмерFonts24px
+
+$PoppinsFonts: "Poppins", sans-serif;
+
+//Button
+$button-primary-hover: #FECBA9;
 
 // Spacing
-$spacing-unit: 16px                                     // одиниця інтервалу
+$spacing-unit: 12px;

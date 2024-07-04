@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import CategorySidebar from "../components/CategorySidebarComponent.vue";
+import CategorySidebar from "../components/CategorySidebar.vue";
 
 export default {
   name: "ListingsView",
@@ -27,15 +27,15 @@ export default {
 .listings-view {
   padding: $spacing-unit * 2;
 
-  h1 {
-    font-size: 36px;
+  h4 {
+    font-size: $H4;
     margin-bottom: $spacing-unit;
-    color: $primary-color;
+    color: $text-color;
   }
 
   p {
     font-size: 18px;
-    color: $dark-color;
+    color: $text-color;
   }
 }
 </style>
