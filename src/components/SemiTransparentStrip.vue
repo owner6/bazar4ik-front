@@ -1,6 +1,6 @@
 <template>
-  <nav class="SemiTransparentStrip">
-    <router-link to="/listings" class="navbar-item">Listings</router-link>
+  <nav class="semi-transparent-strip">
+    <router-link> to="/listings" class="navbar-item">Listings</router-link>
   </nav>
 </template>
 
@@ -20,11 +20,19 @@ export default {
 <style lang="scss">
 @import "@/assets/scss/main.scss";
 
-.SemiTransparentStrip {
-  background-color: $extra-color-LightGreenPastel;
-  padding: $spacing-unit;
+.semi-transparent-strip {
+  position: fixed;
+  top: 75px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5); // semi-transparent white
+  z-index: 1000; // high z-index to ensure it's on top
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
+  padding: 10px; // adjust as needed
+
+  .navbar-item {
+    display: inline;
+  }
 }
 </style>
