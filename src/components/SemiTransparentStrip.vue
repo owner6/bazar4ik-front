@@ -1,6 +1,6 @@
 <template>
   <nav class="semi-transparent-strip">
-    <router-link> to="/listings" class="navbar-item">Listings</router-link>
+    <div>Catalogue</div>
   </nav>
 </template>
 
@@ -27,12 +27,8 @@ export default {
   background-color: rgba(255, 255, 255, 0.5); // semi-transparent white
   z-index: 1000; // high z-index to ensure it's on top
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  padding: 10px; // adjust as needed
-
-  .navbar-item {
-    display: inline;
-  }
+  padding: 0 75px 0 75px;
 }
 </style>
