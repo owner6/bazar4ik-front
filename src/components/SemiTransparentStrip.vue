@@ -1,12 +1,12 @@
 <template>
-  <nav class="nav-categories">
+  <nav class="SemiTransparentStrip">
     <router-link to="/listings" class="navbar-item">Listings</router-link>
   </nav>
 </template>
 
 <script>
 export default {
-  name: "BottomNavComponent",
+  name: "HomeView",
   components: {},
   methods: {
     handleSearch(query) {
@@ -20,7 +20,7 @@ export default {
 <style lang="scss">
 @import "@/assets/scss/main.scss";
 
-.nav-categories {
+.SemiTransparentStrip {
   background-color: $extra-color-LightGreenPastel;
   padding: $spacing-unit;
   display: flex;
