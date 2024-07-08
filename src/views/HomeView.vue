@@ -1,17 +1,19 @@
 <template>
-  <SemiTransparentStrip />
-  <div class="home-view">
-    <section class="section-left">
-      <div class="section-content">
-        <h1>Everything can be bought and sold here!</h1>
-        <div class="search">
-          <search-component @search="handleSearch"></search-component>
+  <div class="home-view-container">
+    <SemiTransparentStrip />
+    <div class="home-view">
+      <section class="section-left">
+        <div class="section-content">
+          <h1>Everything<br />can be bought and sold here!</h1>
+          <div class="search">
+            <search-component @search="handleSearch"></search-component>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="section-right">
-      <img src="@/assets/images/image-section-right.jpg" />
-    </section>
+      </section>
+      <section class="section-right">
+        <img src="@/assets/images/image-section-right.jpg" />
+      </section>
+    </div>
   </div>
 </template>
 
@@ -31,36 +33,41 @@ export default {
 <style lang="scss">
 @import "@/assets/scss/main.scss";
 
-.home-view {
-  display: flex;
-  padding: 0 27px;
-  gap: 16px;
+.home-view-container {
+  position: relative;
+}
 
+.home-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 0px 27px 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  .section-left,
   .section-right {
-    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border-radius: 24px;
-    padding-left: 5px;
   }
 
   .section-left {
-    flex: 1 1 45%;
     background-color: $extra-color-LightGreenPastel;
-    border-radius: 24px;
-    padding: 150px 45px;
+    padding: 45px;
     text-align: left;
 
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-    height: auto;
-
     .section-content {
-      width: 410px;
-      height: auto;
+      width: 100%;
 
       h1 {
         font-size: $H1;
-        font-weight: 400;
+        font-weight: 300;
+        font-family: $PoppinsFonts;
       }
 
       .search {
@@ -84,13 +91,9 @@ export default {
   }
 
   .section-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     img {
       border-radius: 24px;
-      max-width: auto;
+      max-width: 100%;
       height: auto;
     }
   }

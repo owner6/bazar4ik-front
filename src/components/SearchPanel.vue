@@ -42,7 +42,7 @@ export default {
   border: 0.5px solid $border;
   border-radius: 7px;
   background-color: $extra-color-LightGreenPastel;
-  width: 307px;
+  width: 412px;
   height: 22px;
   background-image: url("/src/assets/icons/magnifying-glass--glass-search-magnifying.svg");
   background-repeat: no-repeat;

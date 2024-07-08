@@ -21,14 +21,16 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .semi-transparent-strip {
-  position: fixed;
-  top: 75px;
+  position: absolute;
+  display: flex;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.5); // semi-transparent white
-  z-index: 1000; // high z-index to ensure it's on top
+  top: 0;
+  height: 69px;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 1000;
   display: flex;
   justify-content: left;
   align-items: center;
-  padding: 0 75px 0 75px;
+  padding: 0 75px;
 }
 </style>
