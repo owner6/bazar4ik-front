@@ -93,8 +93,8 @@ export default {
   .section-right {
     img {
       border-radius: 24px;
-      max-width: 100%;
-      height: auto;
+      width: 100%;
+      height: 100%;
     }
   }
 }

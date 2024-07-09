@@ -1,6 +1,6 @@
 <template>
   <nav class="semi-transparent-strip">
-    <div>Catalogue</div>
+    <div class="catalog">Catalogue</div>
   </nav>
 </template>
 
@@ -27,10 +27,13 @@ export default {
   top: 0;
   height: 69px;
   background-color: rgba(255, 255, 255, 0.3);
-  z-index: 1000;
   display: flex;
   justify-content: left;
   align-items: center;
-  padding: 0 75px;
+}
+
+.catalog {
+  display: inline;
+  margin-left: 75px;
 }
 </style>
