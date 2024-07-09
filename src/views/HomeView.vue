@@ -42,6 +42,7 @@ export default {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   padding: 0px 27px 0;
+  height: 310px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -58,7 +59,7 @@ export default {
 
   .section-left {
     background-color: $extra-color-LightGreenPastel;
-    padding: 45px;
+    padding: 150px 0 166px 45px;
     text-align: left;
 
     .section-content {
@@ -71,20 +72,24 @@ export default {
       }
 
       .search {
+        display: flex;
+        align-items: center;
         margin-top: 16px;
-      }
 
-      .button {
-        padding: $spacing-unit;
-        border: none;
-        border-radius: 4px;
-        background-color: $extra-color-Peach;
-        color: $extra-color-Peach;
-        font-size: 16px;
-        color: $text-color;
+        search-component {
+          flex-grow: 1;
+          justify-content: center;
+          margin-left: 16px;
+          padding: $spacing-unit;
+          border: none;
+          border-radius: 4px;
+          background-color: $extra-color-Peach;
+          color: $text-color;
+          font-size: 16px;
 
-        &:hover {
-          background-color: $button-primary-hover;
+          &:hover {
+            background-color: $button-primary-hover;
+          }
         }
       }
     }
@@ -94,7 +99,7 @@ export default {
     img {
       border-radius: 24px;
       max-width: 100%;
-      height: auto;
+      height: 100%;
     }
   }
 }
