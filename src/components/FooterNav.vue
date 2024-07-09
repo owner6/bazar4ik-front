@@ -32,9 +32,9 @@ export default {
   position: fixed;
   bottom: 0;
   width: 100%;
-  max-width: 1440px;
   margin: 0 auto;
   padding: 15px 15px 0px 0px;
+  z-index: 1000;
 }
 
 .content {
