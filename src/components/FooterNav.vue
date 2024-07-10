@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <div class="content has-text-centered">
+    <div class="content has-text-centered centered-block">
       <p>
         <strong>Contact Us:</strong> You can reach us at
         <a href="mailto:support@example.com">support@example.com</a> or call us
@@ -25,16 +25,15 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: $extra-color-Peach;
   position: fixed;
   bottom: 0;
-  width: 100%;
-  margin: 0 auto;
-  padding: 15px 15px 0px 0px;
-  z-index: 1000;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1440px;
+  max-width: 100%;
+  padding: 15px 0;
+  z-index: 999;
 }
 
 .content {

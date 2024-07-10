@@ -1,5 +1,5 @@
 <template>
-  <header class="main-header">
+  <header>
     <top-nav-component />
   </header>
 </template>
@@ -17,8 +17,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
-
-.main-header {
-  width: 100%;
-}
 </style>

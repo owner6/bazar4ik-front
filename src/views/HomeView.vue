@@ -52,7 +52,6 @@ export default {
   .section-right {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     border-radius: 24px;
   }
@@ -84,7 +83,6 @@ export default {
           border: none;
           border-radius: 4px;
           background-color: $extra-color-Peach;
-          color: $text-color;
           font-size: 16px;
 
           &:hover {

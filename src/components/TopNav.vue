@@ -65,6 +65,7 @@ export default {
   background-color: $primary-color-LightGray;
   padding: 0 75px 0 75px;
   border-bottom: 0.5px solid $primary-color-SoftGray;
+  width: auto;
 
   .navbar {
     .navbar-menu {
@@ -84,7 +85,6 @@ export default {
         }
 
         .navbar-item {
-          color: $text-color;
           padding: $spacing-unit;
 
           &:hover {
@@ -108,8 +108,6 @@ export default {
             font-style: normal;
 
             &.is-light {
-              color: $text-color;
-
               &:hover {
                 background-color: $primary-color-LightGray;
               }
@@ -117,7 +115,6 @@ export default {
 
             &.is-primary {
               background-color: $primary-color-LightGray;
-              color: $text-color;
 
               &:hover {
                 background-color: $primary-color-LightGray;
@@ -138,8 +135,6 @@ export default {
             background-color: $primary-color-LightGray;
 
             &.is-light {
-              color: $text-color;
-
               &:hover {
                 background-color: $primary-color-LightGray;
               }
