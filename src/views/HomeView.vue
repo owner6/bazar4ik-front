@@ -1,18 +1,20 @@
 <template>
-  <div class="home-view-container">
-    <SemiTransparentStrip />
-    <div class="home-view">
-      <section class="section-left">
-        <div class="section-content">
-          <h1>Everything<br />can be bought and sold here!</h1>
-          <div class="search">
-            <search-component @search="handleSearch"></search-component>
+  <div class="container">
+    <div class="home-view-container">
+      <SemiTransparentStrip />
+      <div class="home-view">
+        <section class="section-left">
+          <div class="section-content">
+            <h1>Everything<br />can be bought and sold here!</h1>
+            <div class="search">
+              <search-component @search="handleSearch"></search-component>
+            </div>
           </div>
-        </div>
-      </section>
-      <section class="section-right">
-        <img src="@/assets/images/image-section-right.jpg" />
-      </section>
+        </section>
+        <section class="section-right">
+          <img src="@/assets/images/image-section-right.jpg" />
+        </section>
+      </div>
     </div>
   </div>
 </template>
@@ -38,42 +40,45 @@ export default {
 }
 
 .home-view {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 16px;
-  padding: 0px 27px 0;
+  padding: 0 27px;
+  flex-wrap: wrap;
 
   .section-left,
   .section-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     border-radius: 24px;
   }
 
   .section-left {
     background-color: $extra-color-LightGreenPastel;
-    padding: 150px 0 166px 45px;
+    width: 100%;
+    max-width: 685px;
     text-align: left;
+    flex: 1;
+    padding: 40px;
+    box-sizing: border-box;
 
     .section-content {
-      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
 
       h1 {
         font-size: $H1;
         font-weight: 300;
         font-family: $PoppinsFonts;
+        margin-bottom: 24px;
       }
 
       .search {
         display: flex;
         align-items: center;
-        margin-top: 16px;
 
         search-component {
           flex-grow: 1;
           justify-content: center;
-          margin-left: 16px;
           padding: $spacing-unit;
           border: none;
           border-radius: 4px;
@@ -85,10 +90,59 @@ export default {
   }
 
   .section-right {
+    flex: 1;
+    min-width: 300px;
+
     img {
+      width: 100%;
+      height: auto;
       border-radius: 24px;
-      max-width: 100%;
-      height: 100%;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-view {
+    padding: 0 16px;
+
+    .section-left {
+      padding: 20px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-view {
+    flex-direction: column;
+
+    .section-left {
+      padding: 20px;
+    }
+
+    .section-right {
+      margin-top: 16px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .home-view {
+    .section-left {
+      padding: 20px 10px;
+
+      .section-content {
+        h1 {
+          font-size: 24px;
+        }
+
+        .search {
+          flex-direction: column;
+
+          search-component {
+            margin-top: 16px;
+          }
+        }
+      }
     }
   }
 }
