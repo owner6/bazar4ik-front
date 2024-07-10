@@ -1,0 +1,71 @@
+.header {
+  .navbar {
+    .navbar-menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $primary-color-LightGray;
+      padding: 0 75px;
+
+      .navbar-start,
+      .navbar-end {
+        display: flex;
+        align-items: center;
+
+        .branded-inscription {
+          color: $extra-color-Peach;
+          font-size: 24px;
+          text-decoration: none;
+        }
+
+        .navbar-item {
+          padding: 15px 0;
+        }
+
+        .buttons {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+
+          .sell-now,
+          .button-auth {
+            padding: $spacing-unit;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 12px;
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            cursor: pointer;
+          }
+
+          .sell-now {
+            border: 1px solid black;
+
+            &.is-light:hover,
+            &.is-primary:hover {
+              background-color: $primary-color-LightGray;
+              border: 1px solid $extra-color-Peach;
+            }
+          }
+
+          .button-auth {
+            border: none;
+            background-color: $primary-color-LightGray;
+
+            &.is-light:hover {
+              background-color: $primary-color-LightGray;
+            }
+          }
+        }
+
+        .router-link-active,
+        .router-link-exact-active {
+          display: inline-block;
+          line-height: 0;
+        }
+      }
+    }
+  }
+}

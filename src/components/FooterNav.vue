@@ -34,6 +34,7 @@ export default {
   max-width: 100%;
   padding: 15px 0;
   z-index: 999;
+  text-align: center;
 }
 
 .content {

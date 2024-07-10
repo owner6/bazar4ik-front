@@ -42,11 +42,6 @@ export default {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   padding: 0px 27px 0;
-  height: 310px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
 
   .section-left,
   .section-right {
@@ -84,10 +79,6 @@ export default {
           border-radius: 4px;
           background-color: $extra-color-Peach;
           font-size: 16px;
-
-          &:hover {
-            background-color: $button-primary-hover;
-          }
         }
       }
     }
