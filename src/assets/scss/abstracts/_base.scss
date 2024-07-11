@@ -26,8 +26,27 @@ button {
   color: $text-color;
 
   &:hover {
+    background-color: $extra-color-Peach;
     color: $extra-color-Peach;
   }
+}
+
+label {
+  margin-bottom: $spacing-unit / 2;
+}
+
+input {
+  padding: $spacing-unit / 2;
+  border: 0.5px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+h2 {
+  margin-top: 0;
+  color: $H2;
+  font-family: "Open Sans", sans-serif;
 }
 
 .container {

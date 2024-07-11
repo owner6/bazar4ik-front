@@ -57,24 +57,10 @@ export default {
 form {
   display: flex;
   flex-direction: column;
-  font-family: "Roboto", sans-serif; /* Apply Roboto font */
+  font-family: "Roboto", sans-serif;
 
   div {
     margin-bottom: $spacing-unit;
-  }
-
-  label {
-    margin-bottom: $spacing-unit / 2;
-    font-weight: bold;
-    font-family: "Roboto", sans-serif; /* Apply Roboto font */
-  }
-
-  input {
-    padding: $spacing-unit / 2;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-family: "Roboto", sans-serif; /* Apply Roboto font */
   }
 
   button {
@@ -85,10 +71,10 @@ form {
     color: $text-color;
     font-size: 1rem;
     cursor: pointer;
-    font-family: "Open Sans", sans-serif; /* Apply Open Sans font */
+    font-family: "Open Sans", sans-serif;
 
     &:hover {
-      background-color: $button-primary-hover;
+      color: $text-color;
     }
   }
 }
