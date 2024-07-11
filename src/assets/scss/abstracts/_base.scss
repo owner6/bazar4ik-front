@@ -23,8 +23,37 @@ button {
 }
 
 .container {
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
   padding: 0 75px;
   margin: 0 auto;
-  border-bottom: $primary-color-SoftGray;
+  box-sizing: border-box;
+}
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 0 0px;
+  }
+}
+
+/* Medium devices (portrait tablets and large phones, 600px to 768px) */
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  .container {
+    padding: 0 0px;
+  }
+}
+
+/* Large devices (landscape tablets, 768px to 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 0px;
+  }
+}
+
+/* Extra large devices (1024px and up) */
+@media only screen and (min-width: 1025px) {
+  .container {
+    padding: 0 0px;
+  }
 }
