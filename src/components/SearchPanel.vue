@@ -64,7 +64,7 @@ export default {
 
   &:hover {
     color: $text-color;
-    background-color: $extra-color-Peach;
+    background-color: $button-primary-hover;
   }
 }
 </style>

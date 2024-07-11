@@ -2,8 +2,8 @@
   <div v-if="isVisible" class="modal">
     <div class="modal-content">
       <span class="close" @click="close">&times;</span>
-      <label v-if="isLoginForm">Login</label>
-      <label v-else>Register</label>
+      <h2 v-if="isLoginForm">Login</h2>
+      <h2 v-else>Register</h2>
       <form v-if="isLoginForm" @submit.prevent="login">
         <div>
           <label for="email">Email:</label>
@@ -81,6 +81,7 @@ export default {
   width: 90%;
   max-width: 400px;
   position: relative;
+  color: $text-color;
 }
 .close {
   position: absolute;
