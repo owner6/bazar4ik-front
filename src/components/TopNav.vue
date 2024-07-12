@@ -119,46 +119,4 @@ export default {
   display: inline;
   margin-left: 75px;
 }
-
-.header {
-  .navbar {
-    .navbar-menu {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      background-color: $primary-color-LightGray;
-      padding: 0 75px;
-      border-bottom: 1px solid $primary-color-SoftGray;
-
-      .navbar-start,
-      .navbar-end {
-        display: flex;
-        align-items: center;
-
-        .branded-inscription {
-          color: $extra-color-Peach;
-          font-size: 24px;
-          text-decoration: none;
-        }
-
-        .navbar-item {
-          padding: 15px 0;
-        }
-
-        .buttons {
-          display: flex;
-          align-items: center;
-          gap: 24px;
-        }
-
-        .router-link-active,
-        .router-link-exact-active {
-          display: inline-block;
-          line-height: 0;
-        }
-      }
-    }
-  }
-}
 </style>

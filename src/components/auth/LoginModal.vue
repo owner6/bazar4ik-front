@@ -91,41 +91,23 @@ export default {
   font-weight: bold;
   cursor: pointer;
 }
-h2 {
-  margin-top: 0;
-  color: $H2;
-  font-family: "Open Sans", sans-serif;
-}
+
 form {
   display: flex;
   flex-direction: column;
   div {
     margin-bottom: $spacing-unit;
   }
-  label {
-    margin-bottom: $spacing-unit / 2;
-    font-weight: bold;
-  }
-  input {
-    padding: $spacing-unit / 2;
-    border: 1px solid #ffffff;
-    border-radius: 4px;
-    font-size: 1rem;
-    background-color: $primary-color-LightGray;
-    &:hover {
-      background-color: #888888;
-    }
-  }
+
   button {
     padding: $spacing-unit;
     border: none;
     border-radius: 4px;
     background-color: $extra-color-Peach;
-    color: $text-color;
     font-size: 1rem;
     cursor: pointer;
     &:hover {
-      background-color: ($button-primary-hover);
+      color: $text-color;
     }
   }
 }
