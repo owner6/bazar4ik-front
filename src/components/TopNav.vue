@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <nav class="navbar">
-      <div class="navbar-menu" v-show="showMenu || scrollTop === 0">
+      <div class="navbar-menu">
         <div class="navbar-start">
           <router-link to="/" class="branded-inscription"
             >BAzaRChiK</router-link
@@ -38,7 +38,7 @@
       </div>
     </nav>
   </div>
-  <nav class="bottom-navbar" v-show="showBottomNav">
+  <nav class="bottom-navbar" v-show="showBottomNav || lastScrollY === 0">
     <div class="catalog">
       <router-link to="/categories">Categories</router-link>
     </div>
