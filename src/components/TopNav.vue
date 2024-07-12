@@ -1,7 +1,11 @@
 <template>
-  <div class="header">
+  <div
+    class="header"
+    @mouseenter="showMenu = true"
+    @mouseleave="showMenu = false"
+  >
     <nav class="navbar">
-      <div class="navbar-menu">
+      <div class="navbar-menu" v-show="showMenu || scrollTop === 0">
         <div class="navbar-start">
           <router-link to="/" class="branded-inscription"
             >BAzaRChiK</router-link
@@ -44,6 +48,7 @@
 
 <script>
 import LoginModal from "@/components/auth/LoginModal.vue";
+
 export default {
   name: "HeaderComponent",
   components: {
@@ -53,8 +58,21 @@ export default {
     return {
       showLoginModal: false,
       showRegisterModal: false,
+      showMenu: false,
+      scrollTop: 0,
     };
   },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      this.scrollTop = window.pageYOffset
+    }
+  }
 };
 </script>
 
