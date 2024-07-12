@@ -30,8 +30,8 @@ export default {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 1440px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1440px;
   padding: 15px 0;
   z-index: 999;
   text-align: center;

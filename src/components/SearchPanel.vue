@@ -63,6 +63,7 @@ export default {
   font-family: $PoppinsFonts;
 
   &:hover {
+    color: $text-color;
     background-color: $button-primary-hover;
   }
 }
