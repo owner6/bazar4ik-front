@@ -28,37 +28,6 @@
           display: flex;
           align-items: center;
           gap: 24px;
-
-          .sell-now,
-          .button-auth {
-            padding: $spacing-unit;
-            border-radius: 7px;
-            text-decoration: none;
-            font-size: 12px;
-            font-family: "Poppins", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            cursor: pointer;
-          }
-
-          .sell-now {
-            border: 1px solid black;
-
-            &.is-light:hover,
-            &.is-primary:hover {
-              background-color: $primary-color-LightGray;
-              border: 1px solid $extra-color-Peach;
-            }
-          }
-
-          .button-auth {
-            border: none;
-            background-color: $primary-color-LightGray;
-
-            &.is-light:hover {
-              background-color: $primary-color-LightGray;
-            }
-          }
         }
 
         .router-link-active,

@@ -46,8 +46,7 @@ input {
 
 h2 {
   margin-top: 0;
-  color: $H2;
-  font-family: "Open Sans", sans-serif;
+  font-family: $OpenSans;
 }
 
 .container {
@@ -56,6 +55,37 @@ h2 {
   padding: 0 75px;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+.button-secondary,
+.button-tertiary {
+  padding: $spacing-unit;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: $PoppinsFonts;
+  font-weight: 400;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.button-secondary {
+  border: 1px solid black;
+
+  &.is-light:hover,
+  &.is-primary:hover {
+    background-color: $primary-color-LightGray;
+    border: 1px solid $extra-color-Peach;
+  }
+}
+
+.button-tertiary {
+  border: none;
+  background-color: $primary-color-LightGray;
+
+  &.is-light:hover {
+    background-color: $primary-color-LightGray;
+  }
 }
 
 @media only screen and (max-width: 600px) {
