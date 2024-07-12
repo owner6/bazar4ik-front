@@ -38,11 +38,6 @@
       </div>
     </nav>
   </div>
-  <nav class="bottom-navbar" v-show="showBottomNav || lastScrollY === 0">
-    <div class="catalog">
-      <router-link to="/categories">Categories</router-link>
-    </div>
-  </nav>
 </template>
 
 <script>
@@ -57,66 +52,14 @@ export default {
     return {
       showLoginModal: false,
       showRegisterModal: false,
-      showBottomNav: true,
-      lastScrollY: 0,
-      ticking: false,
     };
   },
-  mounted() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
-      if (!this.ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-
-          if (currentScrollY > this.lastScrollY) {
-            // Scrolling down
-            if (currentScrollY === 0) {
-              this.showBottomNav = true;
-            } else {
-              this.showBottomNav = false;
-            }
-          } else {
-            // Scrolling up
-            if (currentScrollY === 0) {
-              this.showBottomNav = true;
-            } else {
-              this.showBottomNav = false;
-            }
-          }
-
-          this.lastScrollY = currentScrollY;
-          this.ticking = false;
-        });
-
-        this.ticking = true;
-      }
-    },
-  },
+  mounted() {},
+  beforeUnmount() {},
+  methods: {},
 };
 </script>
 
 <style lang="scss">
 @import "@/assets/scss/main.scss";
-
-.bottom-navbar {
-  position: fixed;
-  width: 100%;
-  height: 69px;
-  background-color: rgba(255, 255, 255, 0.3);
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  z-index: 999;
-}
-
-.catalog {
-  display: inline;
-  margin-left: 75px;
-}
 </style>
