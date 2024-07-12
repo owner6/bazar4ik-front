@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <MainNavComponent />
+    <MainNav />
     <Footer />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import MainNavComponent from "./components/MainNav.vue";
+import MainNav from "./components/MainNav.vue";
 import Footer from "./components/FooterNav.vue";
 
 export default {
   name: "App",
   components: {
-    MainNavComponent,
+    MainNav,
     Footer,
   },
 };
