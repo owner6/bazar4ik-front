@@ -20,14 +20,12 @@
 </template>
 
 <script>
-import SemiTransparentStrip from "../components/SemiTransparentStrip.vue";
 import SearchComponent from "../components/SearchPanel.vue";
 
 export default {
   name: "HomeView",
   components: {
     SearchComponent,
-    SemiTransparentStrip,
   },
 };
 </script>
