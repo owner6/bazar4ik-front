@@ -66,6 +66,7 @@ export default {
   justify-content: left;
   align-items: center;
   z-index: 999;
+  backdrop-filter: blur(5px);
 }
 
 .catalog {
