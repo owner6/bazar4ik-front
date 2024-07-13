@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <MainNav />
-    <Footer />
     <router-view></router-view>
+    <Footer />
   </div>
 </template>
 

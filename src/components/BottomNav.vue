@@ -2,7 +2,7 @@
   <div class="content-category">
     <nav class="bottom-navbar" v-show="showBottomNav || lastScrollY === 0">
       <div class="catalog">
-        <router-link to="/categories">Categories</router-link>
+        <router-link to="/categories">Catalogue</router-link>
       </div>
     </nav>
   </div>
@@ -72,5 +72,9 @@ export default {
 .catalog {
   display: inline;
   margin-left: 75px;
+}
+
+a {
+  text-decoration: none;
 }
 </style>
