@@ -25,42 +25,23 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .footer {
-  background-color: $extra-color-Peach;
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1440px;
-  max-width: 100%;
-  padding: 15px 0;
-  z-index: 999;
-  text-align: center;
-}
-
-.content {
-  p {
-    margin-bottom: $spacing-unit;
-
-    a {
-      color: $text-color;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
+  background-color: $primary-color-LightGray;
+  color: $text-color;
+  padding: 20px 0;
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    .centered-block {
+      text-align: center;
+      p {
+        margin: 10px 0;
+        a {
+          color: #ffdd57;
+          &:hover {
+            color: lighten(#ffdd57, 10%);
+          }
+        }
       }
-    }
-
-    strong {
-      font-weight: bold;
-    }
-  }
-
-  .router-link {
-    color: $text-color;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
     }
   }
 }

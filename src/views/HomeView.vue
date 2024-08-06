@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="home-view-container">
-      <SemiTransparentStrip />
       <div class="home-view">
         <section class="section-left">
           <div class="section-content">
@@ -20,14 +19,12 @@
 </template>
 
 <script>
-import SemiTransparentStrip from "../components/SemiTransparentStrip.vue";
 import SearchComponent from "../components/SearchPanel.vue";
 
 export default {
   name: "HomeView",
   components: {
     SearchComponent,
-    SemiTransparentStrip,
   },
 };
 </script>
