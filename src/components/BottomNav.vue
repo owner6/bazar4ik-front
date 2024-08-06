@@ -1,17 +1,24 @@
 <template>
-  <div class="content-category">
+  <section class="content-category">
     <nav class="bottom-navbar" v-show="showBottomNav || lastScrollY === 0">
-      <div class="catalog">
-        <router-link to="/categories">Catalogue</router-link>
+      <div class="navbar-content">
+        <div class="catalog">
+          <router-link to="/categories">Catalogue</router-link>
+        </div>
+        <div class="categories">
+          <router-link to="/category1">Womans fashion</router-link>
+          <router-link to="/category2">Men's fashion</router-link>
+          <router-link to="/category3">Electronics</router-link>
+          <router-link to="/category4">Beauty care</router-link>
+        </div>
       </div>
     </nav>
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
   name: "BottomNav",
-  components: "",
   data() {
     return {
       showBottomNav: true,
@@ -22,9 +29,6 @@ export default {
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
   },
-  handleScroll() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
   methods: {
     handleScroll() {
       if (!this.ticking) {
@@ -32,17 +36,9 @@ export default {
           const currentScrollY = window.scrollY;
 
           if (currentScrollY > this.lastScrollY) {
-            if (currentScrollY === 0) {
-              this.showBottomNav = true;
-            } else {
-              this.showBottomNav = false;
-            }
+            this.showBottomNav = false;
           } else {
-            if (currentScrollY === 0) {
-              this.showBottomNav = true;
-            } else {
-              this.showBottomNav = false;
-            }
+            this.showBottomNav = true;
           }
 
           this.lastScrollY = currentScrollY;
@@ -63,15 +59,30 @@ export default {
   height: 69px;
   background-color: rgba(255, 255, 255, 0.3);
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   z-index: 999;
   backdrop-filter: blur(5px);
+  padding: 0;
+  left: 0;
+  top: 75px;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1300px;
+  padding: 0px 45px 0 45px;
 }
 
 .catalog {
-  display: inline;
-  margin-left: 75px;
+  margin-left: 0;
+}
+
+.categories {
+  display: flex;
+  gap: 20px;
 }
 
 a {
