@@ -55,6 +55,7 @@ export default {
     flex: 1;
     padding: 40px;
     box-sizing: border-box;
+    margin-bottom: 7px;
 
     .section-content {
       display: flex;
