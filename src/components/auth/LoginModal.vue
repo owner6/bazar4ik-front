@@ -24,6 +24,10 @@
 </template>
 
 <script>
+import axios from "axios";
+import router from "../../router/index.js";
+import { API_URL } from "@/constants/apiUrl";
+
 import RegisterForm from "./RegisterForm.vue";
 
 export default {
@@ -35,24 +39,113 @@ export default {
   },
   data() {
     return {
+      API_URL: API_URL,
       email: "",
+      phone: "",
+      lastname: "",
+      firstname: "",
       password: "",
+      confirmPassword: "",
       isLoginForm: true,
     };
   },
+
+  computed: {
+    hasAuthToken() {
+      return localStorage.getItem("authToken") !== null;
+    },
+  },
+
   components: {
     RegisterForm,
   },
+
   methods: {
+    async login() {
+      try {
+        const response = await axios.post(
+          `${this.API_URL}/auth/login`,
+          {
+            email: this.email,
+            password: this.password,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+
+        const token = response.data.token;
+
+        localStorage.setItem("authToken", token);
+
+        this.user = response.data.user;
+
+        this.isLoading = false;
+
+        // Delay token deletion by 10 seconds
+        setTimeout(() => {
+          localStorage.removeItem("authToken");
+        }, 10000);
+
+        router.push({ path: "/mypage" });
+        window.location.reload();
+        this.showAuthForm = false;
+      } catch (error) {
+        console.error("Login error", error);
+      }
+    },
+
+    async register() {
+      try {
+        const response = await axios.post(
+          `${this.API_URL}/auth/registration`,
+          {
+            email: this.email,
+            phone: this.phone,
+            lastname: this.lastname,
+            firstname: this.firstname,
+            password: this.password,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+
+        const token = response.data.token;
+
+        localStorage.setItem("authToken", token);
+
+        this.user = response.data.user;
+
+        this.isLoading = false;
+
+        await this.login();
+
+        router.push({ path: "/mypage" });
+
+        window.location.reload();
+
+        this.showAuthForm = false;
+      } catch (error) {
+        console.error("Registration error", error);
+      }
+    },
+
+    validateRegistration() {
+      if (
+        !this.email ||
+        !this.password ||
+        (this.isRegistering && this.password !== this.confirmPassword)
+      ) {
+        return false;
+      }
+      return true;
+    },
+
     close() {
       this.$emit("close");
     },
-    login() {
-      // Added logic for authorization
-      console.log("Email:", this.email);
-      console.log("Password:", this.password);
-      this.close();
-    },
+
     toggleForm() {
       this.isLoginForm = !this.isLoginForm;
     },
