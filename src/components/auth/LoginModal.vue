@@ -13,6 +13,10 @@
           <label for="password">Password:</label>
           <input type="password" v-model="password" required />
         </div>
+        <div>
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" v-model="confirmPassword" required />
+        </div>
         <button type="submit">Login</button>
         <p class="toggle" @click="toggleForm">
           Don't have an account? Register
@@ -26,7 +30,6 @@
 <script>
 import axios from "axios";
 import router from "../../router/index.js";
-import { API_URL } from "@/constants/apiUrl";
 
 import RegisterForm from "./RegisterForm.vue";
 
@@ -39,7 +42,6 @@ export default {
   },
   data() {
     return {
-      API_URL: API_URL,
       email: "",
       phone: "",
       lastname: "",
