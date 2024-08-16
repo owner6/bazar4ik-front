@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
+import ListOfAuthorizedUsers from "@/views/ListOfAuthorizedUsers.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: HomeView,
+  },
+  {
+    path: "/list-of-authorized-users",
+    name: "List of authorized users",
+    component: ListOfAuthorizedUsers,
   },
 ];
 
