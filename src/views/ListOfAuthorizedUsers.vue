@@ -1,13 +1,18 @@
 <template>
   <div class="static-page">
-    <h1>List users</h1>
-    <p>test</p>
+    <h1>Dashboard</h1>
+    <p>Welcome to the dashboard, only accessible by authenticated users!</p>
+    <button @click="logout">Logout</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ListOfAuthorizedUsers",
+  methods: {
+    logout() {
+      localStorage.removeItem("authToken"); // delete token
+    },
+  },
 };
 </script>
 
