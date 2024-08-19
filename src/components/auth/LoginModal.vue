@@ -80,11 +80,6 @@ export default {
 
         this.isLoading = false;
 
-        // Delay token deletion by 10 seconds
-        setTimeout(() => {
-          localStorage.removeItem("authToken");
-        }, 10000);
-
         router.push({ path: "/mypage" });
         window.location.reload();
         this.showAuthForm = false;
