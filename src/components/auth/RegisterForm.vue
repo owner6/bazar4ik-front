@@ -62,6 +62,8 @@
 </template>
 
 <script>
+import { required, minLength, sameAs } from "vuelidate/lib/validators";
+import { IMaskDirective } from "vue-imask";
 import api from "@/API/auth/api";
 
 export default {
