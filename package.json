@@ -9,12 +9,20 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
     "axios": "^1.7.2",
     "core-js": "^3.8.3",
+    "crypto-browserify": "^3.12.0",
+    "generate-password": "^1.7.1",
     "radix-vue": "^1.9.1",
+    "secure-random-password": "^0.2.3",
     "vue": "^3.2.13",
+    "vue-imask": "^7.6.1",
     "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vuelidate": "^0.7.7",
+    "vuex": "^4.0.0",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
