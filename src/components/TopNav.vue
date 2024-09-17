@@ -20,7 +20,7 @@
               >
                 SIGN UP | LOG IN
               </button>
-              <router-link to="/profile" class="button-secondary is-light"
+              <router-link to="/create-ads" class="button-secondary is-light"
                 >SELL NOW</router-link
               >
               <router-link to="/" class="item-help-chat"

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
-import ListOfAuthorizedUsers from "@/views/ListOfAuthorizedUsers.vue";
+import CreateAds from "@/views/CreateAds.vue";
 
 const routes = [
   {
@@ -9,9 +9,9 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/list-of-authorized-users",
-    name: "List of authorized users",
-    component: ListOfAuthorizedUsers,
+    path: "/create-ads",
+    name: "createAds",
+    component: CreateAds,
   },
 ];
 
