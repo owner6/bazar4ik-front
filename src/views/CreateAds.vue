@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -71,9 +73,48 @@ export default {
     handleFileUpload(event) {
       this.listing.image = event.target.files[0];
     },
-    createListing() {
-      // TODO: Add logic to handle the listing creation (API call)
-      console.log("Listing data:", this.listing);
+
+    async createListing() {
+      try {
+        // Створення об'єкта FormData для відправки файлів
+        const formData = new FormData();
+        formData.append("title", this.listing.title);
+        formData.append("description", this.listing.description);
+        formData.append("price", this.listing.price);
+        formData.append("category", this.listing.category);
+
+        // Перевірка чи завантажене зображення
+        if (this.listing.image) {
+          formData.append("image", this.listing.image);
+        }
+
+        // Відправка запиту на сервер для створення оголошення
+        const response = await axios.post(
+          "http://localhost:8080/creatingAds",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        // Якщо запит успішний
+        console.log("Listing created successfully:", response.data);
+        // Очистити форму або перенаправити користувача на іншу сторінку
+        this.resetForm();
+      } catch (error) {
+        console.error("Error creating listing:", error);
+      }
+    },
+    resetForm() {
+      this.listing = {
+        title: "",
+        description: "",
+        price: "",
+        category: "",
+        image: null,
+      };
     },
   },
 };
@@ -94,7 +135,7 @@ export default {
     padding-top: 50px;
     text-align: center;
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: $H2;
     color: #333;
   }
 
