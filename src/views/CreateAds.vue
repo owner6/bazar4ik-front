@@ -44,10 +44,6 @@
           </option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="image">Image:</label>
-        <input type="file" @change="handleFileUpload" id="image" />
-      </div>
       <button type="submit" class="submit-button">Create Listing</button>
     </form>
   </div>
@@ -64,37 +60,31 @@ export default {
         description: "",
         price: "",
         category: "",
-        image: null,
       },
       categories: ["Electronics", "Clothing", "Books", "Home Goods"],
     };
   },
   methods: {
-    handleFileUpload(event) {
-      this.listing.image = event.target.files[0];
-    },
-
     async createListing() {
       try {
         // Створення об'єкта FormData для відправки файлів
-        const formData = new FormData();
-        formData.append("title", this.listing.title);
-        formData.append("description", this.listing.description);
-        formData.append("price", this.listing.price);
-        formData.append("category", this.listing.category);
 
-        // Перевірка чи завантажене зображення
-        if (this.listing.image) {
-          formData.append("image", this.listing.image);
-        }
+        const listingData = {
+          title: this.listing.title,
+          description: this.listing.description,
+          price: this.listing.price,
+          category: this.listing.category,
+        };
 
         // Відправка запиту на сервер для створення оголошення
+        const token = localStorage.getItem("authToken");
         const response = await axios.post(
-          "http://localhost:8080/creatingAds",
-          formData,
+          `${process.env.VUE_APP_API_URL}/create-ads`,
+          listingData,
           {
             headers: {
-              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
             },
           }
         );

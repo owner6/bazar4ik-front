@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import CreateAds from "@/views/CreateAds.vue";
+import MyAccount from "@/views/UserListings.vue";
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: "/create-ads",
     name: "createAds",
     component: CreateAds,
+  },
+  {
+    path: "/user-ads",
+    name: "userAds",
+    component: MyAccount,
   },
 ];
 
