@@ -42,6 +42,7 @@ export default {
       categories: ["Electronics", "Clothing", "Books", "Home Goods"],
     };
   },
+
   mounted() {
     this.fetchUserListings(); // Викликати metod отримання ads при завантаженні components
   },
