@@ -46,6 +46,7 @@ export default {
   mounted() {
     this.fetchUserListings(); // Викликати metod отримання ads при завантаженні components
   },
+
   methods: {
     async createListing() {
       try {
