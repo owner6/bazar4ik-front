@@ -57,7 +57,7 @@ export default {
 
         const token = localStorage.getItem("authToken");
         const response = await axios.post(
-          "http://127.0.0.1:3000/create-ads",
+          `${process.env.VUE_APP_API_URL}/create-ads`,
           listingData,
           {
             headers: {
