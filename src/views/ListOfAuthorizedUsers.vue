@@ -37,6 +37,7 @@ export default {
       error: null,
     };
   },
+
   methods: {
     async fetchUsers() {
       try {
