@@ -1,12 +1,7 @@
 <template>
   <div class="create-listing-page">
-    <h2>Create New Listing</h2>
-    <form @submit.prevent="createListing" class="listing-form">
-      <!-- form create ad -->
-    </form>
-
     <div class="user-listings">
-      <h2>Your Listings</h2>
+      <h1>Your Listings</h1>
       <div v-if="userListings.length">
         <div
           v-for="listing in userListings"

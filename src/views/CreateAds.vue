@@ -1,6 +1,6 @@
 <template>
   <div class="create-listing-page">
-    <h2>Create New Listing</h2>
+    <h1>Create New Listing</h1>
     <form @submit.prevent="createListing" class="listing-form">
       <div class="form-group">
         <label for="title">Title:</label>
@@ -118,14 +118,6 @@ export default {
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-
-  h2 {
-    padding-top: 50px;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: $H2;
-    color: #333;
-  }
 
   .listing-form {
     display: flex;
