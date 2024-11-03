@@ -10,24 +10,36 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <router-link to="/" class=""
-                ><img
+              <router-link to="/">
+                <img
                   src="../assets/icons/heart--reward-social-rating-media-heart-it-like-favorite-love.svg"
-              /></router-link>
+                />
+              </router-link>
+
+              <router-link to="/my-account">
+                <img
+                  src="../assets/icons/user-circle-single--circle-geometric-human-person-single-user.svg"
+                  alt="My Account"
+                />
+              </router-link>
+
+              <router-link to="/create-ads" class="button-secondary is-light">
+                SELL NOW
+              </router-link>
+
               <button
                 class="button-tertiary is-light"
                 @click="showLoginModal = true"
               >
                 SIGN UP | LOG IN
               </button>
-              <router-link to="/create-ads" class="button-secondary is-light"
-                >SELL NOW</router-link
-              >
-              <router-link to="/" class="item-help-chat"
-                ><img
+
+              <router-link to="/" class="item-help-chat">
+                <img
                   src="../assets/icons/chat-bubble-square-question--bubble-square-messages-notification-chat-message-question-help.svg"
                   alt="Help Chat"
-              /></router-link>
+                />
+              </router-link>
               <LoginModal
                 :isVisible="showLoginModal"
                 @close="showLoginModal = false"

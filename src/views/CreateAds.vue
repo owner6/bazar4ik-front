@@ -1,6 +1,6 @@
 <template>
   <div class="create-listing-page">
-    <h2>Create New Listing</h2>
+    <h1>Create New Listing</h1>
     <form @submit.prevent="createListing" class="listing-form">
       <div class="form-group">
         <label for="title">Title:</label>
@@ -44,10 +44,6 @@
           </option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="image">Image:</label>
-        <input type="file" @change="handleFileUpload" id="image" />
-      </div>
       <button type="submit" class="submit-button">Create Listing</button>
     </form>
   </div>
@@ -64,37 +60,29 @@ export default {
         description: "",
         price: "",
         category: "",
-        image: null,
       },
       categories: ["Electronics", "Clothing", "Books", "Home Goods"],
     };
   },
   methods: {
-    handleFileUpload(event) {
-      this.listing.image = event.target.files[0];
-    },
-
     async createListing() {
       try {
-        // Створення об'єкта FormData для відправки файлів
-        const formData = new FormData();
-        formData.append("title", this.listing.title);
-        formData.append("description", this.listing.description);
-        formData.append("price", this.listing.price);
-        formData.append("category", this.listing.category);
-
-        // Перевірка чи завантажене зображення
-        if (this.listing.image) {
-          formData.append("image", this.listing.image);
-        }
+        const listingData = {
+          title: this.listing.title,
+          description: this.listing.description,
+          price: this.listing.price,
+          category: this.listing.category,
+        };
 
         // Відправка запиту на сервер для створення оголошення
+        const token = localStorage.getItem("authToken");
         const response = await axios.post(
-          "http://localhost:8080/creatingAds",
-          formData,
+          `${process.env.VUE_APP_API_URL}/create-ads`,
+          listingData,
           {
             headers: {
-              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
             },
           }
         );
@@ -130,14 +118,6 @@ export default {
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-
-  h2 {
-    padding-top: 50px;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: $H2;
-    color: #333;
-  }
 
   .listing-form {
     display: flex;
