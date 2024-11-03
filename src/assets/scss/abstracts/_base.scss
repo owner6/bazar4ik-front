@@ -14,8 +14,14 @@ body {
   color: $text-color;
 }
 
+h1 {
+  font-size: $H1;
+  font-weight: 300;
+  font-family: $PoppinsFonts;
+  margin-bottom: 24px;
+}
+
 h2 {
-  margin-top: 0;
   font-family: $OpenSans;
 }
 
@@ -50,8 +56,6 @@ label {
   margin-bottom: $spacing-unit / 2;
   color: $text-color;
 }
-
-
 
 .container {
   width: 100%;

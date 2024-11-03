@@ -88,7 +88,7 @@ export default {
       try {
         const token = localStorage.getItem("authToken");
         const response = await axios.get(
-          `${process.env.VUE_APP_API_URL}/user-ads`,
+          `${process.env.VUE_APP_API_URL}/user-listings`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

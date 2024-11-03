@@ -63,13 +63,6 @@ export default {
       justify-content: center;
       height: 100%;
 
-      h1 {
-        font-size: $H1;
-        font-weight: 300;
-        font-family: $PoppinsFonts;
-        margin-bottom: 24px;
-      }
-
       .search {
         display: flex;
         align-items: center;
