@@ -67,8 +67,6 @@ export default {
   methods: {
     async createListing() {
       try {
-        // Створення об'єкта FormData для відправки файлів
-
         const listingData = {
           title: this.listing.title,
           description: this.listing.description,
