@@ -77,7 +77,7 @@ export default {
         // Відправка запиту на сервер для створення оголошення
         const token = localStorage.getItem("authToken");
         const response = await axios.post(
-          `${process.env.VUE_APP_API_URL}/create-ads`,
+          `${process.env.VUE_APP_API_URL}/listings`,
           listingData,
           {
             headers: {

@@ -54,7 +54,7 @@ export default {
 
         const token = localStorage.getItem("authToken");
         const response = await axios.post(
-          `${process.env.VUE_APP_API_URL}/create-ads`,
+          `${process.env.VUE_APP_API_URL}/create-listings`,
           listingData,
           {
             headers: {
@@ -83,7 +83,7 @@ export default {
       try {
         const token = localStorage.getItem("authToken");
         const response = await axios.get(
-          `${process.env.VUE_APP_API_URL}/user-listings`,
+          `${process.env.VUE_APP_API_URL}/listings`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

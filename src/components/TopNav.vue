@@ -23,7 +23,10 @@
                 />
               </router-link>
 
-              <router-link to="/create-ads" class="button-secondary is-light">
+              <router-link
+                to="/create-listings"
+                class="button-secondary is-light"
+              >
                 SELL NOW
               </router-link>
 
