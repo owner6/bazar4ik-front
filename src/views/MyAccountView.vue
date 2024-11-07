@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import UserListings from "../views/UserListings.vue";
+import UserListings from "./UserListingsView.vue";
 
 export default {
   name: "MyAccount",
