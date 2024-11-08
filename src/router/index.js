@@ -3,6 +3,7 @@ import HomeView from "@/views/HomeView.vue";
 import CreateListings from "@/views/CreateListings.vue";
 import UserListings from "@/views/UserListingsView.vue";
 import MyAccount from "@/views/MyAccountView.vue";
+import EditListing from "@/views/EditListingView.vue";
 
 const routes = [
   {
@@ -24,6 +25,12 @@ const routes = [
     path: "/my-account",
     name: "myAccount",
     component: MyAccount,
+  },
+  {
+    path: "/listings/:id",
+    name: "edit-listing",
+    component: EditListing,
+    props: true,
   },
 ];
 
