@@ -19,37 +19,35 @@
         <p>No listings found.</p>
       </div>
     </div>
-    <EditListingView
-      v-if="isEditing"
-      :listing="listing"
-      :categories="categories"
-      @close="closeEditModal"
-      @update="updateListing"
-    />
-  </div>
-  <!-- Edit Modal -->
-  <div v-if="isEditing" class="edit-modal">
-    <h2>Edit Listing</h2>
-    <form @submit.prevent="updateListing">
-      <label>Title:</label>
-      <input v-model="listing.title" required />
-      <label>Description:</label>
-      <textarea v-model="listing.description" required></textarea>
-      <label>Price:</label>
-      <input type="number" v-model="listing.price" required />
-      <label>Category:</label>
-      <select v-model="listing.category" required>
-        <option
-          v-for="category in categories"
-          :key="category"
-          :value="category"
-        >
-          {{ category }}
-        </option>
-      </select>
-      <button type="submit">Save Changes</button>
-      <button type="button" @click="closeEditModal">Cancel</button>
-    </form>
+
+    <!-- Edit Modal -->
+    <div v-if="isEditing" class="edit-modal">
+      <h2>Edit Listing</h2>
+      <form @submit.prevent="updateListing">
+        <label>Title:</label>
+        <input v-model="listing.title" required />
+
+        <label>Description:</label>
+        <textarea v-model="listing.description" required></textarea>
+
+        <label>Price:</label>
+        <input type="number" v-model="listing.price" required />
+
+        <label>Category:</label>
+        <select v-model="listing.category" required>
+          <option
+            v-for="category in categories"
+            :key="category"
+            :value="category"
+          >
+            {{ category }}
+          </option>
+        </select>
+
+        <button type="submit">Save Changes</button>
+        <button type="button" @click="closeEditModal">Cancel</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -70,7 +68,7 @@ export default {
       isEditing: false, // Track if editing mode is active
     };
   },
-  components: {},
+
   mounted() {
     this.fetchUserListings();
   },
@@ -132,13 +130,12 @@ export default {
       this.isEditing = false;
       this.resetForm();
     },
-
-    async updateListing(updatedListing) {
+    async updateListing() {
       try {
         const token = localStorage.getItem("authToken");
-        const response = await axios.put(
-          `${process.env.VUE_APP_API_URL}/listings/${updatedListing.id}`,
-          updatedListing,
+        await axios.put(
+          `${process.env.VUE_APP_API_URL}/listings/${this.listing.id}`,
+          this.listing,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -147,9 +144,9 @@ export default {
           }
         );
 
-        console.log("Listing updated successfully:", response.data);
-        this.fetchUserListings();
+        console.log("Listing updated successfully");
         this.closeEditModal();
+        this.fetchUserListings();
       } catch (error) {
         console.error("Error updating listing:", error);
       }
