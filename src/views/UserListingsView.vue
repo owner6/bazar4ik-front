@@ -27,11 +27,34 @@
       @update="updateListing"
     />
   </div>
+  <!-- Edit Modal -->
+  <div v-if="isEditing" class="edit-modal">
+    <h2>Edit Listing</h2>
+    <form @submit.prevent="updateListing">
+      <label>Title:</label>
+      <input v-model="listing.title" required />
+      <label>Description:</label>
+      <textarea v-model="listing.description" required></textarea>
+      <label>Price:</label>
+      <input type="number" v-model="listing.price" required />
+      <label>Category:</label>
+      <select v-model="listing.category" required>
+        <option
+          v-for="category in categories"
+          :key="category"
+          :value="category"
+        >
+          {{ category }}
+        </option>
+      </select>
+      <button type="submit">Save Changes</button>
+      <button type="button" @click="closeEditModal">Cancel</button>
+    </form>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
-import EditListingView from "../views/EditListingView.vue"; // Імпортуйте компонент
 
 export default {
   data() {
@@ -47,9 +70,7 @@ export default {
       isEditing: false, // Track if editing mode is active
     };
   },
-  components: {
-    EditListingView, // Реєстрація компонента
-  },
+  components: {},
   mounted() {
     this.fetchUserListings();
   },
