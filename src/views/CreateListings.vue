@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { createListing } from "@/API/listings/listings";
 
 export default {
   data() {
@@ -74,23 +74,11 @@ export default {
           category: this.listing.category,
         };
 
-        // Відправка запиту на сервер для створення оголошення
-        const token = localStorage.getItem("authToken");
-        const response = await axios.post(
-          `${process.env.VUE_APP_API_URL}/listings`,
-          listingData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        // use function with API
+        const response = await createListing(listingData);
 
-        // Якщо запит успішний
-        console.log("Listing created successfully:", response.data);
-        // Очистити форму або перенаправити користувача на іншу сторінку
-        this.resetForm();
+        console.log("Listing created successfully:", response);
+        this.resetForm(); // Очистка форми
       } catch (error) {
         console.error("Error creating listing:", error);
       }
