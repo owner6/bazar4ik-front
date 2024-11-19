@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const API_URL = process.env.VUE_APP_API_URL || "http://localhost:3000";
+
 const auth = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL || "http://127.0.0.1:3000",
 });
@@ -8,7 +10,7 @@ const auth = axios.create({
 export const registerUser = async (userData) => {
   try {
     const response = await auth.post("/auth/registration", userData);
-    return response.data; // Повертаємо дані успішної відповіді
+    return response.data; // return data
   } catch (error) {
     if (error.response) {
       throw new Error(error.response.data.message || "Registration failed.");
@@ -21,30 +23,17 @@ export const registerUser = async (userData) => {
 };
 
 // logic for authorization user
-export const login = async ({ email, password }) => {
+export async function login(email, password) {
   try {
-    let API_URL;
-    const response = await axios.post(
-      `${API_URL}/auth/login`,
-      { email, password },
-      {
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-
-    const token = response.data.token;
-
-    // save token
-    localStorage.setItem("authToken", token);
-
-    return {
-      user: response.data.user,
-      token,
-    };
+    const response = await axios.post(`${API_URL}/auth/login`, {
+      email,
+      password,
+    });
+    return response.data; // Повертаємо дані про користувача та токен
   } catch (error) {
-    console.error("Login error:", error);
-    throw error;
+    console.error("Login API error:", error);
+    throw error; // Пробрасываем ошибку, чтобы обработать её в компоненте
   }
-};
+}
 
 export default auth;

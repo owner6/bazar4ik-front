@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import axios from "axios";
 import router from "../../router/index.js";
 import RegisterForm from "./RegisterForm.vue";
+import { login } from "../../api/auth";
 
 export default {
   props: {
@@ -41,54 +41,37 @@ export default {
     return {
       email: "",
       password: "",
-      confirmPassword: "",
       isLoginForm: true,
-      API_URL: process.env.VUE_APP_API_URL || "http://localhost:3000",
     };
   },
-
-  computed: {
-    hasAuthToken() {
-      return localStorage.getItem("authToken") !== null;
-    },
-  },
-
   components: {
     RegisterForm,
   },
-
   methods: {
-    login: async function () {
-      try {
-        const response = await axios.post(
-          `${this.API_URL}/auth/login`,
-          {
-            email: this.email,
-            password: this.password,
-          },
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-
-        const token = response.data.token;
-
-        localStorage.setItem("authToken", token);
-
-        this.user = response.data.user;
-
-        this.isLoading = false;
-
-        router.push({ path: "/mypage" });
-        window.location.reload();
-        this.showAuthForm = false;
-      } catch (error) {
-        console.error("Login error", error);
-      }
-    },
-
     close() {
       this.$emit("close");
+    },
+
+    async login() {
+      try {
+        const userData = await login(this.email, this.password);
+        const { token, user } = userData;
+
+        // Збереження токена у localStorage
+        localStorage.setItem("authToken", token);
+
+        // save data  user
+        this.user = user;
+
+        // Перехід на сторінку після входу
+        await router.push({ path: "/my-account" });
+        window.location.reload();
+        this.close();
+      } catch (error) {
+        this.errorMessage =
+          "Помилка входу. Перевірте дані та спробуйте ще раз.";
+        console.error("Login error:", error);
+      }
     },
 
     toggleForm() {
