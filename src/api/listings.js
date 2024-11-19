@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// Функція для створення оголошення
-export async function createListing(listingData) {
+// function for create listing
+async function createListing(listingData) {
   try {
     const token = localStorage.getItem("authToken");
     const response = await axios.post(
@@ -15,9 +15,11 @@ export async function createListing(listingData) {
       }
     );
 
-    return response.data; // Повертаємо дані успішної відповіді
+    return response.data;
   } catch (error) {
     console.error("Error creating listing:", error);
-    throw error; // Проброс помилки для обробки в компоненті
+    throw error;
   }
 }
+
+export default createListing;

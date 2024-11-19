@@ -20,8 +20,7 @@
           placeholder="Enter description"
           required
         ></textarea>
-      </div>
-      <div class="form-group">
+
         <label for="price">Price:</label>
         <input
           type="number"
@@ -50,7 +49,7 @@
 </template>
 
 <script>
-import { createListing } from "@/API/listings/listings";
+import createListing from "@/api/listings.js";
 
 export default {
   data() {
@@ -74,7 +73,6 @@ export default {
           category: this.listing.category,
         };
 
-        // use function with API
         const response = await createListing(listingData);
 
         console.log("Listing created successfully:", response);

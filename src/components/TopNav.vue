@@ -57,10 +57,12 @@
 
 <script>
 import LoginModal from "@/components/auth/LoginModal.vue";
+import RouterLink from "vue-router";
 
 export default {
   name: "HeaderComponent",
   components: {
+    RouterLink,
     LoginModal,
   },
   data() {

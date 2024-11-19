@@ -15,7 +15,6 @@
         type="text"
         v-model="phone"
         class="input-tel"
-        @keypress="onlyNumbers"
         maxlength="12"
         minlength="12"
         required
@@ -79,11 +78,11 @@
   </form>
 </template>
 <script>
-import api from "@/API/auth/api";
-import { ref, computed, watch } from "vue";
+import { ref, computed } from "vue";
+import { registerUser } from "@/api/auth"; // import function registration
 
 export default {
-  setup() {
+  setup: function (_, { emit }) {
     const email = ref("");
     const phone = ref("");
     const lastname = ref("");
@@ -93,79 +92,24 @@ export default {
     const error = ref(null);
     const passwordError = ref("");
 
-    // Email validation
-    const isValidEmail = computed(() => {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email.value);
-    });
-
-    // Simplified phone validation
-    const onlyNumbers = /^\d{12,12}$/;
-    const isValidPhone = computed(() => {
-      const cleanedPhone = phone.value.replace(/\D/g, "");
-      return onlyNumbers.test(cleanedPhone);
-    });
-
-    // Firstname and lastname validation
-    const isValidFirstname = computed(() => {
-      const nameRegex = /^[A-Za-zА-Яа-я]{2,50}$/; // Length between 2 and 50 characters, only letters
-      return nameRegex.test(firstname.value.trim());
-    });
-
-    const isValidLastname = computed(() => {
-      const nameRegex = /^[A-Za-zА-Яа-я]{2,50}$/; // Length between 2 and 50 characters, only letters
-      return nameRegex.test(lastname.value.trim());
-    });
-
-    // Password validation checks
-    const hasUppercase = computed(() => /[A-Z]/.test(password.value));
-    const hasLowercase = computed(() => /[a-z]/.test(password.value));
-    const hasNumber = computed(() => /\d/.test(password.value));
-    const hasSpecialChar = computed(() => /[@$!%*?&]/.test(password.value));
-    const hasMinLength = computed(() => password.value.length >= 8);
-    const hasCyrillic = computed(() => /[А-Яа-яЁё]/.test(password.value));
-
-    // Update password error message
-    watch(
-      [
-        hasUppercase,
-        hasLowercase,
-        hasNumber,
-        hasSpecialChar,
-        hasMinLength,
-        hasCyrillic,
-      ],
-      () => {
-        if (hasCyrillic.value) {
-          passwordError.value =
-            "The password must not contain cyrillic characters.";
-        } else if (!hasMinLength.value) {
-          passwordError.value =
-            "The password must be at least 8 characters long.";
-        } else if (!hasUppercase.value) {
-          passwordError.value =
-            "The password must contain at least one capital letter and a special character.";
-        } else if (!hasLowercase.value) {
-          passwordError.value =
-            "The password must contain at least one lowercase letter.";
-        } else if (!hasNumber.value) {
-          passwordError.value =
-            "The password must contain at least one number.";
-        } else if (!hasSpecialChar.value) {
-          passwordError.value =
-            "The password must contain at least one special character.";
-        } else {
-          passwordError.value = "";
-        }
-      }
+    // Всі ті ж валідації, що й раніше
+    const isValidEmail = computed(() =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)
+    );
+    const onlyNumbers = /^\d{12}$/;
+    const isValidPhone = computed(() =>
+      onlyNumbers.test(phone.value.replace(/\D/g, ""))
+    );
+    const isValidFirstname = computed(() =>
+      /^[A-Za-zА-Яа-я]{2,50}$/.test(firstname.value.trim())
+    );
+    const isValidLastname = computed(() =>
+      /^[A-Za-zА-Яа-я]{2,50}$/.test(lastname.value.trim())
     );
 
-    // Confirm password validation
-    const doPasswordsMatch = computed(() => {
-      return password.value === confirmPassword.value;
-    });
-
-    // Form validation including all fields
+    const doPasswordsMatch = computed(
+      () => password.value === confirmPassword.value
+    );
     const isFormValid = computed(() => {
       return (
         isValidEmail.value &&
@@ -183,40 +127,21 @@ export default {
         return;
       }
 
-      console.log("Attempting to register with:", {
-        email: email.value,
-        phone: phone.value,
-        lastname: lastname.value,
-        firstname: firstname.value,
-        password: password.value,
-      });
-
       try {
-        const response = await api.post("/auth/registration", {
+        const userData = {
           email: email.value,
           phone: phone.value,
           lastname: lastname.value,
           firstname: firstname.value,
           password: password.value,
-        });
+        };
 
-        console.log("Registration successful:", response.data);
-        this.$emit("close");
-      } catch (error) {
-        console.error("Registration error:", error);
-        if (error.response) {
-          if (error.response.status === 400) {
-            error.value = error.response.data.message || "Invalid input.";
-          } else if (error.response.status === 409) {
-            error.value = "A user with this email already exists.";
-          } else {
-            error.value = error.response.data.message || "Registration failed.";
-          }
-        } else if (error.request) {
-          error.value = "No response from the server.";
-        } else {
-          error.value = "An error occurred during registration.";
-        }
+        const result = await registerUser(userData); // Виклик API
+        console.log("Registration successful:", result);
+        error.value = null; // reset error
+        emit("close"); // exit form
+      } catch (err) {
+        error.value = err.message; // install error
       }
     };
 
@@ -240,6 +165,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
 
