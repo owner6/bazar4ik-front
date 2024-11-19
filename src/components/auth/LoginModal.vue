@@ -28,7 +28,6 @@
 <script>
 import axios from "axios";
 import router from "../../router/index.js";
-
 import RegisterForm from "./RegisterForm.vue";
 
 export default {
@@ -59,7 +58,7 @@ export default {
   },
 
   methods: {
-    async login() {
+    login: async function () {
       try {
         const response = await axios.post(
           `${this.API_URL}/auth/login`,

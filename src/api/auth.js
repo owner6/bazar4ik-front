@@ -20,4 +20,31 @@ export const registerUser = async (userData) => {
   }
 };
 
+// logic for authorization user
+export const login = async ({ email, password }) => {
+  try {
+    let API_URL;
+    const response = await axios.post(
+      `${API_URL}/auth/login`,
+      { email, password },
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    const token = response.data.token;
+
+    // save token
+    localStorage.setItem("authToken", token);
+
+    return {
+      user: response.data.user,
+      token,
+    };
+  } catch (error) {
+    console.error("Login error:", error);
+    throw error;
+  }
+};
+
 export default auth;

@@ -77,12 +77,14 @@
     </p>
   </form>
 </template>
+
 <script>
-import { ref, computed } from "vue";
+import { computed, ref } from "vue";
 import { registerUser } from "@/api/auth"; // import function registration
 
 export default {
-  setup: function (_, { emit }) {
+  emits: ["toggle", "close"],
+  setup(_, { emit }) {
     const email = ref("");
     const phone = ref("");
     const lastname = ref("");
@@ -92,7 +94,6 @@ export default {
     const error = ref(null);
     const passwordError = ref("");
 
-    // Всі ті ж валідації, що й раніше
     const isValidEmail = computed(() =>
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)
     );
@@ -139,9 +140,9 @@ export default {
         const result = await registerUser(userData); // Виклик API
         console.log("Registration successful:", result);
         error.value = null; // reset error
-        emit("close"); // exit form
+        emit("close"); // Закриваємо форму
       } catch (err) {
-        error.value = err.message; // install error
+        error.value = err.message; // Встановлюємо помилку
       }
     };
 
