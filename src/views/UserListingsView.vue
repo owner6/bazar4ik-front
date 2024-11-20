@@ -86,7 +86,7 @@ export default {
 
     async fetchUserListings() {
       try {
-        this.userListings = await fetchUserListings(); // Викликаємо функцію для отримання оголошень
+        this.userListings = await fetchUserListings();
       } catch (error) {
         console.error("Error fetching listings:", error);
       }
@@ -98,7 +98,7 @@ export default {
 
         console.log("Listing updated successfully");
         this.closeEditModal();
-        await this.fetchUserListings();
+        await this.fetchUserListings(); //update list listings
       } catch (error) {
         console.error("Error updating listing:", error);
       }

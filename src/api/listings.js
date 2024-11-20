@@ -1,20 +1,9 @@
-import axios from "axios";
+import axiosInstance from "./axiosInstans";
 
 // function for create listing
 export async function createListing(listingData) {
   try {
-    const token = localStorage.getItem("authToken");
-    const response = await axios.post(
-      `${process.env.VUE_APP_API_URL}/listings`,
-      listingData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
+    const response = await axiosInstance.post("/listings", listingData);
     return response.data;
   } catch (error) {
     console.error("Error creating listing:", error);
@@ -25,18 +14,7 @@ export async function createListing(listingData) {
 // function for edit listing
 export async function updateListing(id, listingData) {
   try {
-    const token = localStorage.getItem("authToken");
-    await axios.put(
-      `${process.env.VUE_APP_API_URL}/listings/${id}`,
-      listingData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
+    await axiosInstance.put(`/listings/${id}`, listingData);
     return { success: true };
   } catch (error) {
     console.error("Error updating listing:", error);
@@ -44,22 +22,13 @@ export async function updateListing(id, listingData) {
   }
 }
 
-//get list listings
+// get list of user listings
 export async function fetchUserListings() {
   try {
-    const token = localStorage.getItem("authToken");
-    const response = await axios.get(
-      `${process.env.VUE_APP_API_URL}/listings`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
+    const response = await axiosInstance.get("/listings");
     return response.data;
   } catch (error) {
     console.error("Error fetching listings:", error);
-    throw error; // Рекомендується "кидати" помилку, щоб виклик коду міг її обробити
+    throw error;
   }
 }
