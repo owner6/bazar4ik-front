@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import createListing from "@/api/listings.js";
+import { createListing } from "@/api/listings.js";
 
 export default {
   data() {

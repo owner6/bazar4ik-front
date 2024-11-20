@@ -52,7 +52,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import { updateListing } from "@/api/listings";
+import { fetchUserListings } from "@/api/listings";
 
 export default {
   data() {
@@ -74,29 +75,6 @@ export default {
   },
 
   methods: {
-    async createListing() {
-      try {
-        const listingData = { ...this.listing };
-        const token = localStorage.getItem("authToken");
-
-        const response = await axios.post(
-          `${process.env.VUE_APP_API_URL}/create-listings`,
-          listingData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        console.log("Listing created successfully:", response.data);
-        this.resetForm();
-        this.fetchUserListings();
-      } catch (error) {
-        console.error("Error creating listing:", error);
-      }
-    },
     resetForm() {
       this.listing = {
         title: "",
@@ -105,21 +83,24 @@ export default {
         category: "",
       };
     },
+
     async fetchUserListings() {
       try {
-        const token = localStorage.getItem("authToken");
-        const response = await axios.get(
-          `${process.env.VUE_APP_API_URL}/listings`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        this.userListings = response.data;
+        this.userListings = await fetchUserListings(); // Викликаємо функцію для отримання оголошень
       } catch (error) {
         console.error("Error fetching listings:", error);
+      }
+    },
+
+    async updateListing() {
+      try {
+        await updateListing(this.listing.id, this.listing);
+
+        console.log("Listing updated successfully");
+        this.closeEditModal();
+        await this.fetchUserListings();
+      } catch (error) {
+        console.error("Error updating listing:", error);
       }
     },
     openEditModal(listing) {
@@ -129,27 +110,6 @@ export default {
     closeEditModal() {
       this.isEditing = false;
       this.resetForm();
-    },
-    async updateListing() {
-      try {
-        const token = localStorage.getItem("authToken");
-        await axios.put(
-          `${process.env.VUE_APP_API_URL}/listings/${this.listing.id}`,
-          this.listing,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        console.log("Listing updated successfully");
-        this.closeEditModal();
-        this.fetchUserListings();
-      } catch (error) {
-        console.error("Error updating listing:", error);
-      }
     },
   },
 };
