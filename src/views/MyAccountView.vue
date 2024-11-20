@@ -2,9 +2,6 @@
   <div class="my-account">
     <h1>My Account</h1>
     <div v-if="user">
-      <p><strong>Name:</strong> {{ user.name }}</p>
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <p><strong>Joined:</strong> {{ formattedDate(user.createdAt) }}</p>
       <!-- Add any other user information you want to display -->
     </div>
     <UserListings v-if="user" />
