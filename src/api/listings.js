@@ -32,3 +32,14 @@ export async function fetchUserListings() {
     throw error;
   }
 }
+
+//delete listing of user
+export async function deleteUserListing(id) {
+  try {
+    const response = await axiosInstance.delete("/listings/" + id);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting listing:", error);
+    throw error;
+  }
+}
