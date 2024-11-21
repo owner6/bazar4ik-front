@@ -8,7 +8,7 @@ import "vue-toastification/dist/index.css";
 
 // Налаштування опцій для toast
 const toastOptions = {
-  position: POSITION.TOP_RIGHT,
+  position: POSITION.BOTTOM_RIGHT,
   timeout: 3000,
   closeOnClick: true,
 };

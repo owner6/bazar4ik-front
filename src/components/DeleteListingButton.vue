@@ -6,22 +6,20 @@
 <script>
 import Alert from "@/components/ui/AlertMessage.vue";
 import { deleteUserListing } from "@/api/listings";
+import { useToast } from "vue-toastification";
 
 export default {
   components: { Alert },
   methods: {
     async handleDelete() {
+      const toast = useToast();
       if (confirm("Are you sure you want to delete this listing?")) {
         try {
           await deleteUserListing(this.listingId);
-          this.$refs.alert.showAlert(
-            "Listing deleted successfully!",
-            "success"
-          );
+          toast.success("Listing delete successfully!");
           this.onDeleteSuccess();
         } catch (error) {
-          console.error("Error deleting listing:", error);
-          this.$refs.alert.showAlert("Failed to delete the listing.", "error");
+          toast.error("Error deleting listing:", error);
         }
       }
     },

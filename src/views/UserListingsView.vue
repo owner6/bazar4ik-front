@@ -58,6 +58,7 @@
 <script>
 import { updateListing, fetchUserListings } from "@/api/listings";
 import DeleteListingButton from "@/components/DeleteListingButton.vue";
+import { useToast } from "vue-toastification";
 
 export default {
   components: {
@@ -100,9 +101,10 @@ export default {
     },
 
     async updateListing() {
+      const toast = useToast();
       try {
         await updateListing(this.listing.id, this.listing);
-
+        toast.success("Listing updated successfully!");
         console.log("Listing updated successfully");
         this.closeEditModal();
         await this.fetchUserListings(); //update list listings
