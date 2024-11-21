@@ -13,6 +13,10 @@
           <p><strong>Price:</strong> ${{ listing.price }}</p>
           <p><strong>Category:</strong> {{ listing.category }}</p>
           <button @click="openEditModal(listing)">Edit</button>
+          <DeleteListingButton
+            :listingId="listing.id"
+            :onDeleteSuccess="fetchUserListings"
+          />
         </div>
       </div>
       <div v-else>
@@ -52,10 +56,13 @@
 </template>
 
 <script>
-import { updateListing } from "@/api/listings";
-import { fetchUserListings } from "@/api/listings";
+import { updateListing, fetchUserListings } from "@/api/listings";
+import DeleteListingButton from "@/components/DeleteListingButton.vue";
 
 export default {
+  components: {
+    DeleteListingButton,
+  },
   data() {
     return {
       listing: {
