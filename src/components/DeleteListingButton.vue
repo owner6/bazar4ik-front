@@ -1,21 +1,27 @@
 <template>
+  <Alert ref="alert" />
   <button @click="handleDelete">Delete</button>
 </template>
 
 <script>
+import Alert from "@/components/ui/AlertMessage.vue";
 import { deleteUserListing } from "@/api/listings";
 
 export default {
+  components: { Alert },
   methods: {
     async handleDelete() {
       if (confirm("Are you sure you want to delete this listing?")) {
         try {
           await deleteUserListing(this.listingId);
-          console.log("Listing deleted successfully");
+          this.$refs.alert.showAlert(
+            "Listing deleted successfully!",
+            "success"
+          );
           this.onDeleteSuccess();
         } catch (error) {
           console.error("Error deleting listing:", error);
-          alert("Failed to delete the listing.");
+          this.$refs.alert.showAlert("Failed to delete the listing.", "error");
         }
       }
     },
