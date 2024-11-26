@@ -5,10 +5,10 @@ module.exports = defineConfig({
   css: {
     loaderOptions: {
       sass: {
-        additionalData: `@import "@/assets/scss/abstracts/variables.scss";`,
+        additionalData: `@import "@/assets/scss/base/_variables.scss";`,
       },
       scss: {
-        additionalData: `@import "@/assets/scss/abstracts/variables.scss";`,
+        additionalData: `@import "@/assets/scss/base/_variables.scss";`,
       },
     },
   },

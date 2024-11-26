@@ -76,7 +76,7 @@ export default {
         const response = await createListing(listingData);
 
         console.log("Listing created successfully:", response);
-        this.resetForm(); // Очистка форми
+        this.resetForm();
       } catch (error) {
         console.error("Error creating listing:", error);
       }
