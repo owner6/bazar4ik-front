@@ -26,8 +26,8 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .footer {
-  background-color: $primary-color-LightGray;
-  color: $text-color;
+  background-color: map-get($colors, "light-gray");
+  color: $color-text;
   padding: 20px 0;
   .content {
     max-width: 800px;

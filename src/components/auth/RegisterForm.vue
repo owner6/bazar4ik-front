@@ -183,21 +183,21 @@ form {
     padding: $spacing-unit;
     border: none;
     border-radius: 4px;
-    background-color: $extra-color-Peach;
-    color: $text-color;
+    background-color: map-get($colors, "peach");
+    color: $color-text;
     font-size: 1rem;
     cursor: pointer;
     font-family: "Open Sans", sans-serif;
 
     &:hover {
-      color: $text-color;
+      color: $color-text;
     }
   }
 }
 
 .toggle {
   margin-top: $spacing-unit;
-  color: $text-color;
+  color: $color-text;
   cursor: pointer;
   font-family: "Roboto", sans-serif; /* Apply Roboto font */
 

@@ -9,27 +9,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
   text-align: center;
-  font-family: $PoppinsFonts;
-  background-color: $background-color;
-  color: $text-color;
+  font-family: $font-family-poppins;
+  color: $color-text;
 }
 
 h1 {
-  font-size: $H1;
+  font-size: map-get($spacings, "md");
   font-weight: 300;
-  font-family: $PoppinsFonts;
+  font-family: $font-family-poppins;
   margin-top: 40px;
   margin-bottom: 24px;
 }
 
 h2 {
-  font-family: $OpenSans;
+  font-family: $font-family-open-sans;
 }
 
 input 
 textarea,
 select {
-  padding: $spacing-unit / 2;
+  padding: map-get($spacings, "lg");
   border: 0.5px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
@@ -37,25 +36,25 @@ select {
 }
 
 a {
-  color: $text-color;
+  color: $color-text;
   
   &:hover {
-    color: $extra-color-Peach;
+    color: map-get($colors, "peach");
   }
 }
 
 button {
-  color: $text-color;
+  color: $color-text;
 
   &:hover {
-    background-color: $extra-color-Peach;
-    color: $extra-color-Peach;
+    background-color: map-get($colors, "peach");
+    color: map-get($colors, "peach");
   }
 }
 
 label {
-  margin-bottom: $spacing-unit / 2;
-  color: $text-color;
+  margin-bottom: map-get($spacings, "md");
+  color: $color-text;
 }
 
 .container {
@@ -68,11 +67,11 @@ label {
 
 .button-secondary,
 .button-tertiary {
-  padding: $spacing-unit;
+  padding: map-get($spacings, "md");
   border-radius: 7px;
   text-decoration: none;
   font-size: 12px;
-  font-family: $PoppinsFonts;
+  font-family: $font-family-poppins;
   font-weight: 400;
   font-style: normal;
   cursor: pointer;
@@ -83,17 +82,17 @@ label {
 
   &.is-light:hover,
   &.is-primary:hover {
-    background-color: $primary-color-LightGray;
-    border: 1px solid $extra-color-Peach;
+    background-color: map-get($colors, "light-gray");
+    border: 1px solid map-get($colors, "peach");
   }
 }
 
 .button-tertiary {
   border: none;
-  background-color: $primary-color-LightGray;
+  background-color: map-get($colors, "light-gray");
 
   &.is-light:hover {
-    background-color: $primary-color-LightGray;
+    background-color: map-get($colors, "light-gray");
   }
 }
 

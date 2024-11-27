@@ -96,13 +96,13 @@ export default {
   z-index: 1000;
 }
 .modal-content {
-  background-color: $primary-color-LightGray;
+  background-color: map-get($colors, "light-gray");
   padding: $spacing-unit * 2;
   border-radius: 8px;
   width: 90%;
   max-width: 400px;
   position: relative;
-  color: $text-color;
+  color: $color-text;
 }
 .close {
   position: absolute;
@@ -124,17 +124,17 @@ form {
     padding: $spacing-unit;
     border: none;
     border-radius: 4px;
-    background-color: $extra-color-Peach;
+    background-color: map-get($colors, "peach");
     font-size: 1rem;
     cursor: pointer;
     &:hover {
-      color: $text-color;
+      color: $color-text;
     }
   }
 }
 .toggle {
   margin-top: $spacing-unit;
-  color: $text-color;
+  color: $color-text;
   cursor: pointer;
   &:hover {
     text-decoration: underline;

@@ -1,38 +1,46 @@
 // Fonts
-$PoppinsFonts: "Poppins", sans-serif;
-$OpenSans: "Open Sans", sans-serif;
+$font-family-poppins: "Poppins", sans-serif;
+$font-family-open-sans: "Open Sans", sans-serif;
 
-// Colors
-$primary-color-PureWhite: #FFFFFF;                    // backgroundContent       
-$primary-color-LightGray: #F4F4F4;                   // backgroundPanels
-$primary-color-SoftGray: #DCDEDF;                    // Soft
+// Primary Colors
+$color-secondary: #F4F4F4; // Light Gray
+$color-tertiary: #DCDEDF; // Soft Gray
 
-$extra-color-LightLemonGreen: #E9FCA1;
-$extra-color-Peach: #F7AA77;
-$extra-color-LightGreenPastel: #D4F4CC;
-$extra-color-LightBluePastel: #C6E6E8;
+// General Colors
+$color-text: #000000;
+$color-border: #888888;
 
-$background-color: white;
-$text-color: #000000;
-$border: #888888;                                             
+$colors: (
+  "white": #FFFFFF,
+  "light-gray": #F4F4F4,
+  "soft-gray": #DCDEDF,
+  "lemon-green": #E9FCA1,
+  "peach": #F7AA77,
+  "light-green": #D4F4CC,
+  "light-blue": #C6E6E8
+);
 
-$H1: 64px;
-$H2: 48px;                                              // РазмерFonts48px
-$H4: 24px;                                             // РазмерFonts24px
+// Typography Sizes
+$font-size-h1: 64px;
+$font-size-h2: 48px;
+$font-size-h4: 24px;
 
 // Button
-$button-primary-hover: #FECBA9;
+$button-color-primary-hover: #FECBA9;
+
+$spacings: (
+  "xs": 4px,
+  "sm": 8px,
+  "md": 16px,
+  "lg": 24px,
+  "xl": 32px
+);
+
+
 
 // Spacing
 $spacing-unit: 12px;
 
 body {
-  font-family: $PoppinsFonts;
+  font-family: $font-family-poppins;
 }
-
-
-// _variables.scss
-$primary-color: #ff5722;
-$secondary-color: #2196f3;
-$font-size-base: 16px;
-$spacing: 8px;
