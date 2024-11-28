@@ -26,7 +26,7 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .footer {
-  background-color: map-get($colors, "light-gray");
+  background-color: map-get($colors, "lemon-green");
   color: $color-text;
   padding: 20px 0;
   .content {

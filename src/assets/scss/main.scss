@@ -1,3 +1,6 @@
+@import 'base/reset';
 @import 'base/variables';
-@import 'abstracts/header';
 @import 'abstracts/base';
+@import 'base/mixins';
+@import 'abstracts/header';
+

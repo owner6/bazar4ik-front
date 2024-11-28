@@ -1,8 +1,10 @@
 <template>
-  <header>
-    <top-nav-component />
-    <bottom-nav-component />
-  </header>
+  <div>
+    <header>
+      <top-nav-component />
+      <bottom-nav-component />
+    </header>
+  </div>
 </template>
 
 <script>
