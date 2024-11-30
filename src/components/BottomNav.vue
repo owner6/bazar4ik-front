@@ -18,16 +18,16 @@
 
 <script>
 export default {
-  name: "BottomNav",
+  name: 'BottomNav',
   data() {
     return {
       showBottomNav: true,
       lastScrollY: 0,
-      ticking: false,
+      ticking: false
     };
   },
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
   },
   methods: {
     handleScroll() {
@@ -45,13 +45,13 @@ export default {
           this.ticking = false;
         });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 
 .bottom-navbar {
   position: fixed;

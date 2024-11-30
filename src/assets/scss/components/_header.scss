@@ -1,0 +1,35 @@
+$light-gray: map-get($colors, "light-gray");
+$peach: map-get($colors, "peach");
+
+.header {
+  .navbar {
+    .navbar-menu {
+      @include flex-center;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: $light-gray;
+      padding: 0 75px;
+      border-bottom: $light-gray;
+    }
+
+    .navbar-start,
+    .navbar-end {
+      @include flex-center;
+
+      .branded-inscription {
+        color: $peach;
+        font-size: 24px;
+        text-decoration: none;
+      }
+
+      .navbar-item {
+        padding: 15px 0;
+      }
+
+      .buttons {
+        @include flex-center;
+        gap: 24px;
+      }
+    }
+  }
+}

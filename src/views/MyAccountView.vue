@@ -14,16 +14,16 @@
 </template>
 
 <script>
-import UserListings from "./UserListingsView.vue";
+import UserListings from './UserListingsView.vue';
 
 export default {
-  name: "MyAccount",
+  name: 'MyAccount',
   components: {
-    UserListings,
+    UserListings
   },
   data() {
     return {
-      user: null, // Initialize user data
+      user: null // Initialize user data
     };
   },
   created() {
@@ -35,13 +35,13 @@ export default {
         //const response = await axios.get("); // Adjust the URL as necessary
         //this.user = response.data; // Assuming the response returns user data
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        console.error('Error fetching user data:', error);
       }
     },
     formattedDate(date) {
       return new Date(date).toLocaleDateString(); // Format the date as needed
-    },
-  },
+    }
+  }
 };
 </script>
 

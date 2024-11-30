@@ -26,30 +26,30 @@
 </template>
 
 <script>
-import router from "../../router/index.js";
-import RegisterForm from "./RegisterForm.vue";
-import { login } from "../../api/auth";
+import router from '../../router/index.js';
+import RegisterForm from './RegisterForm.vue';
+import { login } from '../../api/auth';
 
 export default {
   props: {
     isVisible: {
       type: Boolean,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      email: "",
-      password: "",
-      isLoginForm: true,
+      email: '',
+      password: '',
+      isLoginForm: true
     };
   },
   components: {
-    RegisterForm,
+    RegisterForm
   },
   methods: {
     close() {
-      this.$emit("close");
+      this.$emit('close');
     },
 
     async login() {
@@ -58,31 +58,31 @@ export default {
         const { token, user } = userData;
 
         // Збереження токена у localStorage
-        localStorage.setItem("authToken", token);
+        localStorage.setItem('authToken', token);
 
         // save data  user
         this.user = user;
 
         // Перехід на сторінку після входу
-        await router.push({ path: "/my-account" });
+        await router.push({ path: '/my-account' });
         window.location.reload();
         this.close();
       } catch (error) {
         this.errorMessage =
-          "Помилка входу. Перевірте дані та спробуйте ще раз.";
-        console.error("Login error:", error);
+          'Помилка входу. Перевірте дані та спробуйте ще раз.';
+        console.error('Login error:', error);
       }
     },
 
     toggleForm() {
       this.isLoginForm = !this.isLoginForm;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 .modal {
   position: fixed;
   top: 0;
@@ -96,7 +96,7 @@ export default {
   z-index: 1000;
 }
 .modal-content {
-  background-color: map-get($colors, "light-gray");
+  background-color: map-get($colors, 'light-gray');
   padding: $spacing-unit * 2;
   border-radius: 8px;
   width: 90%;
@@ -124,7 +124,7 @@ form {
     padding: $spacing-unit;
     border: none;
     border-radius: 4px;
-    background-color: map-get($colors, "peach");
+    background-color: map-get($colors, 'peach');
     font-size: 1rem;
     cursor: pointer;
     &:hover {

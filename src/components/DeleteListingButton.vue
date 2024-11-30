@@ -3,32 +3,32 @@
 </template>
 
 <script>
-import { deleteUserListing } from "@/api/listings";
+import { deleteUserListing } from '@/api/listings';
 
 export default {
   methods: {
     async handleDelete() {
-      if (confirm("Are you sure you want to delete this listing?")) {
+      if (confirm('Are you sure you want to delete this listing?')) {
         try {
           await deleteUserListing(this.listingId);
-          console.log("Listing deleted successfully");
+          console.log('Listing deleted successfully');
           this.onDeleteSuccess();
         } catch (error) {
-          console.error("Error deleting listing:", error);
-          alert("Failed to delete the listing.");
+          console.error('Error deleting listing:', error);
+          alert('Failed to delete the listing.');
         }
       }
-    },
+    }
   },
   props: {
     listingId: {
       type: Number,
-      required: true,
+      required: true
     },
     onDeleteSuccess: {
       type: Function,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 };
 </script>

@@ -1,9 +1,9 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import VuelidatePlugin from "@vuelidate/validators";
-import { createHead } from "@vueuse/head";
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import VuelidatePlugin from '@vuelidate/validators';
+import { createHead } from '@vueuse/head';
 
 const app = createApp(App);
 
@@ -14,4 +14,4 @@ app.use(VuelidatePlugin);
 const head = createHead();
 app.use(head);
 
-app.mount("#app");
+app.mount('#app');

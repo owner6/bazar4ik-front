@@ -17,16 +17,16 @@
 
 <script>
 export default {
-  name: "SiteFooter",
-  components: {},
+  name: 'SiteFooter',
+  components: {}
 };
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 
 .footer {
-  background-color: map-get($colors, "lemon-green");
+  background-color: map-get($colors, 'lemon-green');
   color: $color-text;
   padding: 20px 0;
   .content {

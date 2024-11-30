@@ -19,18 +19,18 @@
 </template>
 
 <script>
-import SearchComponent from "../components/SearchPanel.vue";
+import SearchComponent from '../components/SearchPanel.vue';
 
 export default {
-  name: "HomeView",
+  name: 'HomeView',
   components: {
-    SearchComponent,
-  },
+    SearchComponent
+  }
 };
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 
 .home-view-container {
   position: relative;
@@ -48,7 +48,7 @@ export default {
   }
 
   .section-left {
-    background-color: map-get($colors, "light-green");
+    background-color: map-get($colors, 'light-green');
     width: 100%;
     max-width: 685px;
     text-align: left;
@@ -70,10 +70,10 @@ export default {
         search-component {
           flex-grow: 1;
           justify-content: center;
-          padding: map-get($spacings, "md");
+          padding: map-get($spacings, 'md');
           border: none;
           border-radius: 4px;
-          background-color: map-get($colors, "peach");
+          background-color: map-get($colors, 'peach');
           font-size: 16px;
         }
       }

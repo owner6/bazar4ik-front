@@ -6,8 +6,7 @@
         <div
           v-for="listing in userListings"
           :key="listing.id"
-          class="listing-item"
-        >
+          class="listing-item">
           <h3>{{ listing.title }}</h3>
           <p>{{ listing.description }}</p>
           <p><strong>Price:</strong> ${{ listing.price }}</p>
@@ -15,8 +14,7 @@
           <button @click="openEditModal(listing)">Edit</button>
           <DeleteListingButton
             :listingId="listing.id"
-            :onDeleteSuccess="fetchUserListings"
-          />
+            :onDeleteSuccess="fetchUserListings" />
         </div>
       </div>
       <div v-else>
@@ -42,8 +40,7 @@
           <option
             v-for="category in categories"
             :key="category"
-            :value="category"
-          >
+            :value="category">
             {{ category }}
           </option>
         </select>
@@ -56,24 +53,24 @@
 </template>
 
 <script>
-import { updateListing, fetchUserListings } from "@/api/listings";
-import DeleteListingButton from "@/components/DeleteListingButton.vue";
+import { updateListing, fetchUserListings } from '@/api/listings';
+import DeleteListingButton from '@/components/DeleteListingButton.vue';
 
 export default {
   components: {
-    DeleteListingButton,
+    DeleteListingButton
   },
   data() {
     return {
       listing: {
-        title: "",
-        description: "",
-        price: "",
-        category: "",
+        title: '',
+        description: '',
+        price: '',
+        category: ''
       },
       userListings: [],
-      categories: ["Electronics", "Clothing", "Books", "Home Goods"],
-      isEditing: false, // Track if editing mode is active
+      categories: ['Electronics', 'Clothing', 'Books', 'Home Goods'],
+      isEditing: false // Track if editing mode is active
     };
   },
 
@@ -84,10 +81,10 @@ export default {
   methods: {
     resetForm() {
       this.listing = {
-        title: "",
-        description: "",
-        price: "",
-        category: "",
+        title: '',
+        description: '',
+        price: '',
+        category: ''
       };
     },
 
@@ -95,7 +92,7 @@ export default {
       try {
         this.userListings = await fetchUserListings();
       } catch (error) {
-        console.error("Error fetching listings:", error);
+        console.error('Error fetching listings:', error);
       }
     },
 
@@ -103,11 +100,11 @@ export default {
       try {
         await updateListing(this.listing.id, this.listing);
 
-        console.log("Listing updated successfully");
+        console.log('Listing updated successfully');
         this.closeEditModal();
         await this.fetchUserListings(); //update list listings
       } catch (error) {
-        console.error("Error updating listing:", error);
+        console.error('Error updating listing:', error);
       }
     },
     openEditModal(listing) {
@@ -117,13 +114,13 @@ export default {
     closeEditModal() {
       this.isEditing = false;
       this.resetForm();
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 
 .user-listings {
   margin-top: 30px;

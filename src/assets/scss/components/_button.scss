@@ -1,0 +1,72 @@
+@mixin button-base($bg-color, $text-color, $hover-bg-color, $hover-text-color) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: map-get($spacings, "md");
+  border: 1px solid black;
+  border-radius: 7px;
+  background-color: $bg-color;
+  color: $text-color;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: map-get($colors, "light-gray");
+    color: $hover-text-color;
+    border: 1px solid;
+  }
+
+  &:disabled {
+    background-color: map-get($colors, "light-gray");
+    color: map-get($colors, "soft-gray");
+    cursor: pointer;
+  }
+}
+
+// Варіації кнопок
+.primary-button {
+  @include button-base(
+      map-get($colors, "peach"),
+      map-get($colors, "white"),
+      darken(map-get($colors, "peach"), 10%),
+      map-get($colors, "white")
+  );
+}
+
+.secondary-button {
+  @include button-base(
+      map-get($colors, ""),
+      map-get($colors, ""),
+      darken(map-get($colors, "peach"), 0%),
+      map-get($colors, "")
+  );
+}
+
+.tertiary-button {
+  @include button-base(
+      map-get($colors, ""),
+      map-get($colors, ""),
+      darken(map-get($colors, "peach"), 10%),
+      map-get($colors, "")
+  );
+
+  &:hover {
+    color: map-get($colors, "peach");
+    border: none;
+  }
+  border: none;
+}
+
+.outline-button {
+  @include button-base(
+      map-get($colors, "white"),
+      map-get($colors, "peach"),
+      map-get($colors, "light-gray"),
+      darken(map-get($colors, "peach"), 0%)
+  );
+  border: 2px solid map-get($colors, "peach");
+  background-color: transparent;
+}

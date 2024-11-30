@@ -37,17 +37,8 @@ select {
 
 a {
   color: $color-text;
-  
-  &:hover {
-    color: map-get($colors, "peach");
-  }
-}
-
-button {
-  color: $color-text;
 
   &:hover {
-    background-color: map-get($colors, "peach");
     color: map-get($colors, "peach");
   }
 }
@@ -63,37 +54,6 @@ label {
   padding: 0 75px;
   margin: 0 auto;
   box-sizing: border-box;
-}
-
-.button-secondary,
-.button-tertiary {
-  padding: map-get($spacings, "md");
-  border-radius: 7px;
-  text-decoration: none;
-  font-size: 12px;
-  font-family: $font-family-poppins;
-  font-weight: 400;
-  font-style: normal;
-  cursor: pointer;
-}
-
-.button-secondary {
-  border: 1px solid black;
-
-  &.is-light:hover,
-  &.is-primary:hover {
-    background-color: map-get($colors, "light-gray");
-    border: 1px solid map-get($colors, "peach");
-  }
-}
-
-.button-tertiary {
-  border: none;
-  background-color: map-get($colors, "light-gray");
-
-  &.is-light:hover {
-    background-color: map-get($colors, "light-gray");
-  }
 }
 
 @media only screen and (max-width: 600px) {

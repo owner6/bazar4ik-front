@@ -9,8 +9,7 @@
           v-model="listing.title"
           id="title"
           placeholder="Enter listing title"
-          required
-        />
+          required />
       </div>
       <div class="form-group">
         <label for="description">Description:</label>
@@ -18,8 +17,7 @@
           v-model="listing.description"
           id="description"
           placeholder="Enter description"
-          required
-        ></textarea>
+          required></textarea>
 
         <label for="price">Price:</label>
         <input
@@ -27,8 +25,7 @@
           v-model="listing.price"
           id="price"
           placeholder="Enter price"
-          required
-        />
+          required />
       </div>
       <div class="form-group">
         <label for="category">Category:</label>
@@ -37,8 +34,7 @@
           <option
             v-for="category in categories"
             :key="category"
-            :value="category"
-          >
+            :value="category">
             {{ category }}
           </option>
         </select>
@@ -49,18 +45,18 @@
 </template>
 
 <script>
-import { createListing } from "@/api/listings.js";
+import { createListing } from '@/api/listings.js';
 
 export default {
   data() {
     return {
       listing: {
-        title: "",
-        description: "",
-        price: "",
-        category: "",
+        title: '',
+        description: '',
+        price: '',
+        category: ''
       },
-      categories: ["Electronics", "Clothing", "Books", "Home Goods"],
+      categories: ['Electronics', 'Clothing', 'Books', 'Home Goods']
     };
   },
   methods: {
@@ -70,32 +66,32 @@ export default {
           title: this.listing.title,
           description: this.listing.description,
           price: this.listing.price,
-          category: this.listing.category,
+          category: this.listing.category
         };
 
         const response = await createListing(listingData);
 
-        console.log("Listing created successfully:", response);
+        console.log('Listing created successfully:', response);
         this.resetForm();
       } catch (error) {
-        console.error("Error creating listing:", error);
+        console.error('Error creating listing:', error);
       }
     },
     resetForm() {
       this.listing = {
-        title: "",
-        description: "",
-        price: "",
-        category: "",
-        image: null,
+        title: '',
+        description: '',
+        price: '',
+        category: '',
+        image: null
       };
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 
 .create-listing-page {
   max-width: 600px;
@@ -129,7 +125,7 @@ export default {
         font-size: 16px;
       }
 
-      input[type="file"] {
+      input[type='file'] {
         padding: 0;
       }
     }
