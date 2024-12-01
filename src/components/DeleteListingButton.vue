@@ -1,21 +1,26 @@
 <template>
+  <Alert ref="alert" />
   <button @click="handleDelete">Delete</button>
 </template>
 
 <script>
-import { deleteUserListing } from '@/api/listings';
+import Alert from "@/components/ui/AlertMessage.vue";
+import { deleteUserListing } from "@/api/listings";
+import { useToast } from "vue-toastification";
 
 export default {
+  components: { Alert },
   methods: {
     async handleDelete() {
-      if (confirm('Are you sure you want to delete this listing?')) {
+
+      const toast = useToast();
+      if (confirm("Are you sure you want to delete this listing?")) {
         try {
           await deleteUserListing(this.listingId);
-          console.log('Listing deleted successfully');
+          toast.success("Listing delete successfully!");
           this.onDeleteSuccess();
         } catch (error) {
-          console.error('Error deleting listing:', error);
-          alert('Failed to delete the listing.');
+          toast.error("Error deleting listing:", error);
         }
       }
     }
