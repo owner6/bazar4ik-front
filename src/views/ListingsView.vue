@@ -25,17 +25,17 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .listings-view {
-  padding: $spacing-unit * 2;
+  padding: map-get($spacings, "lg");
 
   h4 {
-    font-size: $H4;
-    margin-bottom: $spacing-unit;
-    color: $text-color;
+    font-size: $font-size-h4;
+    margin-bottom: map-get($spacings, "md");
+    color: $color-text;
   }
 
   p {
     font-size: 18px;
-    color: $text-color;
+    color: $color-text;
   }
 }
 </style>

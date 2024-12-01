@@ -1,12 +1,12 @@
-import axiosInstance from "./axiosInstans";
+import axiosInstance from './axiosInstans';
 
 // function for create listing
 export async function createListing(listingData) {
   try {
-    const response = await axiosInstance.post("/listings", listingData);
+    const response = await axiosInstance.post('/listings', listingData);
     return response.data;
   } catch (error) {
-    console.error("Error creating listing:", error);
+    console.error('Error creating listing:', error);
     throw error;
   }
 }
@@ -17,7 +17,7 @@ export async function updateListing(id, listingData) {
     await axiosInstance.put(`/listings/${id}`, listingData);
     return { success: true };
   } catch (error) {
-    console.error("Error updating listing:", error);
+    console.error('Error updating listing:', error);
     throw error;
   }
 }
@@ -25,10 +25,10 @@ export async function updateListing(id, listingData) {
 // get list of user listings
 export async function fetchUserListings() {
   try {
-    const response = await axiosInstance.get("/listings");
+    const response = await axiosInstance.get('/listings');
     return response.data;
   } catch (error) {
-    console.error("Error fetching listings:", error);
+    console.error('Error fetching listings:', error);
     throw error;
   }
 }
@@ -36,10 +36,10 @@ export async function fetchUserListings() {
 //delete listing of user
 export async function deleteUserListing(id) {
   try {
-    const response = await axiosInstance.delete("/listings/" + id);
+    const response = await axiosInstance.delete('/listings/' + id);
     return response.data;
   } catch (error) {
-    console.error("Error deleting listing:", error);
+    console.error('Error deleting listing:', error);
     throw error;
   }
 }

@@ -1,23 +1,25 @@
 <template>
-  <header>
-    <top-nav-component />
-    <bottom-nav-component />
-  </header>
+  <div>
+    <header>
+      <top-nav-component />
+      <bottom-nav-component />
+    </header>
+  </div>
 </template>
 
 <script>
-import TopNavComponent from "./TopNav.vue";
-import BottomNavComponent from "./BottomNav.vue";
+import TopNavComponent from './TopNav.vue';
+import BottomNavComponent from './BottomNav.vue';
 
 export default {
-  name: "MainHeaderComponent",
+  name: 'MainHeaderComponent',
   components: {
     TopNavComponent,
-    BottomNavComponent,
-  },
+    BottomNavComponent
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 </style>

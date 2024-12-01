@@ -17,8 +17,7 @@
         class="input-tel"
         maxlength="12"
         minlength="12"
-        required
-      />
+        required />
       <p v-if="!isValidPhone" class="error">
         Please enter a valid phone number.
       </p>
@@ -30,8 +29,7 @@
         placeholder="Your lastname"
         type="text"
         v-model="lastname"
-        required
-      />
+        required />
       <p v-if="!isValidLastname" class="error">
         Please enter a valid lastname.
       </p>
@@ -43,8 +41,7 @@
         placeholder="Your firstname"
         type="text"
         v-model="firstname"
-        required
-      />
+        required />
       <p v-if="!isValidFirstname" class="error">
         Please enter a valid firstname.
       </p>
@@ -55,8 +52,7 @@
         type="password"
         v-model="password"
         placeholder="Your password"
-        required
-      />
+        required />
       <p v-if="passwordError" class="error">{{ passwordError }}</p>
     </div>
     <div>
@@ -66,8 +62,7 @@
         placeholder="Confirm Password"
         type="password"
         v-model="confirmPassword"
-        required
-      />
+        required />
       <p v-if="!doPasswordsMatch" class="error">Passwords do not match.</p>
     </div>
     <button type="submit" :disabled="!isFormValid">Register</button>
@@ -79,27 +74,27 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
-import { registerUser } from "@/api/auth"; // import function registration
+import { computed, ref } from 'vue';
+import { registerUser } from '@/api/auth'; // import function registration
 
 export default {
-  emits: ["toggle", "close"],
+  emits: ['toggle', 'close'],
   setup(_, { emit }) {
-    const email = ref("");
-    const phone = ref("");
-    const lastname = ref("");
-    const firstname = ref("");
-    const password = ref("");
-    const confirmPassword = ref("");
+    const email = ref('');
+    const phone = ref('');
+    const lastname = ref('');
+    const firstname = ref('');
+    const password = ref('');
+    const confirmPassword = ref('');
     const error = ref(null);
-    const passwordError = ref("");
+    const passwordError = ref('');
 
     const isValidEmail = computed(() =>
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)
     );
     const onlyNumbers = /^\d{12}$/;
     const isValidPhone = computed(() =>
-      onlyNumbers.test(phone.value.replace(/\D/g, ""))
+      onlyNumbers.test(phone.value.replace(/\D/g, ''))
     );
     const isValidFirstname = computed(() =>
       /^[A-Za-zА-Яа-я]{2,50}$/.test(firstname.value.trim())
@@ -117,14 +112,14 @@ export default {
         isValidPhone.value &&
         isValidFirstname.value &&
         isValidLastname.value &&
-        passwordError.value === "" &&
+        passwordError.value === '' &&
         doPasswordsMatch.value
       );
     });
 
     const register = async () => {
       if (!isFormValid.value) {
-        error.value = "Please check your input.";
+        error.value = 'Please check your input.';
         return;
       }
 
@@ -134,13 +129,13 @@ export default {
           phone: phone.value,
           lastname: lastname.value,
           firstname: firstname.value,
-          password: password.value,
+          password: password.value
         };
 
         const result = await registerUser(userData); // Виклик API
-        console.log("Registration successful:", result);
+        console.log('Registration successful:', result);
         error.value = null; // reset error
-        emit("close"); // Закриваємо форму
+        emit('close'); // Закриваємо форму
       } catch (err) {
         error.value = err.message; // Встановлюємо помилку
       }
@@ -161,19 +156,19 @@ export default {
       isValidLastname,
       doPasswordsMatch,
       isFormValid,
-      register,
+      register
     };
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/main.scss";
+@import '@/assets/scss/main.scss';
 
 form {
   display: flex;
   flex-direction: column;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 
   div {
     margin-bottom: $spacing-unit;
@@ -183,23 +178,23 @@ form {
     padding: $spacing-unit;
     border: none;
     border-radius: 4px;
-    background-color: $extra-color-Peach;
-    color: $text-color;
+    background-color: map-get($colors, 'peach');
+    color: $color-text;
     font-size: 1rem;
     cursor: pointer;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
 
     &:hover {
-      color: $text-color;
+      color: $color-text;
     }
   }
 }
 
 .toggle {
   margin-top: $spacing-unit;
-  color: $text-color;
+  color: $color-text;
   cursor: pointer;
-  font-family: "Roboto", sans-serif; /* Apply Roboto font */
+  font-family: 'Roboto', sans-serif; /* Apply Roboto font */
 
   &:hover {
     text-decoration: underline;
@@ -208,7 +203,7 @@ form {
 
 .error {
   color: red;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 12px;
 }
 </style>

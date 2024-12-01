@@ -12,6 +12,7 @@ export default {
   components: { Alert },
   methods: {
     async handleDelete() {
+
       const toast = useToast();
       if (confirm("Are you sure you want to delete this listing?")) {
         try {
@@ -22,17 +23,17 @@ export default {
           toast.error("Error deleting listing:", error);
         }
       }
-    },
+    }
   },
   props: {
     listingId: {
       type: Number,
-      required: true,
+      required: true
     },
     onDeleteSuccess: {
       type: Function,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 };
 </script>

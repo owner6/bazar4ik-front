@@ -1,35 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
-  margin: 0px;
-}
-
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
   text-align: center;
-  font-family: $PoppinsFonts;
-  background-color: $background-color;
-  color: $text-color;
+  font-family: $font-family-poppins;
+  color: $color-text;
 }
 
 h1 {
-  font-size: $H1;
+  font-size: map-get($spacings, "md");
   font-weight: 300;
-  font-family: $PoppinsFonts;
+  font-family: $font-family-poppins;
   margin-top: 40px;
   margin-bottom: 24px;
 }
 
 h2 {
-  font-family: $OpenSans;
+  font-family: $font-family-open-sans;
 }
 
-input 
+input
 textarea,
 select {
-  padding: $spacing-unit / 2;
+  padding: map-get($spacings, "lg");
   border: 0.5px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
@@ -37,64 +32,16 @@ select {
 }
 
 a {
-  color: $text-color;
-  
-  &:hover {
-    color: $extra-color-Peach;
-  }
-}
-
-button {
-  color: $text-color;
+  color: $color-text;
 
   &:hover {
-    background-color: $extra-color-Peach;
-    color: $extra-color-Peach;
+    color: map-get($colors, "peach");
   }
 }
 
 label {
-  margin-bottom: $spacing-unit / 2;
-  color: $text-color;
-}
-
-.container {
-  width: 100%;
-  max-width: 1440px;
-  padding: 0 75px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.button-secondary,
-.button-tertiary {
-  padding: $spacing-unit;
-  border-radius: 7px;
-  text-decoration: none;
-  font-size: 12px;
-  font-family: $PoppinsFonts;
-  font-weight: 400;
-  font-style: normal;
-  cursor: pointer;
-}
-
-.button-secondary {
-  border: 1px solid black;
-
-  &.is-light:hover,
-  &.is-primary:hover {
-    background-color: $primary-color-LightGray;
-    border: 1px solid $extra-color-Peach;
-  }
-}
-
-.button-tertiary {
-  border: none;
-  background-color: $primary-color-LightGray;
-
-  &.is-light:hover {
-    background-color: $primary-color-LightGray;
-  }
+  margin-bottom: map-get($spacings, "md");
+  color: $color-text;
 }
 
 @media only screen and (max-width: 600px) {

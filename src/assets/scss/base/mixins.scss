@@ -1,0 +1,24 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == xs { @media (max-width: 480px) { @content; } }
+  @else if $breakpoint == sm { @media (max-width: 768px) { @content; } }
+  @else if $breakpoint == md { @media (max-width: 1024px) { @content; } }
+  @else if $breakpoint == lg { @media (max-width: 1200px) { @content; } }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin button-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: map-get($spacings, "md");
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

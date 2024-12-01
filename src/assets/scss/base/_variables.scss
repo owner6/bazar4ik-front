@@ -1,0 +1,46 @@
+// Fonts
+$font-family-poppins: "Poppins", sans-serif;
+$font-family-open-sans: "Open Sans", sans-serif;
+
+// Primary Colors
+$color-secondary: #F4F4F4; // Light Gray
+$color-tertiary: #DCDEDF; // Soft Gray
+
+// General Colors
+$color-text: #000000;
+$color-border: #888888;
+
+$colors: (
+  "white": #FFFFFF,
+  "light-gray": #F4F4F4,
+  "soft-gray": #DCDEDF,
+  "lemon-green": #E9FCA1,
+  "peach": #F7AA77,
+  "light-green": #D4F4CC,
+  "light-blue": #C6E6E8,
+);
+
+// Typography Sizes
+$font-size-h1: 64px;
+$font-size-h2: 48px;
+$font-size-h4: 24px;
+
+// Button
+$button-color-primary-hover: #FECBA9;
+
+$spacings: (
+  "xs": 4px,
+  "sm": 8px,
+  "md": 16px,
+  "lg": 24px,
+  "xl": 32px
+);
+
+
+
+// Spacing
+$spacing-unit: 12px;
+
+body {
+  font-family: $font-family-poppins;
+}
