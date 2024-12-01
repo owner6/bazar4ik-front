@@ -73,6 +73,7 @@ export default {
 
         console.log('Listing created successfully:', response);
         this.resetForm();
+        this.$router.push('/user-listings');
       } catch (error) {
         console.error('Error creating listing:', error);
       }
