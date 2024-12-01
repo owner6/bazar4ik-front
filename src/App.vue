@@ -44,8 +44,9 @@ export default {
 }
 
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 16px;
+  box-sizing: border-box;
 }
 </style>

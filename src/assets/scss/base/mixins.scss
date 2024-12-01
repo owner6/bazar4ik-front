@@ -9,3 +9,16 @@
   display: flex;
   align-items: center;
 }
+
+@mixin button-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: map-get($spacings, "md");
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
