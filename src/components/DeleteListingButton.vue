@@ -4,23 +4,22 @@
 </template>
 
 <script>
-import Alert from "@/components/ui/AlertMessage.vue";
-import { deleteUserListing } from "@/api/listings";
-import { useToast } from "vue-toastification";
+import Alert from '@/components/ui/AlertMessage.vue';
+import { deleteUserListing } from '@/api/listings';
+import { useToast } from 'vue-toastification';
 
 export default {
   components: { Alert },
   methods: {
     async handleDelete() {
-
       const toast = useToast();
-      if (confirm("Are you sure you want to delete this listing?")) {
+      if (confirm('Are you sure you want to delete this listing?')) {
         try {
           await deleteUserListing(this.listingId);
-          toast.success("Listing delete successfully!");
+          toast.success('Listing delete successfully!');
           this.onDeleteSuccess();
         } catch (error) {
-          toast.error("Error deleting listing:", error);
+          toast.error('Error deleting listing:', error);
         }
       }
     }

@@ -1,16 +1,16 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import VuelidatePlugin from "@vuelidate/validators";
-import Toast, { POSITION } from "vue-toastification";
-import "vue-toastification/dist/index.css";
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import VuelidatePlugin from '@vuelidate/validators';
+import Toast, { POSITION } from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
 
 // Налаштування опцій для toast
 const toastOptions = {
   position: POSITION.BOTTOM_RIGHT,
   timeout: 3000,
-  closeOnClick: true,
+  closeOnClick: true
 };
 
 const app = createApp(App);
@@ -21,4 +21,4 @@ app.use(router);
 app.use(VuelidatePlugin);
 app.use(Toast, toastOptions);
 
-app.mount("#app");
+app.mount('#app');
