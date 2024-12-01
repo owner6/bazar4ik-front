@@ -10,12 +10,12 @@ export default {
   data() {
     return {
       visible: false,
-      message: "",
-      type: "success", // success, error, info
+      message: '',
+      type: 'success' // success, error, info
     };
   },
   methods: {
-    showAlert(message, type = "success") {
+    showAlert(message, type = 'success') {
       this.message = message;
       this.type = type;
       this.visible = true;
@@ -23,8 +23,8 @@ export default {
     },
     closeAlert() {
       this.visible = false;
-    },
-  },
+    }
+  }
 };
 </script>
 

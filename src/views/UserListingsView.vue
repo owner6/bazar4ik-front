@@ -53,9 +53,9 @@
 </template>
 
 <script>
-import { updateListing, fetchUserListings } from "@/api/listings";
-import DeleteListingButton from "@/components/DeleteListingButton.vue";
-import { useToast } from "vue-toastification";
+import { updateListing, fetchUserListings } from '@/api/listings';
+import DeleteListingButton from '@/components/DeleteListingButton.vue';
+import { useToast } from 'vue-toastification';
 
 export default {
   components: {
@@ -102,8 +102,8 @@ export default {
       try {
         await updateListing(this.listing.id, this.listing);
 
-        toast.success("Listing updated successfully!");
-        console.log("Listing updated successfully");
+        toast.success('Listing updated successfully!');
+        console.log('Listing updated successfully');
 
         this.closeEditModal();
         await this.fetchUserListings(); //update list listings
