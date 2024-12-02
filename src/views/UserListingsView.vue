@@ -12,6 +12,9 @@
           <p><strong>Price:</strong> ${{ listing.price }}</p>
           <p><strong>Category:</strong> {{ listing.category }}</p>
           <button @click="openEditModal(listing)">Edit</button>
+          <DeactivateListingButton
+            :listingId="listing.id"
+            :onDeactivateSuccess="fetchUserListings" />
           <DeleteListingButton
             :listingId="listing.id"
             :onDeleteSuccess="fetchUserListings" />
@@ -55,11 +58,13 @@
 <script>
 import { updateListing, fetchUserListings } from '@/api/listings';
 import DeleteListingButton from '@/components/DeleteListingButton.vue';
+import DeactivateListingButton from '@/components/DeactivateListingButton.vue';
 import { useToast } from 'vue-toastification';
 
 export default {
   components: {
-    DeleteListingButton
+    DeleteListingButton,
+    DeactivateListingButton
   },
   data() {
     return {

@@ -43,3 +43,14 @@ export async function deleteUserListing(id) {
     throw error;
   }
 }
+
+//deactivate listing of user
+export async function deactivateUserListing(id) {
+  try {
+    const response = await axiosInstance.patch(`/listings/${id}/deactivate`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deactivating listing:', error);
+    throw error;
+  }
+}
