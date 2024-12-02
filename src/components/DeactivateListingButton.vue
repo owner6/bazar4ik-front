@@ -13,15 +13,25 @@ export default {
   methods: {
     async handleDeactivate() {
       const toast = useToast();
-      if (confirm('Are you sure you want to delete this listing?')) {
+      if (confirm('Are you sure you want to deactivate this listing?')) {
         try {
           await deactivateUserListing(this.listingId);
           toast.success('Listing deactivate successfully!');
-          this.onDeactivateSuccsess();
+          this.onDeactivateSuccess();
         } catch (error) {
-          toast.error('Error deleting listing:', error);
+          toast.error('Error deactivate listing:', error);
         }
       }
+    }
+  },
+  props: {
+    listingId: {
+      type: Number,
+      required: true
+    },
+    onDeactivateSuccess: {
+      type: Function,
+      required: true
     }
   }
 };
