@@ -17,7 +17,8 @@
           <button @click="openEditModal(listing)">Edit</button>
           <DeactivateListingButton
             :listingId="listing.id"
-            :onDeactivateSuccess="fetchUserListings" />
+            :isActive="listing.isActive"
+            @statusToggled="handleStatusToggled" />
           <DeleteListingButton
             :listingId="listing.id"
             :onDeleteSuccess="fetchUserListings" />
@@ -126,6 +127,16 @@ export default {
     closeEditModal() {
       this.isEditing = false;
       this.resetForm();
+    },
+    async handleStatusToggled(listingId, isActive) {
+      const toast = useToast();
+      if (!isActive) {
+        // Видаляємо зі списку деактивовані картки
+        this.userListings = this.userListings.filter(
+          (listing) => listing.id !== listingId
+        );
+      }
+      toast.success('Listing updated successfully!');
     }
   }
 };

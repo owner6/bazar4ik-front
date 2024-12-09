@@ -45,7 +45,7 @@ export async function deleteUserListing(id) {
 }
 
 //deactivate listing of user
-export async function deactivateUserListing(id) {
+export async function toggleListingStatus(id) {
   try {
     const response = await axiosInstance.patch(`/listings/${id}/deactivate`);
     return response.data;
@@ -55,9 +55,10 @@ export async function deactivateUserListing(id) {
   }
 }
 
+//list inactive listings
 export async function fetchInactiveListings() {
   try {
-    const response = await axiosInstance.get('/inactive');
+    const response = await axiosInstance.get(`/inactive/`);
     return response.data;
   } catch (error) {
     console.error('Error fetching inactive listings:', error);

@@ -1,37 +1,46 @@
 <template>
-  <Alert ref="alert" />
-  <button @click="handleDeactivate">Deactivate</button>
+  <button @click="handleToggle" :disabled="loading">
+    {{ loading ? 'Processing...' : buttonText }}
+  </button>
 </template>
 
 <script>
-import Alert from '@/components/ui/AlertMessage.vue';
-import { deactivateUserListing } from '@/api/listings';
-import { useToast } from 'vue-toastification';
+import { toggleListingStatus } from '@/api/listings';
 
 export default {
-  components: { Alert },
-  methods: {
-    async handleDeactivate() {
-      const toast = useToast();
-      if (confirm('Are you sure you want to deactivate this listing?')) {
-        try {
-          await deactivateUserListing(this.listingId);
-          toast.success('Listing deactivate successfully!');
-          this.onDeactivateSuccess();
-        } catch (error) {
-          toast.error('Error deactivate listing:', error);
-        }
-      }
-    }
-  },
+  name: 'DeactivateListingButton',
   props: {
     listingId: {
       type: Number,
       required: true
     },
-    onDeactivateSuccess: {
-      type: Function,
+    isActive: {
+      type: Boolean,
       required: true
+    }
+  },
+  data() {
+    return {
+      loading: false
+    };
+  },
+  computed: {
+    buttonText() {
+      return this.isActive ? 'Deactivate' : 'Activate';
+    }
+  },
+  methods: {
+    async handleToggle() {
+      this.loading = true;
+      try {
+        await toggleListingStatus(this.listingId);
+        // Емісія події для оновлення списку в батьківському компоненті
+        this.$emit('statusToggled', this.listingId);
+      } catch (error) {
+        console.error('Failed to toggle listing status:', error);
+      } finally {
+        this.loading = false;
+      }
     }
   }
 };
