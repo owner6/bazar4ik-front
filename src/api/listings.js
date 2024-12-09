@@ -54,3 +54,13 @@ export async function deactivateUserListing(id) {
     throw error;
   }
 }
+
+export async function fetchInactiveListings() {
+  try {
+    const response = await axiosInstance.get('/inactive');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching inactive listings:', error);
+    throw error;
+  }
+}

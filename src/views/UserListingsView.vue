@@ -2,6 +2,9 @@
   <div class="create-listing-page">
     <div class="user-listings">
       <h1>Your Listings</h1>
+      <nav>
+        <router-link to="/inactive-listings">Deactivated Listings</router-link>
+      </nav>
       <div v-if="userListings.length">
         <div
           v-for="listing in userListings"
