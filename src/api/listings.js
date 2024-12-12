@@ -43,3 +43,25 @@ export async function deleteUserListing(id) {
     throw error;
   }
 }
+
+//deactivate listing of user
+export async function toggleListingStatus(id) {
+  try {
+    const response = await axiosInstance.patch(`/listings/${id}/deactivate`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deactivating listing:', error);
+    throw error;
+  }
+}
+
+//list inactive listings
+export async function fetchInactiveListings() {
+  try {
+    const response = await axiosInstance.get(`/inactive/`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching inactive listings:', error);
+    throw error;
+  }
+}

@@ -2,6 +2,9 @@
   <div class="create-listing-page">
     <div class="user-listings">
       <h1>Your Listings</h1>
+      <nav>
+        <router-link to="/inactive-listings">Deactivated Listings</router-link>
+      </nav>
       <div v-if="userListings.length">
         <div
           v-for="listing in userListings"
@@ -12,6 +15,10 @@
           <p><strong>Price:</strong> ${{ listing.price }}</p>
           <p><strong>Category:</strong> {{ listing.category }}</p>
           <button @click="openEditModal(listing)">Edit</button>
+          <DeactivateListingButton
+            :listingId="listing.id"
+            :isActive="listing.isActive"
+            @statusToggled="handleStatusToggled" />
           <DeleteListingButton
             :listingId="listing.id"
             :onDeleteSuccess="fetchUserListings" />
@@ -55,11 +62,13 @@
 <script>
 import { updateListing, fetchUserListings } from '@/api/listings';
 import DeleteListingButton from '@/components/DeleteListingButton.vue';
+import DeactivateListingButton from '@/components/DeactivateListingButton.vue';
 import { useToast } from 'vue-toastification';
 
 export default {
   components: {
-    DeleteListingButton
+    DeleteListingButton,
+    DeactivateListingButton
   },
   data() {
     return {
@@ -118,6 +127,16 @@ export default {
     closeEditModal() {
       this.isEditing = false;
       this.resetForm();
+    },
+    async handleStatusToggled(listingId, isActive) {
+      const toast = useToast();
+      if (!isActive) {
+        // Видаляємо зі списку деактивовані картки
+        this.userListings = this.userListings.filter(
+          (listing) => listing.id !== listingId
+        );
+      }
+      toast.success('Listing updated successfully!');
     }
   }
 };
