@@ -1,8 +1,8 @@
 export default {
   logout() {
-    localStorage.removeItem("authToken");
+    localStorage.removeItem('authToken');
   },
   checkAuthToken() {
-    return localStorage.getItem("authToken") !== null;
-  },
+    return localStorage.getItem('authToken') !== null;
+  }
 };

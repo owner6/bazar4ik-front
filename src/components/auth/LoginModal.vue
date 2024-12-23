@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { useAuthStore } from '@/store/auth'; // Імпортуємо наш store для авторизації
 import router from '../../router/index.js';
 import RegisterForm from './RegisterForm.vue';
 import { login } from '../../api/auth';
@@ -60,12 +61,15 @@ export default {
         // Збереження токена у localStorage
         localStorage.setItem('authToken', token);
 
-        // save data  user
+        // Зберігаємо дані користувача
         this.user = user;
+
+        // Викликаємо метод для оновлення статусу авторизації в глобальному store
+        const authStore = useAuthStore();
+        authStore.login(); // Увімкнути авторизацію
 
         // Перехід на сторінку після входу
         await router.push({ path: '/my-account' });
-        window.location.reload();
         this.close();
       } catch (error) {
         this.errorMessage =

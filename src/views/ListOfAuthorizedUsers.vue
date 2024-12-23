@@ -28,31 +28,31 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   data() {
     return {
       users: [],
-      error: null,
+      error: null
     };
   },
 
   methods: {
     async fetchUsers() {
       try {
-        const token = localStorage.getItem("authToken"); // Assuming the JWT token is stored in localStorage
-        const response = await axios.get("http://localhost:3000/auth/users", {
+        const token = localStorage.getItem('authToken'); // Assuming the JWT token is stored in localStorage
+        const response = await axios.get('http://localhost:3000/auth/users', {
           headers: {
-            Authorization: `Bearer ${token}`, // Add token to Authorization header
-          },
+            Authorization: `Bearer ${token}` // Add token to Authorization header
+          }
         });
         this.users = response.data;
       } catch (error) {
-        this.error = error.response?.data?.message || "Failed to fetch users";
+        this.error = error.response?.data?.message || 'Failed to fetch users';
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
