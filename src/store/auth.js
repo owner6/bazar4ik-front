@@ -10,6 +10,13 @@ export const useAuthStore = defineStore('auth', {
     },
     logout() {
       this.isLoggedIn = false; // Поміняти на false при виході
+      localStorage.removeItem('authToken');
+    },
+    checkAuthStatus() {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        this.isLoggedIn = true; // Якщо токен є, користувач авторизований
+      }
     }
   }
 });

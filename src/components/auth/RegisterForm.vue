@@ -87,7 +87,6 @@ export default {
     const password = ref('');
     const confirmPassword = ref('');
     const error = ref(null);
-    const passwordError = ref('');
 
     const isValidEmail = computed(() =>
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)
@@ -103,9 +102,17 @@ export default {
       /^[A-Za-zА-Яа-я]{2,50}$/.test(lastname.value.trim())
     );
 
+    const passwordError = computed(() => {
+      if (password.value.length < 8) {
+        return 'Пароль должен быть не менее 8 символов';
+      }
+      return '';
+    });
+
     const doPasswordsMatch = computed(
       () => password.value === confirmPassword.value
     );
+
     const isFormValid = computed(() => {
       return (
         isValidEmail.value &&
@@ -132,12 +139,12 @@ export default {
           password: password.value
         };
 
-        const result = await registerUser(userData); // Виклик API
+        const result = await registerUser(userData); // Call API
         console.log('Registration successful:', result);
-        error.value = null; // reset error
-        emit('close'); // Закриваємо форму
+        error.value = null; // Reset error
+        emit('close'); // Close form
       } catch (err) {
-        error.value = err.message; // Встановлюємо помилку
+        error.value = err.message; // Set error
       }
     };
 
@@ -194,7 +201,7 @@ form {
   margin-top: $spacing-unit;
   color: $color-text;
   cursor: pointer;
-  font-family: 'Roboto', sans-serif; /* Apply Roboto font */
+  font-family: 'Roboto', sans-serif;
 
   &:hover {
     text-decoration: underline;

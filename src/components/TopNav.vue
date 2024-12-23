@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useAuthStore } from '@/store/auth';
 import LoginModal from '@/components/auth/LoginModal.vue';
 
@@ -67,6 +67,11 @@ const showLoginModal = ref(false);
 
 // Вирахувані значення
 const isLoggedIn = computed(() => authStore.isLoggedIn);
+
+// Перевіряємо авторизацію при завантаженні
+onMounted(() => {
+  authStore.checkAuthStatus(); // Перевірка токену і оновлення статусу
+});
 
 // Функція виходу
 const logout = () => {
