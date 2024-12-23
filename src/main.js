@@ -5,6 +5,7 @@ import store from './store';
 import VuelidatePlugin from '@vuelidate/validators';
 import Toast, { POSITION } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
+import { createPinia } from 'pinia';
 
 // Налаштування опцій для toast
 const toastOptions = {
@@ -14,11 +15,13 @@ const toastOptions = {
 };
 
 const app = createApp(App);
+const pinia = createPinia();
 
 // use plugins
 app.use(store);
 app.use(router);
 app.use(VuelidatePlugin);
 app.use(Toast, toastOptions);
+app.use(pinia);
 
 app.mount('#app');
