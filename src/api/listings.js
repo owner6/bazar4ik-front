@@ -65,3 +65,14 @@ export async function fetchInactiveListings() {
     throw error;
   }
 }
+
+//list all listings
+export async function getAllListings() {
+  try {
+    const response = await axiosInstance.get('/all');
+    return response.data;
+  } catch (error) {
+    console.error('Error getting listings:', error);
+    throw error;
+  }
+}
