@@ -3,7 +3,13 @@
     <nav class="bottom-navbar" v-show="showBottomNav || lastScrollY === 0">
       <div class="navbar-content">
         <div class="catalog">
-          <router-link to="/categories">Catalogue</router-link>
+          <router-link to="/categories">
+            <img
+              src="@/assets/icons/shelf--shelf-drawer-cabinet-prodcut-decoration-furniture.svg"
+              alt="Catalogue Icon"
+              class="icon" />
+            Catalogue
+          </router-link>
         </div>
         <div class="categories">
           <router-link to="/category1">Womans fashion</router-link>
@@ -66,6 +72,7 @@ export default {
   padding: 0;
   left: 0;
   top: 75px;
+  z-index: 999;
 }
 
 .navbar-content {
@@ -77,15 +84,47 @@ export default {
 }
 
 .catalog {
-  margin-left: 0;
+  display: flex;
+  align-items: center;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+
+    &:hover {
+      color: map-get($colors, peach);
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+    }
+  }
 }
 
 .categories {
   display: flex;
   gap: 20px;
+
+  a {
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    &:hover {
+      color: #555; // Легка зміна кольору при наведенні
+      text-decoration: underline; // Додаємо підкреслення
+    }
+  }
 }
 
+// Глобальні стилі для лінків
 a {
   text-decoration: none;
+  transition: color 0.3s ease-in-out;
 }
 </style>

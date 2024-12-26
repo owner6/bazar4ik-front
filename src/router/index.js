@@ -4,6 +4,7 @@ import CreateListings from '@/views/CreateListings.vue';
 import UserListings from '@/views/UserListingsView.vue';
 import MyAccount from '@/views/MyAccountView.vue';
 import InactiveListingsView from '@/views/InactiveListingsView.vue';
+import { useAuthStore } from '@/store/auth';
 
 const routes = [
   {
@@ -14,22 +15,34 @@ const routes = [
   {
     path: '/create-listings',
     name: 'createListings',
-    component: CreateListings
+    component: CreateListings,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/user-listings',
     name: 'user',
-    component: UserListings
+    component: UserListings,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/my-account',
     name: 'myAccount',
-    component: MyAccount
+    component: MyAccount,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/inactive-listings',
     name: 'InactiveListings',
-    component: InactiveListingsView
+    component: InactiveListingsView,
+    meta: {
+      requiresAuth: true
+    }
   }
 ];
 
@@ -38,14 +51,13 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  const authToken = localStorage.getItem('authToken');
+router.beforeEach((to) => {
+  const authStore = useAuthStore();
 
-  if (to.matched.some((record) => record.meta.requiresAuth) && authToken) {
-    next('/');
-  } else {
-    next();
+  if (to.meta.requiresAuth && !authStore.isLoggedIn) {
+    return {
+      patch: '/'
+    };
   }
 });
-
 export default router;

@@ -1,5 +1,6 @@
 <template>
   <form @submit.prevent="register">
+    <h2>Register</h2>
     <div>
       <label for="email">Email:</label>
       <input type="email" v-model="email" placeholder="Your email" required />
@@ -171,46 +172,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/scss/main.scss';
-
-form {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-
-  div {
-    margin-bottom: $spacing-unit;
-  }
-
-  button {
-    padding: $spacing-unit;
-    border: none;
-    border-radius: 4px;
-    background-color: map-get($colors, 'peach');
-    color: $color-text;
-    font-size: 1rem;
-    cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
-
-    &:hover {
-      color: $color-text;
-    }
-  }
-}
-
-.toggle {
-  margin-top: $spacing-unit;
-  color: $color-text;
-  cursor: pointer;
-  font-family: 'Roboto', sans-serif;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.error {
-  color: red;
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-}
 </style>
