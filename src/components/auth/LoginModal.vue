@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { useAuthStore } from '@/store/auth'; // Імпортуємо наш store для авторизації
+import { useAuthStore } from '@/store/auth'; // import our store for authorization
 import router from '../../router/index.js';
 import RegisterForm from './RegisterForm.vue';
 import { login } from '../../api/auth';
@@ -57,17 +57,17 @@ export default {
         const userData = await login(this.email, this.password);
         const { token, user } = userData;
 
-        // Збереження токена у localStorage
+        // save token in localStorage
         localStorage.setItem('authToken', token);
 
-        // Зберігаємо дані користувача
+        // save user data
         this.user = user;
 
-        // Викликаємо метод для оновлення статусу авторизації в глобальному store
+        // Викликаємо method for update status authorisation in global store
         const authStore = useAuthStore();
-        authStore.login(); // Увімкнути авторизацію
+        authStore.login(); // on authorisation
 
-        // Перехід на сторінку після входу
+        // Перехід на сторінку post authorisation
         await router.push({ path: '/my-account' });
         this.close();
       } catch (error) {
@@ -76,7 +76,6 @@ export default {
         console.error('Login error:', error);
       }
     },
-
     toggleForm() {
       this.isLoginForm = !this.isLoginForm;
     }

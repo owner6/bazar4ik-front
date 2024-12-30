@@ -1,6 +1,6 @@
 <template>
   <section class="content-category">
-    <nav class="bottom-navbar" v-show="showBottomNav || lastScrollY === 0">
+    <nav class="bottom-navbar" v-show="showBottomNav">
       <div class="navbar-content">
         <div class="catalog">
           <router-link to="/categories">
@@ -27,9 +27,7 @@ export default {
   name: 'BottomNav',
   data() {
     return {
-      showBottomNav: true,
-      lastScrollY: 0,
-      ticking: false
+      showBottomNav: true
     };
   },
   mounted() {
@@ -41,9 +39,9 @@ export default {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
 
-          if (currentScrollY > this.lastScrollY) {
+          if (currentScrollY) {
             this.showBottomNav = false;
-          } else {
+          } else if (currentScrollY < this.lastScrollY) {
             this.showBottomNav = true;
           }
 
@@ -116,15 +114,9 @@ export default {
     font-weight: 500;
 
     &:hover {
-      color: #555; // Легка зміна кольору при наведенні
-      text-decoration: underline; // Додаємо підкреслення
+      color: #555;
+      text-decoration: underline;
     }
   }
-}
-
-// Глобальні стилі для лінків
-a {
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
 }
 </style>

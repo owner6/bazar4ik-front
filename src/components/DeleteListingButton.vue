@@ -4,12 +4,11 @@
 </template>
 
 <script>
-import Alert from '@/components/ui/AlertMessage.vue';
 import { deleteUserListing } from '@/api/listings';
 import { useToast } from 'vue-toastification';
 
 export default {
-  components: { Alert },
+  components: {},
   methods: {
     async handleDelete() {
       const toast = useToast();
