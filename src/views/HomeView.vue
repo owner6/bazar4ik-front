@@ -14,6 +14,72 @@
           <img src="@/assets/images/image-section-right.jpg" />
         </section>
       </div>
+      <div
+        class="benefits"
+        @mousedown="startScroll"
+        @mousemove="moveScroll"
+        @mouseup="stopScroll"
+        @mouseleave="stopScroll">
+        <div class="frame">
+          <div class="logo-frame">
+            <img
+              src="@/assets/icons/shipping-truck--truck-shipping-delivery-transfer.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Free Shipping</h5>
+            <body-3>From 50$</body-3>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="logo-frame">
+            <img
+              src="@/assets/icons/chat-two-bubbles-oval--messages-message-bubble-chat-oval-conversation.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Support 24/7</h5>
+            <body-3>Online 24</body-3>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="logo-frame">
+            <img
+              src="@/assets/icons/arrow-round-right--diagram-round-arrow-right.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Free return</h5>
+            <body-3>365 days</body-3>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="logo-frame">
+            <img
+              src="@/assets/icons/coins-stack--accounting-billing-payment-stack-cash-coins-currency-money-finance.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Easy Selling</h5>
+            <body-3>Millions satisfied sellers</body-3>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="logo-frame">
+            <img
+              src="@/assets/icons/credit-card-1--credit-pay-payment-debit-card-finance-plastic-money-atm.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Online Payment</h5>
+            <body-3>Secure payment</body-3>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="logo-frame">
+            <img src="@/assets/icons/store-1--store-shop-shops-stores.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Easy to Shop</h5>
+            <body-3>99% satisfied buyers</body-3>
+          </div>
+        </div>
+      </div>
       <div class="listings-container">
         <div v-if="loading" class="loading">Loading...</div>
         <div v-else-if="error" class="error">{{ error }}</div>
@@ -55,6 +121,22 @@ export default {
         this.error = 'Failed to load listings.';
         this.loading = false;
       }
+    },
+    startScroll(event) {
+      this.isScrolling = true;
+      this.startX =
+        event.pageX - this.$el.querySelector('.benefits').offsetLeft;
+      this.scrollLeft = this.$el.querySelector('.benefits').scrollLeft;
+    },
+    moveScroll(event) {
+      if (!this.isScrolling) return;
+      event.preventDefault();
+      const x = event.pageX - this.$el.querySelector('.benefits').offsetLeft;
+      const walk = (x - this.startX) * 2;
+      this.$el.querySelector('.benefits').scrollLeft = this.scrollLeft - walk;
+    },
+    stopScroll() {
+      this.isScrolling = false;
     }
   },
   mounted() {
@@ -66,7 +148,6 @@ export default {
 <style lang="scss">
 @import '@/assets/scss/main.scss';
 
-/* Залишаємо тільки стилі, які стосуються HomeView */
 .home-view-container {
   position: relative;
 }
@@ -74,12 +155,13 @@ export default {
 .home-view {
   display: flex;
   gap: 16px;
-  padding: 0 27px;
+  padding: 0 0px;
   flex-wrap: wrap;
 
   .section-left,
   .section-right {
     border-radius: 24px;
+    margin-bottom: 7px;
   }
 
   .section-left {
@@ -90,7 +172,6 @@ export default {
     flex: 1;
     padding: 40px;
     box-sizing: border-box;
-    margin-bottom: 7px;
 
     .section-content {
       display: flex;
@@ -122,7 +203,6 @@ export default {
     img {
       width: 100%;
       height: auto;
-      border-radius: 24px;
     }
   }
 }
@@ -135,9 +215,49 @@ export default {
   }
 
   .listings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    justify-content: space-around;
     gap: 20px;
+    margin: 0 auto;
+    flex-wrap: wrap;
   }
+}
+
+.benefits {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 300px;
+    height: 100%;
+    border-radius: 16px;
+    padding: 36px;
+    background-color: map-get($colors, 'light-gray');
+    min-width: 200px;
+    user-select: none;
+
+    .content-text {
+      display: block;
+      text-align: left;
+    }
+  }
+}
+
+.benefits::-webkit-scrollbar {
+  display: none;
 }
 </style>

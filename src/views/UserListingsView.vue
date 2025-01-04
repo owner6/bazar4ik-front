@@ -1,7 +1,7 @@
 <template>
   <div class="create-listing-page">
     <div class="user-listings">
-      <h1>Your Listings</h1>
+      <h1 class="">Your Listings</h1>
       <nav>
         <router-link to="/inactive-listings">Deactivated Listings</router-link>
       </nav>

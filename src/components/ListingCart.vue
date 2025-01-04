@@ -1,6 +1,6 @@
 <template>
   <div class="listing-card">
-    <img :src="listing.image" class="listing-image" />
+    <img src="../assets/images/doge.webp" class="listing-image" />
     <div class="listing-info">
       <div class="listing-pricing">
         <span class="current-price">${{ listing.price }}</span>
@@ -26,34 +26,32 @@ export default {
 @import '@/assets/scss/main.scss';
 
 .listing-card {
-  position: relative;
-  width: 260px;
-  box-shadow: 0 4px 4px $color-secondary;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  border: $color-tertiary 1px solid;
+
+  width: 334.5px;
+  height: 407px;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 $color-secondary;
   }
 }
 
 .listing-image {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: 299px;
 }
 
 .listing-info {
-  padding: 16px;
+  padding: 16px 18px 16px 18px;
+  height: 100%;
   background: map-get($colors, 'light-gray');
-  border: 1px solid $color-border;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
 
   .listing-title {
     font-size: 16px;
-    margin-bottom: 8px;
     text-align: left;
   }
 
