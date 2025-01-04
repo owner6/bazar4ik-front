@@ -15,6 +15,7 @@ h1 {
   font-family: $font-family-poppins;
   margin-top: 40px;
   margin-bottom: 24px;
+  font-size: 64px;
 }
 
 h2 {
@@ -36,7 +37,7 @@ input
 textarea,
 select {
   padding: map-get($spacings, "lg");
-  border: 0.5px solid #ccc;
+  border: 0.5px solid;
   border-radius: 4px;
   font-size: 1rem;
   font-family: "Roboto", sans-serif;

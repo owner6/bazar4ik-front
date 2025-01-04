@@ -6,7 +6,7 @@
       v-model="query"
       @keyup.enter="onSearch"
       placeholder="Search..." />
-    <button class="search-button" @click="onSearch">Search</button>
+    <button class="search-button" @click="onSearch">SEARCH</button>
   </div>
 </template>
 
@@ -38,11 +38,11 @@ export default {
 .search-input {
   flex: 1;
   padding: 10px 0 10px 0;
-  border: 0.5px solid;
+  border: 0.5px solid $color-border;
   border-radius: 7px;
   background-color: map-get($colors, 'light-green');
   width: 412px;
-  height: 22px;
+  height: 42px;
   background-image: url('/src/assets/icons/magnifying-glass--glass-search-magnifying.svg');
   background-repeat: no-repeat;
   background-position: 10px center;
@@ -51,6 +51,9 @@ export default {
 }
 
 .search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 12px 24px 12px 24px;
   border: none;
   background-color: map-get($colors, 'peach');
@@ -60,6 +63,7 @@ export default {
   width: 95px;
   height: 42px;
   font-family: $font-family-poppins;
+  font-size: $font-size-xxs;
 
   &:hover {
     color: $color-text;

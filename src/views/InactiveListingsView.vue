@@ -69,15 +69,6 @@ export default {
   padding: 1rem;
 }
 
-.error {
-  color: red;
-  margin: 1rem 0;
-}
-
-.loading {
-  margin: 1rem 0;
-}
-
 .listings {
   list-style: none;
   padding: 0;
