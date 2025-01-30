@@ -13,8 +13,7 @@ h1 {
   font-size: map-get($spacings, "md");
   font-weight: 300;
   font-family: $font-family-poppins;
-  margin-top: 40px;
-  margin-bottom: 24px;
+  margin: 40px 0 24px 0;
   font-size: 64px;
 }
 
@@ -25,7 +24,6 @@ h2 {
 h5 {
   font-family: $font-family-poppins;
   font-size: $font-size-h5;
-
 }
 
 body-3 {
@@ -33,7 +31,7 @@ body-3 {
   font-size: $font-size-xxs;
 }
 
-input
+input,
 textarea,
 select {
   padding: map-get($spacings, "lg");
@@ -56,26 +54,30 @@ label {
   color: $color-text;
 }
 
+.container {
+  padding: 0;
+}
+
 @media only screen and (max-width: 600px) {
   .container {
-    padding: 0 0px;
+    padding: 0;
   }
 }
 
 @media only screen and (min-width: 601px) and (max-width: 768px) {
   .container {
-    padding: 0 0px;
+    padding: 0;
   }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   .container {
-    padding: 0 0px;
+    padding: 0;
   }
 }
 
 @media only screen and (min-width: 1025px) {
   .container {
-    padding: 0 0px;
+    padding: 0;
   }
 }

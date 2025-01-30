@@ -27,15 +27,16 @@
               </router-link>
 
               <!-- Динамічні кнопки для авторизації або виходу -->
-              <button
+              <CustomButton
                 v-if="!isLoggedIn"
                 class="tertiary-button"
-                @click="showLoginModal = true">
-                SIGN UP | LOG IN
-              </button>
-              <button v-else class="tertiary-button" @click="logout">
-                LOGOUT
-              </button>
+                :buttonText="loginButtonText"
+                @click="showLoginModal = true" />
+              <CustomButton
+                v-else
+                class="tertiary-button"
+                :buttonText="logoutButtonText"
+                @click="logout" />
 
               <router-link to="/" class="item-help-chat">
                 <img
@@ -60,10 +61,15 @@
 import { ref, computed, onMounted } from 'vue';
 import { useAuthStore } from '@/store/auth';
 import LoginModal from '@/components/auth/LoginModal.vue';
+import CustomButton from '@/components/ui/CustomButton.vue';
 
 // Ініціалізація стану
 const authStore = useAuthStore();
 const showLoginModal = ref(false);
+
+// Тексти кнопок
+const loginButtonText = ref('SIGN UP | LOG IN');
+const logoutButtonText = ref('LOGOUT');
 
 // Вирахувані значення
 const isLoggedIn = computed(() => authStore.isLoggedIn);

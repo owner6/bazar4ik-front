@@ -35,20 +35,15 @@ export default {
   },
   methods: {
     handleScroll() {
-      if (!this.ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
+      const currentScrollY = window.scrollY;
 
-          if (currentScrollY) {
-            this.showBottomNav = false;
-          } else if (currentScrollY < this.lastScrollY) {
-            this.showBottomNav = true;
-          }
-
-          this.lastScrollY = currentScrollY;
-          this.ticking = false;
-        });
+      if (currentScrollY) {
+        this.showBottomNav = false;
+      } else if (currentScrollY < this.lastScrollY) {
+        this.showBottomNav = true;
       }
+
+      this.lastScrollY = currentScrollY;
     }
   }
 };
