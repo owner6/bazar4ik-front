@@ -1,6 +1,6 @@
 <template>
   <button @click="handleToggle" :disabled="loading">
-    {{ loading ? 'Processing...' : buttonText }}
+    {{ loading ? 'Processing...' : authButtonText }}
   </button>
 </template>
 
@@ -25,7 +25,7 @@ export default {
     };
   },
   computed: {
-    buttonText() {
+    authButtonText() {
       return this.isActive ? 'Deactivate' : 'Activate';
     }
   },

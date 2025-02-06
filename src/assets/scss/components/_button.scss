@@ -21,16 +21,6 @@
   }
 }
 
-// Варіації кнопок
-.primary-button {
-  @include button-base(
-      map-get($colors, "peach"),
-      map-get($colors, "white"),
-      darken(map-get($colors, "peach"), 10%),
-      map-get($colors, "white")
-  );
-}
-
 .secondary-button {
   @include button-base(
       map-get($colors, ""),
@@ -38,29 +28,4 @@
       darken(map-get($colors, "peach"), 0%),
       map-get($colors, "")
   );
-}
-
-.tertiary-button {
-  @include button-base(
-      map-get($colors, ""),
-      map-get($colors, ""),
-      darken(map-get($colors, "peach"), 10%),
-      map-get($colors, ""),
-      none
-  );
-
-  &:hover {
-    color: map-get($colors, "peach");
-  }
-}
-
-.outline-button {
-  @include button-base(
-      map-get($colors, "white"),
-      map-get($colors, "peach"),
-      map-get($colors, "light-gray"),
-      darken(map-get($colors, "peach"), 0%)
-  );
-  border: 2px solid map-get($colors, "peach");
-  background-color: transparent;
 }

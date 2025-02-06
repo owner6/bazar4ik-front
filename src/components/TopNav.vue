@@ -29,14 +29,18 @@
               <!-- Динамічні кнопки для авторизації або виходу -->
               <CustomButton
                 v-if="!isLoggedIn"
-                class="tertiary-button"
-                :buttonText="loginButtonText"
-                @click="showLoginModal = true" />
+                type="tertiary"
+                @click="showLoginModal = true">
+                {{ loginButtonText }}
+              </CustomButton>
+
               <CustomButton
                 v-else
-                class="tertiary-button"
-                :buttonText="logoutButtonText"
-                @click="logout" />
+                type="tertiary"
+                @click="logout"
+                class="tertiary">
+                {{ logoutButtonText }}
+              </CustomButton>
 
               <router-link to="/" class="item-help-chat">
                 <img

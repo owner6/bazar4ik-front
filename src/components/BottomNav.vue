@@ -23,28 +23,35 @@
 </template>
 
 <script>
+import { ref, onMounted, onUnmounted } from 'vue';
+
 export default {
   name: 'BottomNav',
-  data() {
-    return {
-      showBottomNav: true
-    };
-  },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
+  setup() {
+    const showBottomNav = ref(true);
+    const lastScrollY = ref(0);
+
+    const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY) {
-        this.showBottomNav = false;
-      } else if (currentScrollY < this.lastScrollY) {
-        this.showBottomNav = true;
+        showBottomNav.value = false;
+      } else if (currentScrollY < lastScrollY.value) {
+        showBottomNav.value = true;
       }
+      lastScrollY.value = currentScrollY;
+    };
 
-      this.lastScrollY = currentScrollY;
-    }
+    onMounted(() => {
+      window.addEventListener('scroll', handleScroll);
+    });
+    onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll);
+    });
+
+    return {
+      showBottomNav
+    };
   }
 };
 </script>

@@ -1,24 +1,37 @@
 <template>
-  <div class="custom-button">
-    <span>{{ buttonText }}</span>
-  </div>
+  <button :class="buttonClass" @click="$emit('click')">
+    <slot></slot>
+  </button>
 </template>
 
 <script setup>
-import { defineProps, defineOptions } from 'vue';
+import { defineProps, computed } from 'vue';
 
-// Оголошення пропсів
-defineProps({
-  buttonText: {
+const props = defineProps({
+  type: {
     type: String,
-    default: 'SIGN UP | LOG IN'
+    default: 'primary',
+    validator: (value) => ['primary', 'secondary', 'tertiary'].includes(value)
   }
 });
 
-// Оголошення імені компонента
-defineOptions({
-  name: 'CustomButton'
+const buttonClass = computed(() => {
+  return {
+    'btn-primary': props.type === 'primary',
+    'btn-secondary': props.type === 'secondary',
+    'btn-tertiary': props.type === 'tertiary'
+  };
 });
 </script>
 
-<style scoped></style>
+<style lang="scss">
+@import '@/assets/scss/main.scss';
+
+.btn-tertiary {
+  font-size: $font-size-xxs;
+
+  &:hover {
+    color: map-get($colors, peach);
+  }
+}
+</style>
