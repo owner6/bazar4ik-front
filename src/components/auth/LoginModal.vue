@@ -3,7 +3,7 @@
     <div class="modal-content">
       <span class="close" @click="close">&times;</span>
 
-      <form v-if="isLoginForm" @submit.prevent="login">
+      <form v-if="isLoginForm" @submit.prevent="handleLogin">
         <h2 v-if="isLoginForm">Login</h2>
         <div>
           <label for="email">Email:</label>
@@ -25,7 +25,8 @@
 </template>
 
 <script>
-import { useAuthStore } from '@/store/auth'; // import our store for authorization
+import { ref } from 'vue';
+import { useAuthStore } from '@/store/auth';
 import router from '../../router/index.js';
 import RegisterForm from './RegisterForm.vue';
 import { login } from '../../api/auth';
@@ -37,48 +38,54 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      email: '',
-      password: '',
-      isLoginForm: true
-    };
-  },
   components: {
     RegisterForm
   },
-  methods: {
-    close() {
-      this.$emit('close');
-    },
+  setup(props, { emit }) {
+    const email = ref('');
+    const password = ref('');
+    const isLoginForm = ref(true);
+    const errorMessage = ref('');
 
-    async login() {
+    const close = () => {
+      emit('close');
+    };
+
+    const toggleForm = () => {
+      isLoginForm.value = !isLoginForm.value;
+    };
+
+    const handleLogin = async () => {
       try {
-        const userData = await login(this.email, this.password);
-        const { token, user } = userData;
+        const userData = await login(email.value, password.value); // використання імпортованої функції login
+        const { token } = userData; // використовуємо лише token, оскільки user не потрібен
 
-        // save token in localStorage
+        // Save token in localStorage
         localStorage.setItem('authToken', token);
 
-        // save user data
-        this.user = user;
-
-        // Викликаємо method for update status authorisation in global store
+        // Update authorization status in the store
         const authStore = useAuthStore();
-        authStore.login(); // on authorisation
+        authStore.login();
 
-        // Перехід на сторінку post authorisation
+        // Redirect to the account page after successful login
         await router.push({ path: '/my-account' });
-        this.close();
+        close();
       } catch (error) {
-        this.errorMessage =
+        errorMessage.value =
           'Помилка входу. Перевірте дані та спробуйте ще раз.';
         console.error('Login error:', error);
       }
-    },
-    toggleForm() {
-      this.isLoginForm = !this.isLoginForm;
-    }
+    };
+
+    return {
+      email,
+      password,
+      isLoginForm,
+      errorMessage,
+      close,
+      toggleForm,
+      handleLogin
+    };
   }
 };
 </script>

@@ -17,8 +17,7 @@
 
 <script>
 export default {
-  name: 'SiteFooter',
-  components: {}
+  name: 'SiteFooter'
 };
 </script>
 

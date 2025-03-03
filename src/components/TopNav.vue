@@ -16,7 +16,7 @@
                   alt="Favorites" />
               </router-link>
 
-              <router-link to="/create-listings" class="secondary-button">
+              <router-link to="/create-listings" class="btn-tertiary">
                 SELL NOW
               </router-link>
 
@@ -30,7 +30,8 @@
               <CustomButton
                 v-if="!isLoggedIn"
                 type="tertiary"
-                @click="showLoginModal = true">
+                @click="showLoginModal = true"
+                class="tertiary">
                 {{ loginButtonText }}
               </CustomButton>
 

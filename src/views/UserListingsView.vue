@@ -1,7 +1,7 @@
 <template>
   <div class="create-listing-page">
     <div class="user-listings">
-      <h1 class="">Your Listings</h1>
+      <h1>Your Listings</h1>
       <nav>
         <router-link to="/inactive-listings">Deactivated Listings</router-link>
       </nav>
@@ -15,10 +15,14 @@
           <p><strong>Price:</strong> ${{ listing.price }}</p>
           <p><strong>Category:</strong> {{ listing.category }}</p>
           <button @click="openEditModal(listing)">Edit</button>
-          <DeactivateListingButton
-            :listingId="listing.id"
+
+          <CustomButton
             :isActive="listing.isActive"
-            @statusToggled="handleStatusToggled" />
+            :action="() => toggleListingStatus(listing.id)"
+            @click="handleStatusToggled(listing.id, !listing.isActive)">
+            {{ listing.isActive ? 'Deactivate' : 'Activate' }}
+          </CustomButton>
+
           <DeleteListingButton
             :listingId="listing.id"
             :onDeleteSuccess="fetchUserListings" />
@@ -59,165 +63,270 @@
   </div>
 </template>
 
-<script>
-import { updateListing, fetchUserListings } from '@/api/listings';
-import DeleteListingButton from '@/components/DeleteListingButton.vue';
-import DeactivateListingButton from '@/components/DeactivateListingButton.vue';
+<script setup>
+import { ref, onMounted } from 'vue';
 import { useToast } from 'vue-toastification';
+import {
+  updateListing as apiUpdateListing,
+  fetchUserListings as apiFetchUserListings,
+  toggleListingStatus as apiToggleListingStatus
+} from '@/api/listings';
+import DeleteListingButton from '@/components/DeleteListingButton.vue';
+import CustomButton from '@/components/ui/CustomButton.vue';
 
-export default {
-  components: {
-    DeleteListingButton,
-    DeactivateListingButton
-  },
-  data() {
-    return {
-      listing: {
-        title: '',
-        description: '',
-        price: '',
-        category: ''
-      },
-      userListings: [],
-      categories: ['Electronics', 'Clothing', 'Books', 'Home Goods'],
-      isEditing: false // Track if editing mode is active
-    };
-  },
+const toast = useToast();
 
-  mounted() {
-    this.fetchUserListings();
-  },
+// Реактивні змінні
+const listing = ref({
+  title: '',
+  description: '',
+  price: '',
+  category: ''
+});
 
-  methods: {
-    resetForm() {
-      this.listing = {
-        title: '',
-        description: '',
-        price: '',
-        category: ''
-      };
-    },
+const userListings = ref([]);
+const categories = ref(['Electronics', 'Clothing', 'Books', 'Home Goods']);
+const isEditing = ref(false);
 
-    async fetchUserListings() {
-      try {
-        this.userListings = await fetchUserListings();
-      } catch (error) {
-        console.error('Error fetching listings:', error);
-      }
-    },
+// Метод для скидання форми
+const resetForm = () => {
+  listing.value = {
+    title: '',
+    description: '',
+    price: '',
+    category: ''
+  };
+};
 
-    async updateListing() {
-      const toast = useToast();
-      try {
-        await updateListing(this.listing.id, this.listing);
-
-        toast.success('Listing updated successfully!');
-        console.log('Listing updated successfully');
-
-        this.closeEditModal();
-        await this.fetchUserListings(); //update list listings
-      } catch (error) {
-        console.error('Error updating listing:', error);
-      }
-    },
-    openEditModal(listing) {
-      this.isEditing = true;
-      this.listing = { ...listing };
-    },
-    closeEditModal() {
-      this.isEditing = false;
-      this.resetForm();
-    },
-    async handleStatusToggled(listingId, isActive) {
-      const toast = useToast();
-      if (!isActive) {
-        // Видаляємо зі списку деактивовані картки
-        this.userListings = this.userListings.filter(
-          (listing) => listing.id !== listingId
-        );
-      }
-      toast.success('Listing updated successfully!');
-    }
+// Отримання списку оголошень
+const fetchUserListings = async () => {
+  try {
+    userListings.value = await apiFetchUserListings();
+  } catch (error) {
+    console.error('Error fetching listings:', error);
   }
 };
+
+// Оновлення оголошення
+const updateListing = async () => {
+  try {
+    await apiUpdateListing(listing.value.id, listing.value);
+    toast.success('Listing updated successfully!');
+    closeEditModal();
+    await fetchUserListings(); // Оновити список після зміни
+  } catch (error) {
+    console.error('Error updating listing:', error);
+  }
+};
+
+// Зміна статусу оголошення
+const toggleListingStatus = async (listingId) => {
+  try {
+    await apiToggleListingStatus(listingId);
+    await fetchUserListings(); // Оновити список після зміни статусу
+  } catch (error) {
+    console.error('Error toggling listing status:', error);
+  }
+};
+
+// Відкриття модального вікна для редагування
+const openEditModal = (listingData) => {
+  isEditing.value = true;
+  listing.value = { ...listingData };
+};
+
+// Закриття модального вікна
+const closeEditModal = () => {
+  isEditing.value = false;
+  resetForm();
+};
+
+// Обробник зміни статусу
+const handleStatusToggled = (listingId, isActive) => {
+  if (!isActive) {
+    userListings.value = userListings.value.filter(
+      (listing) => listing.id !== listingId
+    );
+  }
+  toast.success('Listing updated successfully!');
+};
+
+// Завантаження списку оголошень при монтуванні компонента
+onMounted(() => {
+  fetchUserListings();
+});
 </script>
 
 <style lang="scss">
 @import '@/assets/scss/main.scss';
 
+.create-listing-page {
+  margin: 0 auto;
+}
+
 .user-listings {
-  margin-top: 30px;
+  width: 1400px;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.user-listings h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Navigation styles */
+nav {
+  margin-bottom: 2rem;
+}
+
+nav a:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+/* Listing grid */
+.listing-item {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.listing-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.listing-item h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.listing-item p {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+/* Modal styles */
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.edit-modal > div {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.edit-modal h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 500;
+  color: #555;
+}
+
+input,
+textarea,
+select {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Custom button variations */
+.custom-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .create-listing-page {
+    padding: 1rem;
+  }
+
+  .user-listings {
+    padding: 1rem;
+  }
 
   .listing-item {
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-
-    h3 {
-      margin: 0;
-      font-size: 20px;
-      color: #333;
-    }
-
-    p {
-      margin: 5px 0;
-      color: #555;
-    }
-
-    strong {
-      font-weight: 600;
-    }
+    padding: 1rem;
   }
 }
 
-.edit-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-
-  h2 {
-    margin-top: 0;
+/* Light/Dark mode support */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
+  .user-listings {
+    background: white;
+  }
 
-    label {
-      margin-top: 10px;
-      font-weight: 600;
-    }
+  .listing-item {
+    background: white;
+  }
+}
 
-    input,
-    textarea,
-    select {
-      margin-top: 5px;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+  }
 
-    button {
-      margin-top: 15px;
-      padding: 10px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
+  .user-listings {
+    background: #2a2a2a;
+  }
 
-      &:last-child {
-        background-color: #ccc;
-      }
-    }
+  .listing-item {
+    background: #2a2a2a;
+    border-color: #333;
+  }
+
+  input,
+  textarea,
+  select {
+    background: #333;
+    border-color: #444;
+    color: white;
   }
 }
 </style>

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { ref, computed } from 'vue';
 import { toggleListingStatus } from '@/api/listings';
 
 export default {
@@ -19,29 +20,31 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      loading: false
-    };
-  },
-  computed: {
-    authButtonText() {
-      return this.isActive ? 'Deactivate' : 'Activate';
-    }
-  },
-  methods: {
-    async handleToggle() {
-      this.loading = true;
+  setup(props, { emit }) {
+    const loading = ref(false);
+
+    const authButtonText = computed(() => {
+      return props.isActive ? 'Deactivate' : 'Activate';
+    });
+
+    const handleToggle = async () => {
+      loading.value = true;
       try {
-        await toggleListingStatus(this.listingId);
+        await toggleListingStatus(props.listingId);
         // Емісія події для оновлення списку в батьківському компоненті
-        this.$emit('statusToggled', this.listingId);
+        emit('statusToggled', props.listingId);
       } catch (error) {
         console.error('Failed to toggle listing status:', error);
       } finally {
-        this.loading = false;
+        loading.value = false;
       }
-    }
+    };
+
+    return {
+      loading,
+      authButtonText,
+      handleToggle
+    };
   }
 };
 </script>

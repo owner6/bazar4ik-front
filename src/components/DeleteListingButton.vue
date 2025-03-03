@@ -8,7 +8,6 @@ import { deleteUserListing } from '@/api/listings';
 import { useToast } from 'vue-toastification';
 
 export default {
-  components: {},
   methods: {
     async handleDelete() {
       const toast = useToast();
