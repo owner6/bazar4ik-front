@@ -56,8 +56,10 @@ router.beforeEach((to) => {
 
   if (to.meta.requiresAuth && !authStore.isLoggedIn) {
     return {
-      patch: '/'
+      path: '/'
     };
   }
+
+  return true;
 });
 export default router;

@@ -1,6 +1,6 @@
 <template>
   <section class="content-category">
-    <nav class="bottom-navbar" v-show="showBottomNav">
+    <nav v-if="isHomePage" class="bottom-navbar" v-show="showBottomNav">
       <div class="navbar-content">
         <div class="catalog">
           <router-link to="/categories">
@@ -23,13 +23,16 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 export default {
   name: 'BottomNav',
   setup() {
     const showBottomNav = ref(true);
     const lastScrollY = ref(0);
+    const route = useRoute();
+    const isHomePage = computed(() => route.path === '/');
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -50,7 +53,8 @@ export default {
     });
 
     return {
-      showBottomNav
+      showBottomNav,
+      isHomePage
     };
   }
 };
