@@ -16,7 +16,7 @@
                   alt="Favorites" />
               </router-link>
 
-              <router-link to="/create-listings" class="btn-tertiary">
+              <router-link to="/create-listings" class="btn-secondary">
                 SELL NOW
               </router-link>
 

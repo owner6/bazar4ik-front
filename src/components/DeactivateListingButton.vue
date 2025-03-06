@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleToggle" :disabled="loading">
+  <button :disabled="loading" @click="handleToggle">
     {{ loading ? 'Processing...' : authButtonText }}
   </button>
 </template>
@@ -20,6 +20,7 @@ export default {
       required: true
     }
   },
+  emits: ['statusToggled'],
   setup(props, { emit }) {
     const loading = ref(false);
 

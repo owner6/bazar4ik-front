@@ -1,6 +1,6 @@
 <template>
   <button :class="buttonClass" @click="handleClick">
-    <slot></slot>
+    <slot />
   </button>
 </template>
 
@@ -42,19 +42,19 @@ const buttonClass = computed(() => {
 
 .btn-tertiary {
   font-size: $font-size-xxs;
-  color: map-get($colors, text);
 
   &:hover {
     color: map-get($colors, peach);
   }
 }
 
-@mixin button-base() {
-  border: $border;
-
+.btn-secondary {
+  font-size: $font-size-xxs;
+  border: solid 1px;
+  border-radius: 7px;
+  padding: 12px 24px 12px 24px;
   &:hover {
-    color: $hover-text-color;
-    border-color: map-get($colors, 'peach');
+    color: map-get($colors, peach);
   }
 }
 </style>

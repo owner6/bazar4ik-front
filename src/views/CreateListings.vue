@@ -1,35 +1,37 @@
 <template>
   <div class="create-listing-page">
     <h1>Create New Listing</h1>
-    <form @submit.prevent="createListing" class="listing-form">
+    <form class="listing-form" @submit.prevent="createListing">
       <div class="form-group">
         <label for="title">Title:</label>
         <input
-          type="text"
-          v-model="listing.title"
           id="title"
+          v-model="listing.title"
+          type="text"
           placeholder="Enter listing title"
           required />
       </div>
+
       <div class="form-group">
         <label for="description">Description:</label>
         <textarea
-          v-model="listing.description"
           id="description"
+          v-model="listing.description"
           placeholder="Enter description"
-          required></textarea>
+          required />
 
         <label for="price">Price:</label>
         <input
-          type="number"
-          v-model="listing.price"
           id="price"
+          v-model="listing.price"
+          type="number"
           placeholder="Enter price"
           required />
       </div>
+
       <div class="form-group">
         <label for="category">Category:</label>
-        <select v-model="listing.category" id="category" required>
+        <select id="category" v-model="listing.category" required>
           <option value="" disabled>Select a category</option>
           <option
             v-for="category in categories"
