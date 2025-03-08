@@ -96,7 +96,7 @@
 
 <script>
 import SearchComponent from '@/shared/components/SearchPanel.vue';
-import ListingCart from '@/features/user/component/Listing.vue';
+import ListingCart from '@/features/listing/components/Listing.vue';
 import { getAllListings } from '@/features/listing/services/listingsApi';
 
 export default {

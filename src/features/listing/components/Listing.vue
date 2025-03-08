@@ -7,11 +7,6 @@
       </div>
       <h3 class="listing-title">{{ listing.title }}</h3>
     </div>
-    <div class="listing-actions">
-      <Button>
-
-      </Button>
-    </div>
   </div>
 </template>
 

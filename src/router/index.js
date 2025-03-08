@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
-import CreateListings from '@/views/CreateListings.vue';
-import UserListings from '@/views/UserListingsView.vue';
-import MyAccount from '@/views/MyAccountView.vue';
-import InactiveListingsView from '@/views/InactiveListingsView.vue';
+import CreateListings from '@/features/listing/views/CreateListings.vue';
+import UserListings from '@/features/user/views/UserListingsView.vue';
+import MyAccount from '@/features/user/views/MyAccountView.vue';
+import InactiveListingsView from '@/features/listing/views/InactiveListingsView.vue';
 import { useAuthStore } from '@/store/auth';
 
 const routes = [
