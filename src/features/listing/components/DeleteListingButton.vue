@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { deleteUserListing } from '@/api/listings';
+import { deleteUserListing } from '@/features/listing/services/listingsApi';
 import { useToast } from 'vue-toastification';
 
 export default {

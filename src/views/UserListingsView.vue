@@ -70,9 +70,9 @@ import {
   updateListing as apiUpdateListing,
   fetchUserListings as apiFetchUserListings,
   toggleListingStatus as apiToggleListingStatus
-} from '@/api/listings';
-import DeleteListingButton from '@/components/DeleteListingButton.vue';
-import CustomButton from '@/components/ui/CustomButton.vue';
+} from '@/features/listing/services/listingsApi';
+import DeleteListingButton from '@/features/listing/components/DeleteListingButton.vue';
+import CustomButton from '@/shared/components/CustomButton.vue';
 
 const toast = useToast();
 
@@ -158,7 +158,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/main.scss';
+@import '@/assets/scss/main';
 
 .create-listing-page {
   margin: 0 auto;

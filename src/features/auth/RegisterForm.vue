@@ -76,7 +76,7 @@
 
 <script>
 import { computed, ref } from 'vue';
-import { registerUser } from '@/api/auth'; // import function registration
+import { registerUser } from '@/shared/api/auth'; // import function registration
 
 export default {
   emits: ['toggle', 'close'],
@@ -171,5 +171,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/main.scss';
+@import '@/assets/scss/main';
 </style>

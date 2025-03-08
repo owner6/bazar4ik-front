@@ -29,7 +29,7 @@ import { ref } from 'vue';
 import { useAuthStore } from '@/store/auth';
 import router from '../../router/index.js';
 import RegisterForm from './RegisterForm.vue';
-import { login } from '../../api/auth';
+import { login } from '@/shared/api/auth';
 
 export default {
   props: {
@@ -91,5 +91,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/main.scss';
+@import '@/assets/scss/main';
 </style>

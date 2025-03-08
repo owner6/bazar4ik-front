@@ -1,4 +1,4 @@
-import axiosInstance from './axiosInstans';
+import axiosInstance from '../../../shared/api/axiosInstans';
 
 // function for create listing
 export async function createListing(listingData) {

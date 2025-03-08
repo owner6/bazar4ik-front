@@ -12,7 +12,7 @@
             <div class="buttons">
               <router-link to="/">
                 <img
-                  src="../assets/icons/heart--reward-social-rating-media-heart-it-like-favorite-love.svg"
+                  src="../../assets/icons/heart--reward-social-rating-media-heart-it-like-favorite-love.svg"
                   alt="Favorites" />
               </router-link>
 
@@ -22,7 +22,7 @@
 
               <router-link v-if="isLoggedIn" to="/my-account">
                 <img
-                  src="../assets/icons/user-circle-single--circle-geometric-human-person-single-user.svg"
+                  src="../../assets/icons/user-circle-single--circle-geometric-human-person-single-user.svg"
                   alt="My Account" />
               </router-link>
 
@@ -45,7 +45,7 @@
 
               <router-link to="/" class="item-help-chat">
                 <img
-                  src="../assets/icons/chat-bubble-square-question--bubble-square-messages-notification-chat-message-question-help.svg"
+                  src="../../assets/icons/chat-bubble-square-question--bubble-square-messages-notification-chat-message-question-help.svg"
                   alt="Help Chat" />
               </router-link>
 
@@ -65,8 +65,8 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useAuthStore } from '@/store/auth';
-import LoginModal from '@/components/auth/LoginModal.vue';
-import CustomButton from '@/components/ui/CustomButton.vue';
+import LoginModal from '@/features/auth/LoginModal.vue';
+import CustomButton from '@/shared/components/CustomButton.vue';
 
 // Ініціалізація стану
 const authStore = useAuthStore();
@@ -102,5 +102,5 @@ const handleLoginSuccess = () => {
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/main.scss';
+@import '@/assets/scss/main';
 </style>

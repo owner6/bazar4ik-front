@@ -5,7 +5,7 @@
         <div class="catalog">
           <router-link to="/categories">
             <img
-              src="@/assets/icons/shelf--shelf-drawer-cabinet-prodcut-decoration-furniture.svg"
+              src="../../assets/icons/shelf--shelf-drawer-cabinet-prodcut-decoration-furniture.svg"
               alt="Catalogue Icon"
               class="icon" />
             Catalogue
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/main.scss';
+@import '@/assets/scss/main';
 
 .bottom-navbar {
   position: fixed;

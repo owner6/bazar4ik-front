@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { createListing } from '@/api/listings.js';
+import { createListing } from '@/features/listing/services/listingsApi.js';
 
 export default {
   data() {
@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/main.scss';
+@import '@/assets/scss/main';
 
 .create-listing-page {
   margin: 0 auto;

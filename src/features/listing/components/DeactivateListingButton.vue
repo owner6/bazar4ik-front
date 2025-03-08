@@ -6,7 +6,7 @@
 
 <script>
 import { ref, computed } from 'vue';
-import { toggleListingStatus } from '@/api/listings';
+import { toggleListingStatus } from '@/features/listing/services/listingsApi';
 
 export default {
   name: 'DeactivateListingButton',

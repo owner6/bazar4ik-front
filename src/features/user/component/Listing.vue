@@ -1,11 +1,16 @@
 <template>
   <div class="listing-card">
-    <img src="../assets/images/doge.webp" class="listing-image" />
+    <img src="../../../assets/images/doge.webp" class="listing-image" />
     <div class="listing-info">
       <div class="listing-pricing">
         <span class="current-price">${{ listing.price }}</span>
       </div>
       <h3 class="listing-title">{{ listing.title }}</h3>
+    </div>
+    <div class="listing-actions">
+      <Button>
+
+      </Button>
     </div>
   </div>
 </template>
@@ -23,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/main.scss';
+@import '@/assets/scss/main';
 
 .listing-card {
   overflow: hidden;

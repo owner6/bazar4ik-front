@@ -95,9 +95,9 @@
 </template>
 
 <script>
-import SearchComponent from '../components/SearchPanel.vue';
-import ListingCart from '../components/ListingCart';
-import { getAllListings } from '../api/listings';
+import SearchComponent from '@/shared/components/SearchPanel.vue';
+import ListingCart from '@/features/user/component/Listing.vue';
+import { getAllListings } from '@/features/listing/services/listingsApi';
 
 export default {
   name: 'HomeView',
@@ -146,7 +146,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/main.scss';
+@import '@/assets/scss/main';
 
 .home-view-container {
   position: relative;

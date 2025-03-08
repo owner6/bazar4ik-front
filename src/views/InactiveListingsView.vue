@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import { fetchInactiveListings } from '@/api/listings';
-import DeactivateListingButton from '@/components/DeactivateListingButton.vue';
+import { fetchInactiveListings } from '@/features/listing/services/listingsApi';
+import DeactivateListingButton from '@/features/listing/components/DeactivateListingButton.vue';
 import { useToast } from 'vue-toastification';
 
 export default {
