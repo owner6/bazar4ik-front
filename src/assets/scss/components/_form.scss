@@ -7,7 +7,7 @@ form {
   flex-direction: column;
   gap: $spacing-unit;
   font-family: $font-family-poppins;
-  background-color: map-get($colors, light-gray);
+  background-color: map-get($colors, white);
   padding: map-get($spacings, lg);
   border-radius: 8px;
 

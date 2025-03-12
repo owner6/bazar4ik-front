@@ -85,6 +85,7 @@ const buttonClass = computed(() => {
   border: solid 1px map-get($colors, black);
   border-radius: 7px;
   padding: 12px 24px;
+  margin-right: 0.5rem;
 
   &:hover {
     color: map-get($colors, peach);

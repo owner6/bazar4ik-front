@@ -7,13 +7,13 @@
       <div class="view-mode-toggle">
         <button
           @click="setViewMode('active')"
-          :class="{ active: viewMode === 'active' }"
+          class="btn-tertiary"
         >
           Active Listings
         </button>
         <button
           @click="setViewMode('inactive')"
-          :class="{ active: viewMode === 'inactive' }"
+          class="btn-tertiary"
         >
           Deactivated Listings
         </button>
@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <!-- Список деактивованих оголошень -->
+      <!-- list deactivated listings -->
       <div v-else>
         <h2>Deactivated Listings</h2>
         <div v-if="inactiveListings.length && !loading" class="listings">
@@ -275,37 +275,6 @@ onMounted(() => {
 .user-listings {
   width: 1400px;
   border-radius: 12px;
-  padding: 2rem;
-}
-
-.user-listings h1 {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 1.5rem;
-}
-
-.view-mode-toggle {
-  margin-bottom: 2rem;
-}
-
-.view-mode-toggle button {
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
-  border: 1px solid map-get($colors, light-gray);
-  border-radius: 6px;
-  background: map-get($colors, light-gray);
-  cursor: pointer;
-}
-
-.view-mode-toggle button.active {
-  background: #007bff;
-  color: white;
-  border-color: #007bff;
-}
-
-.listings {
-  list-style: none;
-  padding: 0;
 }
 
 .listing-item {
@@ -316,7 +285,7 @@ onMounted(() => {
 }
 
 .listing-item:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px map-get($colors, light-gray);
 }
 
 .listing-item h3 {
@@ -330,21 +299,6 @@ onMounted(() => {
   margin-bottom: 0.5rem;
 }
 
-.btn-secondary {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  background: #f5f5f5;
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  background: #ddd;
-}
-
 /* Modal styles */
 .edit-modal {
   position: fixed;
@@ -352,7 +306,7 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: $color-text;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -360,12 +314,11 @@ onMounted(() => {
 }
 
 .modal-content {
-  background: white;
+  background: $color-base;
   padding: 2rem;
   border-radius: 12px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 1400px;
 }
 
 .edit-modal h2 {
