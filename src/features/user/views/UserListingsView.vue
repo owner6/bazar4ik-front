@@ -173,7 +173,7 @@ const fetchActiveListings = async () => {
   }
 };
 
-// Завантаження деактивованих оголошень
+// download deactivated listings
 const fetchInactiveListingsData = async () => {
   loading.value = true;
   try {
@@ -186,7 +186,7 @@ const fetchInactiveListingsData = async () => {
   }
 };
 
-// Перемикання режиму перегляду
+// Перемикання mode перегляду
 const setViewMode = (mode) => {
   viewMode.value = mode;
   if (mode === 'active') {
@@ -196,19 +196,19 @@ const setViewMode = (mode) => {
   }
 };
 
-// Відкриття модального вікна для редагування
+// open modal window for editing
 const openEditModal = (listingData) => {
   isEditing.value = true;
   listing.value = { ...listingData };
 };
 
-// Закриття модального вікна
+// close modal window
 const closeEditModal = () => {
   isEditing.value = false;
   resetForm();
 };
 
-// Оновлення оголошення
+// update listing
 const updateListing = async () => {
   try {
     await apiUpdateListing(listing.value.id, listing.value);
@@ -225,7 +225,7 @@ const updateListing = async () => {
   }
 };
 
-// Зміна статусу оголошення
+// Зміна status listing
 const toggleListingStatus = async (listingId) => {
   try {
     await apiToggleListingStatus(listingId);
@@ -241,7 +241,7 @@ const toggleListingStatus = async (listingId) => {
   }
 };
 
-// Видалення оголошення
+// delete listing
 const deleteListing = async (listingId) => {
   if (confirm('Are you sure you want to delete this listing?')) {
     try {
@@ -259,7 +259,7 @@ const deleteListing = async (listingId) => {
   }
 };
 
-// Завантаження активних оголошень при монтуванні компонента
+// download active listings при монтуванні component
 onMounted(() => {
   fetchActiveListings();
 });
@@ -291,9 +291,9 @@ onMounted(() => {
 .view-mode-toggle button {
   padding: 0.5rem 1rem;
   margin-right: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid map-get($colors, light-gray);
   border-radius: 6px;
-  background: #f5f5f5;
+  background: map-get($colors, light-gray);
   cursor: pointer;
 }
 
