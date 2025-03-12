@@ -1,64 +1,120 @@
 <template>
-  <div class="create-listing-page">
+  <div class="user-listings-page">
     <div class="user-listings">
       <h1>Your Listings</h1>
-      <nav>
-        <router-link to="/inactive-listings">Deactivated Listings</router-link>
-      </nav>
-      <div v-if="userListings.length">
-        <div
-          v-for="listing in userListings"
-          :key="listing.id"
-          class="listing-item">
-          <h3>{{ listing.title }}</h3>
-          <p>{{ listing.description }}</p>
-          <p><strong>Price:</strong> ${{ listing.price }}</p>
-          <p><strong>Category:</strong> {{ listing.category }}</p>
-          <button @click="openEditModal(listing)">Edit</button>
 
-          <CustomButton
-            :isActive="listing.isActive"
-            :action="() => toggleListingStatus(listing.id)"
-            @click="handleStatusToggled(listing.id, !listing.isActive)">
-            {{ listing.isActive ? 'Deactivate' : 'Activate' }}
-          </CustomButton>
+      <!-- Перемикач active and deactive listings -->
+      <div class="view-mode-toggle">
+        <button
+          @click="setViewMode('active')"
+          :class="{ active: viewMode === 'active' }"
+        >
+          Active Listings
+        </button>
+        <button
+          @click="setViewMode('inactive')"
+          :class="{ active: viewMode === 'inactive' }"
+        >
+          Deactivated Listings
+        </button>
+      </div>
 
-          <DeleteListingButton
-            :listingId="listing.id"
-            :onDeleteSuccess="fetchUserListings" />
+      <!-- list active listings -->
+      <div v-if="viewMode === 'active'">
+        <h2>Active Listings</h2>
+        <div v-if="userListings.length && !loading" class="listings">
+          <div
+            v-for="listing in userListings"
+            :key="listing.id"
+            class="listing-item"
+          >
+            <h3>{{ listing.title }}</h3>
+            <p>{{ listing.description }}</p>
+            <p><strong>Price:</strong> ${{ listing.price }}</p>
+            <p><strong>Category:</strong> {{ listing.category }}</p>
+
+            <button @click="openEditModal(listing)" class="btn-secondary">
+              Edit
+            </button>
+            <button
+              @click="toggleListingStatus(listing.id)"
+              class="btn-secondary"
+            >
+              {{ listing.isActive ? 'Deactivate' : 'Activate' }}
+            </button>
+            <button @click="deleteListing(listing.id)" class="btn-secondary">
+              Delete
+            </button>
+          </div>
+        </div>
+        <div v-else-if="!loading">
+          <p>No active listings found.</p>
         </div>
       </div>
+
+      <!-- Список деактивованих оголошень -->
       <div v-else>
-        <p>No listings found.</p>
+        <h2>Deactivated Listings</h2>
+        <div v-if="inactiveListings.length && !loading" class="listings">
+          <div
+            v-for="listing in inactiveListings"
+            :key="listing.id"
+            class="listing-item"
+          >
+            <h3>{{ listing.title }}</h3>
+            <p>{{ listing.description }}</p>
+            <p><strong>Price:</strong> ${{ listing.price }}</p>
+            <p><strong>Category:</strong> {{ listing.category }}</p>
+
+            <button @click="openEditModal(listing)" class="btn-secondary">
+              Edit
+            </button>
+            <button
+              @click="toggleListingStatus(listing.id)"
+              class="btn-secondary"
+            >
+              {{ listing.isActive ? 'Deactivate' : 'Activate' }}
+            </button>
+            <button @click="deleteListing(listing.id)" class="btn-secondary">
+              Delete
+            </button>
+          </div>
+        </div>
+        <div v-else-if="!loading">
+          <p>No deactivated listings found.</p>
+        </div>
       </div>
-    </div>
 
-    <!-- Edit Modal -->
-    <div v-if="isEditing" class="edit-modal">
-      <h2>Edit Listing</h2>
-      <form @submit.prevent="updateListing">
-        <label>Title:</label>
-        <input v-model="listing.title" required />
+      <!-- Modal window for editing -->
+      <div v-if="isEditing" class="edit-modal">
+        <div class="modal-content">
+          <h2>Edit Listing</h2>
+          <form @submit.prevent="updateListing">
+            <label>Title:</label>
+            <input v-model="listing.title" required />
 
-        <label>Description:</label>
-        <textarea v-model="listing.description" required></textarea>
+            <label>Description:</label>
+            <textarea v-model="listing.description" required></textarea>
 
-        <label>Price:</label>
-        <input type="number" v-model="listing.price" required />
+            <label>Price:</label>
+            <input type="number" v-model="listing.price" required />
 
-        <label>Category:</label>
-        <select v-model="listing.category" required>
-          <option
-            v-for="category in categories"
-            :key="category"
-            :value="category">
-            {{ category }}
-          </option>
-        </select>
+            <label>Category:</label>
+            <select v-model="listing.category" required>
+              <option
+                v-for="category in categories"
+                :key="category"
+                :value="category"
+              >
+                {{ category }}
+              </option>
+            </select>
 
-        <button type="submit">Save Changes</button>
-        <button type="button" @click="closeEditModal">Cancel</button>
-      </form>
+            <button type="submit">Save Changes</button>
+            <button type="button" @click="closeEditModal">Cancel</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -67,65 +123,76 @@
 import { ref, onMounted } from 'vue';
 import { useToast } from 'vue-toastification';
 import {
-  updateListing as apiUpdateListing,
   fetchUserListings as apiFetchUserListings,
-  toggleListingStatus as apiToggleListingStatus
+  fetchInactiveListings,
+  updateListing as apiUpdateListing,
+  toggleListingStatus as apiToggleListingStatus,
+  deleteUserListing,
 } from '@/features/listing/services/listingsApi';
-import DeleteListingButton from '@/features/listing/components/DeleteListingButton.vue';
-import CustomButton from '@/shared/components/CustomButton.vue';
 
 const toast = useToast();
 
-// Реактивні змінні
+// reactive variables
+const viewMode = ref('active'); // Режим перегляду: 'active' or 'inactive'
+const userListings = ref([]); // list active listings
+const inactiveListings = ref([]); // list deactive listings
+const loading = ref(false); // status download
+const isEditing = ref(false); // status modal window
 const listing = ref({
+  id: null,
   title: '',
   description: '',
   price: '',
-  category: ''
+  category: '',
+  isActive: true,
 });
-
-const userListings = ref([]);
 const categories = ref(['Electronics', 'Clothing', 'Books', 'Home Goods']);
-const isEditing = ref(false);
 
-// Метод для скидання форми
+// reset forms
 const resetForm = () => {
   listing.value = {
+    id: null,
     title: '',
     description: '',
     price: '',
-    category: ''
+    category: '',
+    isActive: true,
   };
 };
 
-// Отримання списку оголошень
-const fetchUserListings = async () => {
+// download active listings
+const fetchActiveListings = async () => {
+  loading.value = true;
   try {
     userListings.value = await apiFetchUserListings();
   } catch (error) {
-    console.error('Error fetching listings:', error);
+    console.error('Error fetching active listings:', error);
+    toast.error('Failed to load active listings.');
+  } finally {
+    loading.value = false;
   }
 };
 
-// Оновлення оголошення
-const updateListing = async () => {
+// Завантаження деактивованих оголошень
+const fetchInactiveListingsData = async () => {
+  loading.value = true;
   try {
-    await apiUpdateListing(listing.value.id, listing.value);
-    toast.success('Listing updated successfully!');
-    closeEditModal();
-    await fetchUserListings(); // Оновити список після зміни
+    inactiveListings.value = await fetchInactiveListings();
   } catch (error) {
-    console.error('Error updating listing:', error);
+    console.error('Error fetching inactive listings:', error);
+    toast.error('Failed to load deactivated listings.');
+  } finally {
+    loading.value = false;
   }
 };
 
-// Зміна статусу оголошення
-const toggleListingStatus = async (listingId) => {
-  try {
-    await apiToggleListingStatus(listingId);
-    await fetchUserListings(); // Оновити список після зміни статусу
-  } catch (error) {
-    console.error('Error toggling listing status:', error);
+// Перемикання режиму перегляду
+const setViewMode = (mode) => {
+  viewMode.value = mode;
+  if (mode === 'active') {
+    fetchActiveListings();
+  } else {
+    fetchInactiveListingsData();
   }
 };
 
@@ -141,26 +208,67 @@ const closeEditModal = () => {
   resetForm();
 };
 
-// Обробник зміни статусу
-const handleStatusToggled = (listingId, isActive) => {
-  if (!isActive) {
-    userListings.value = userListings.value.filter(
-      (listing) => listing.id !== listingId
-    );
+// Оновлення оголошення
+const updateListing = async () => {
+  try {
+    await apiUpdateListing(listing.value.id, listing.value);
+    toast.success('Listing updated successfully!');
+    closeEditModal();
+    if (viewMode.value === 'active') {
+      await fetchActiveListings();
+    } else {
+      await fetchInactiveListingsData();
+    }
+  } catch (error) {
+    console.error('Error updating listing:', error);
+    toast.error('Error updating listing');
   }
-  toast.success('Listing updated successfully!');
 };
 
-// Завантаження списку оголошень при монтуванні компонента
+// Зміна статусу оголошення
+const toggleListingStatus = async (listingId) => {
+  try {
+    await apiToggleListingStatus(listingId);
+    toast.success('Listing status updated successfully!');
+    if (viewMode.value === 'active') {
+      await fetchActiveListings();
+    } else {
+      await fetchInactiveListingsData();
+    }
+  } catch (error) {
+    console.error('Error toggling listing status:', error);
+    toast.error('Error toggling listing status');
+  }
+};
+
+// Видалення оголошення
+const deleteListing = async (listingId) => {
+  if (confirm('Are you sure you want to delete this listing?')) {
+    try {
+      await deleteUserListing(listingId);
+      toast.success('Listing deleted successfully!');
+      if (viewMode.value === 'active') {
+        await fetchActiveListings();
+      } else {
+        await fetchInactiveListingsData();
+      }
+    } catch (error) {
+      console.error('Error deleting listing:', error);
+      toast.error('Error deleting listing');
+    }
+  }
+};
+
+// Завантаження активних оголошень при монтуванні компонента
 onMounted(() => {
-  fetchUserListings();
+  fetchActiveListings();
 });
 </script>
 
 <style lang="scss">
 @import '@/assets/scss/main';
 
-.create-listing-page {
+.user-listings-page {
   margin: 0 auto;
 }
 
@@ -176,20 +284,32 @@ onMounted(() => {
   margin-bottom: 1.5rem;
 }
 
-/* Navigation styles */
-nav {
+.view-mode-toggle {
   margin-bottom: 2rem;
 }
 
-nav a:hover {
-  background: #e0e0e0;
-  color: #333;
+.view-mode-toggle button {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f5f5f5;
+  cursor: pointer;
 }
 
-/* Listing grid */
+.view-mode-toggle button.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.listings {
+  list-style: none;
+  padding: 0;
+}
+
 .listing-item {
-  background: white;
-  border: 1px solid #eee;
+  border: 1px solid map-get($colors, light-gray);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -201,13 +321,28 @@ nav a:hover {
 
 .listing-item h3 {
   font-size: 1.25rem;
-  color: #333;
+  color: $color-text;
   margin-bottom: 0.5rem;
 }
 
 .listing-item p {
-  color: #666;
+  color: $color-border;
   margin-bottom: 0.5rem;
+}
+
+.btn-secondary {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  background: #f5f5f5;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: #ddd;
 }
 
 /* Modal styles */
@@ -224,7 +359,7 @@ nav a:hover {
   z-index: 1000;
 }
 
-.edit-modal > div {
+.modal-content {
   background: white;
   padding: 2rem;
   border-radius: 12px;
@@ -238,7 +373,6 @@ nav a:hover {
   color: #333;
 }
 
-/* Form styles */
 form {
   display: flex;
   flex-direction: column;
@@ -265,23 +399,10 @@ textarea {
   resize: vertical;
 }
 
-/* Custom button variations */
-.custom-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
 /* Responsive design */
 @media (max-width: 768px) {
-  .create-listing-page {
-    padding: 1rem;
-  }
-
   .user-listings {
+    width: 100%;
     padding: 1rem;
   }
 
@@ -291,27 +412,7 @@ textarea {
 }
 
 /* Light/Dark mode support */
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  .user-listings {
-    background: white;
-  }
-
-  .listing-item {
-    background: white;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
-  :root {
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-  }
-
   .user-listings {
     background: #2a2a2a;
   }
@@ -321,12 +422,26 @@ textarea {
     border-color: #333;
   }
 
+  .modal-content {
+    background: #2a2a2a;
+    color: rgba(255, 255, 255, 0.87);
+  }
+
   input,
   textarea,
   select {
     background: #333;
     border-color: #444;
     color: white;
+  }
+
+  .btn-secondary {
+    background: #444;
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background: #555;
   }
 }
 </style>

@@ -3,7 +3,6 @@ import HomeView from '@/views/HomeView.vue';
 import CreateListings from '@/features/listing/views/CreateListings.vue';
 import UserListings from '@/features/user/views/UserListingsView.vue';
 import MyAccount from '@/features/user/views/MyAccountView.vue';
-import InactiveListingsView from '@/features/listing/views/InactiveListingsView.vue';
 import { useAuthStore } from '@/store/auth';
 
 const routes = [
@@ -36,14 +35,6 @@ const routes = [
       requiresAuth: true
     }
   },
-  {
-    path: '/inactive-listings',
-    name: 'InactiveListings',
-    component: InactiveListingsView,
-    meta: {
-      requiresAuth: true
-    }
-  }
 ];
 
 const router = createRouter({
