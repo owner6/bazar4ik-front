@@ -4,7 +4,7 @@
       <h1>Your Listings</h1>
 
       <!-- Перемикач active and deactive listings -->
-      <div class="view-mode-toggle">
+      <div>
         <button
           @click="setViewMode('active')"
           class="btn-tertiary"
@@ -273,15 +273,15 @@ onMounted(() => {
 }
 
 .user-listings {
-  width: 1400px;
+  width: 1440px;
   border-radius: 12px;
 }
 
 .listing-item {
   border: 1px solid map-get($colors, light-gray);
   border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding: 1.5rem 0 1.5rem 0;
+  margin: 1rem 0 1rem 0;
 }
 
 .listing-item:hover {
@@ -289,7 +289,6 @@ onMounted(() => {
 }
 
 .listing-item h3 {
-  font-size: 1.25rem;
   color: $color-text;
   margin-bottom: 0.5rem;
 }
@@ -318,12 +317,15 @@ onMounted(() => {
   padding: 2rem;
   border-radius: 12px;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1440px;
 }
 
 .edit-modal h2 {
   margin-bottom: 1.5rem;
-  color: #333;
+}
+
+h2 {
+  color: $peach;
 }
 
 form {
@@ -332,18 +334,11 @@ form {
   gap: 1rem;
 }
 
-label {
-  font-weight: 500;
-  color: #555;
-}
-
 input,
 textarea,
 select {
   padding: 0.75rem;
-  border: 1px solid #ddd;
   border-radius: 6px;
-  font-size: 1rem;
   width: 100%;
 }
 
@@ -361,40 +356,6 @@ textarea {
 
   .listing-item {
     padding: 1rem;
-  }
-}
-
-/* Light/Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .user-listings {
-    background: #2a2a2a;
-  }
-
-  .listing-item {
-    background: #2a2a2a;
-    border-color: #333;
-  }
-
-  .modal-content {
-    background: #2a2a2a;
-    color: rgba(255, 255, 255, 0.87);
-  }
-
-  input,
-  textarea,
-  select {
-    background: #333;
-    border-color: #444;
-    color: white;
-  }
-
-  .btn-secondary {
-    background: #444;
-    color: white;
-  }
-
-  .btn-secondary:hover {
-    background: #555;
   }
 }
 </style>

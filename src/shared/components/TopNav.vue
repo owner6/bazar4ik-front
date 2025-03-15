@@ -12,7 +12,7 @@
             <div class="buttons">
               <router-link to="/">
                 <img
-                  src="../../assets/icons/heart--reward-social-rating-media-heart-it-like-favorite-love.svg"
+                  src="../../assets/icons/heart.svg"
                   alt="Favorites" />
               </router-link>
 
@@ -22,7 +22,7 @@
 
               <router-link v-if="isLoggedIn" to="/my-account">
                 <img
-                  src="../../assets/icons/user-circle-single--circle-geometric-human-person-single-user.svg"
+                  src="../../assets/icons/user.svg"
                   alt="My Account" />
               </router-link>
 
@@ -45,7 +45,7 @@
 
               <router-link to="/" class="item-help-chat">
                 <img
-                  src="../../assets/icons/chat-bubble-square-question--bubble-square-messages-notification-chat-message-question-help.svg"
+                  src="../../assets/icons/question.svg"
                   alt="Help Chat" />
               </router-link>
 

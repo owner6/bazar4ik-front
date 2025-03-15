@@ -43,7 +43,7 @@ export default {
   background-color: map-get($colors, 'light-green');
   width: 412px;
   height: 42px;
-  background-image: url('/src/assets/icons/magnifying-glass--glass-search-magnifying.svg');
+  background-image: url('/src/assets/icons/search.svg');
   background-repeat: no-repeat;
   background-position: 10px center;
   text-indent: 32px;

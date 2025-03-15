@@ -5,7 +5,7 @@
         <div class="catalog">
           <router-link to="/categories">
             <img
-              src="../../assets/icons/shelf--shelf-drawer-cabinet-prodcut-decoration-furniture.svg"
+              src="../../assets/icons/cabinet-prodcut-decoration-furniture.svg"
               alt="Catalogue Icon"
               class="icon" />
             Catalogue

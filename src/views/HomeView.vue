@@ -23,7 +23,7 @@
         <div class="frame">
           <div class="logo-frame">
             <img
-              src="@/assets/icons/shipping-truck--truck-shipping-delivery-transfer.svg" />
+              src="../assets/icons/truck.svg" />
           </div>
           <div class="content-text">
             <h5>Free Shipping</h5>
@@ -33,7 +33,7 @@
         <div class="frame">
           <div class="logo-frame">
             <img
-              src="@/assets/icons/chat-two-bubbles-oval--messages-message-bubble-chat-oval-conversation.svg" />
+              src="../assets/icons/chat-two-bubbles-oval.svg" />
           </div>
           <div class="content-text">
             <h5>Support 24/7</h5>
@@ -43,7 +43,7 @@
         <div class="frame">
           <div class="logo-frame">
             <img
-              src="@/assets/icons/arrow-round-right--diagram-round-arrow-right.svg" />
+              src="../assets/icons/arrow-round-right.svg" />
           </div>
           <div class="content-text">
             <h5>Free return</h5>
@@ -53,7 +53,7 @@
         <div class="frame">
           <div class="logo-frame">
             <img
-              src="@/assets/icons/coins-stack--accounting-billing-payment-stack-cash-coins-currency-money-finance.svg" />
+              src="../assets/icons/coins-stack.svg" />
           </div>
           <div class="content-text">
             <h5>Easy Selling</h5>
@@ -63,7 +63,7 @@
         <div class="frame">
           <div class="logo-frame">
             <img
-              src="@/assets/icons/credit-card-1--credit-pay-payment-debit-card-finance-plastic-money-atm.svg" />
+              src="../assets/icons/credit-card.svg" />
           </div>
           <div class="content-text">
             <h5>Online Payment</h5>
@@ -72,7 +72,7 @@
         </div>
         <div class="frame">
           <div class="logo-frame">
-            <img src="@/assets/icons/store-1--store-shop-shops-stores.svg" />
+            <img src="../assets/icons/store.svg" />
           </div>
           <div class="content-text">
             <h5>Easy to Shop</h5>
