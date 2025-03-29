@@ -27,7 +27,7 @@
           </div>
           <div class="content-text">
             <h5>Free Shipping</h5>
-            <body-3>From 50$</body-3>
+            <description-text>From 50$</description-text>
           </div>
         </div>
         <div class="frame">
@@ -37,7 +37,7 @@
           </div>
           <div class="content-text">
             <h5>Support 24/7</h5>
-            <body-3>Online 24</body-3>
+            <description-text>Online 24</description-text>
           </div>
         </div>
         <div class="frame">
@@ -47,7 +47,7 @@
           </div>
           <div class="content-text">
             <h5>Free return</h5>
-            <body-3>365 days</body-3>
+            <description-text>365 days</description-text>
           </div>
         </div>
         <div class="frame">
@@ -57,7 +57,7 @@
           </div>
           <div class="content-text">
             <h5>Easy Selling</h5>
-            <body-3>Millions satisfied sellers</body-3>
+            <description-text>Millions satisfied sellers</description-text>
           </div>
         </div>
         <div class="frame">
@@ -67,7 +67,7 @@
           </div>
           <div class="content-text">
             <h5>Online Payment</h5>
-            <body-3>Secure payment</body-3>
+            <description-text>Secure payment</description-text>
           </div>
         </div>
         <div class="frame">
@@ -76,7 +76,7 @@
           </div>
           <div class="content-text">
             <h5>Easy to Shop</h5>
-            <body-3>99% satisfied buyers</body-3>
+            <description-text>99% satisfied buyers</description-text>
           </div>
         </div>
       </div>
@@ -245,14 +245,20 @@ export default {
     width: 300px;
     height: 100%;
     border-radius: 16px;
-    padding: 36px;
+    padding: 32px 0 32px 0;
     background-color: map-get($colors, 'light-gray');
     min-width: 200px;
     user-select: none;
+    font-size: 18px;
 
     .content-text {
       display: block;
       text-align: left;
+
+      description-text {
+        font-family: Poppins;
+        font-size: 12px;
+      }
     }
   }
 }

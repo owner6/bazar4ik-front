@@ -56,7 +56,7 @@ const buttonClass = computed(() => {
   @extend %button-base;
   font-size: $font-size-xxs;
   background-color: map-get($colors, peach);
-  color: map-get($colors, black);
+  color: $color-text;
   border: none;
   border-radius: 7px;
   padding: 12px 24px;

@@ -111,7 +111,7 @@
             </select>
 
             <button type="submit">Save Changes</button>
-            <button type="button" @click="closeEditModal">Cancel</button>
+            <button class="" type="button" @click="closeEditModal">Cancel</button>
           </form>
         </div>
       </div>
@@ -318,10 +318,6 @@ onMounted(() => {
   border-radius: 12px;
   width: 100%;
   max-width: 1440px;
-}
-
-.edit-modal h2 {
-  margin-bottom: 1.5rem;
 }
 
 h2 {

@@ -19,6 +19,7 @@
     "pinia": "^2.3.0",
     "radix-vue": "^1.9.1",
     "secure-random-password": "^0.2.3",
+    "serve": "^14.2.4",
     "vue": "^3.2.13",
     "vue-imask": "^7.6.1",
     "vue-meta": "^2.4.0",
