@@ -42,7 +42,6 @@ const buttonClass = computed(() => {
 
 // Common button properties
 %button-base {
-  font-weight: 500;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 

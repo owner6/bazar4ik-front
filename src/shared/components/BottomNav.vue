@@ -95,7 +95,6 @@ export default {
     display: flex;
     align-items: center;
     color: #333;
-    font-weight: 500;
     font-size: 1rem;
 
     &:hover {
@@ -117,7 +116,6 @@ export default {
   a {
     color: #333;
     font-size: 0.9rem;
-    font-weight: 500;
 
     &:hover {
       color: #555;
