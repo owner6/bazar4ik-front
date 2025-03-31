@@ -3,12 +3,12 @@ $font-family-poppins: "Poppins", sans-serif;
 $font-family-open-sans: "Open Sans", sans-serif;
 
 // Primary Colors
-$color-secondary: #F4F4F4; // Light Gray
 $color-tertiary: #DCDEDF; // Soft Gray
 
 // General Colors
 $color-text: #000000;
 $color-border: #888888;
+$color-base: #ffffff;
 
 $colors: (
   "white": #FFFFFF,
@@ -24,6 +24,8 @@ $colors: (
 $font-size-h1: 64px;
 $font-size-h2: 48px;
 $font-size-h4: 24px;
+$font-size-h5: 18px;
+$font-size-xxs: 12px;
 
 // Button
 $button-color-primary-hover: #FECBA9;
@@ -36,11 +38,11 @@ $spacings: (
   "xl": 32px
 );
 
-
-
 // Spacing
 $spacing-unit: 12px;
 
 body {
   font-family: $font-family-poppins;
 }
+
+

@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import MainNav from './components/MainNav.vue';
-import Footer from './components/FooterNav.vue';
+import MainNav from '@/shared/components/MainNav.vue';
+import Footer from '@/shared/components/FooterNav.vue';
 import { useHead } from '@vueuse/head';
 
 export default {

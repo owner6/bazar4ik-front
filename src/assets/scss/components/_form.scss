@@ -1,0 +1,80 @@
+@import "../base/variables.scss";
+@import "../base/mixins.scss";
+
+// General Form Styles
+form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-unit;
+  font-family: $font-family-poppins;
+  background-color: map-get($colors, white);
+  padding: map-get($spacings, lg);
+  border-radius: 8px;
+
+  label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: map-get($colors, color-text);
+  }
+
+  input {
+    width: 100%;
+    padding: map-get($spacings, xs);
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: map-get($colors, peach);
+    }
+
+    &::placeholder {
+      color: $color-text;
+      font-style: italic;
+    }
+
+    &.input-tel {
+      text-align: left;
+    }
+  }
+
+  .toggle {
+    margin-top: map-get($spacings, xs);
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.875rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Modal Styles
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .modal-content {
+    border-radius: 8px;
+    max-width: 400px;
+    position: relative;
+
+    .close {
+      position: absolute;
+      right: map-get($spacings, xs);
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}

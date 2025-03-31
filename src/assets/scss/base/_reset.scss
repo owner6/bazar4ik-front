@@ -93,3 +93,24 @@ input, textarea {
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
+
+/* Глобальне рішення для всіх кнопок та посилань */
+a,
+button,
+.btn,
+router-link,
+[role="button"] {
+  &:hover,
+  &:active,
+  &:focus {
+    background: none !important;
+    background-color: transparent !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Якщо використовуєте -webkit браузери */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+

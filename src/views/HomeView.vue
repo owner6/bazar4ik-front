@@ -14,17 +14,80 @@
           <img src="@/assets/images/image-section-right.jpg" />
         </section>
       </div>
+      <div
+        class="benefits"
+        @mousedown="startScroll"
+        @mousemove="moveScroll"
+        @mouseup="stopScroll"
+        @mouseleave="stopScroll">
+        <div class="frame">
+          <div class="logo-frame">
+            <img
+              src="../assets/icons/truck.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Free Shipping</h5>
+            <description-text>From 50$</description-text>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="logo-frame">
+            <img
+              src="../assets/icons/chat-two-bubbles-oval.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Support 24/7</h5>
+            <description-text>Online 24</description-text>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="logo-frame">
+            <img
+              src="../assets/icons/arrow-round-right.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Free return</h5>
+            <description-text>365 days</description-text>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="logo-frame">
+            <img
+              src="../assets/icons/coins-stack.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Easy Selling</h5>
+            <description-text>Millions satisfied sellers</description-text>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="logo-frame">
+            <img
+              src="../assets/icons/credit-card.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Online Payment</h5>
+            <description-text>Secure payment</description-text>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="logo-frame">
+            <img src="../assets/icons/store.svg" />
+          </div>
+          <div class="content-text">
+            <h5>Easy to Shop</h5>
+            <description-text>99% satisfied buyers</description-text>
+          </div>
+        </div>
+      </div>
       <div class="listings-container">
         <div v-if="loading" class="loading">Loading...</div>
         <div v-else-if="error" class="error">{{ error }}</div>
         <div v-else class="listings">
-          <div
+          <ListingCart
             v-for="listing in listings"
             :key="listing.id"
-            class="listing-item">
-            <h2>{{ listing.title }}</h2>
-            <p><strong>Price:</strong> ${{ listing.price }}</p>
-          </div>
+            :listing="listing" />
         </div>
       </div>
     </div>
@@ -32,13 +95,15 @@
 </template>
 
 <script>
-import SearchComponent from '../components/SearchPanel.vue';
-import { getAllListings } from '../api/listings';
+import SearchComponent from '@/shared/components/SearchPanel.vue';
+import ListingCart from '@/features/listing/components/Listing.vue';
+import { getAllListings } from '@/features/listing/services/listingsApi';
 
 export default {
   name: 'HomeView',
   components: {
-    SearchComponent
+    SearchComponent,
+    ListingCart
   },
   data() {
     return {
@@ -56,6 +121,22 @@ export default {
         this.error = 'Failed to load listings.';
         this.loading = false;
       }
+    },
+    startScroll(event) {
+      this.isScrolling = true;
+      this.startX =
+        event.pageX - this.$el.querySelector('.benefits').offsetLeft;
+      this.scrollLeft = this.$el.querySelector('.benefits').scrollLeft;
+    },
+    moveScroll(event) {
+      if (!this.isScrolling) return;
+      event.preventDefault();
+      const x = event.pageX - this.$el.querySelector('.benefits').offsetLeft;
+      const walk = (x - this.startX) * 2;
+      this.$el.querySelector('.benefits').scrollLeft = this.scrollLeft - walk;
+    },
+    stopScroll() {
+      this.isScrolling = false;
     }
   },
   mounted() {
@@ -65,7 +146,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/main.scss';
+@import '@/assets/scss/main';
 
 .home-view-container {
   position: relative;
@@ -74,12 +155,13 @@ export default {
 .home-view {
   display: flex;
   gap: 16px;
-  padding: 0 27px;
+  padding: 0 0px;
   flex-wrap: wrap;
 
   .section-left,
   .section-right {
     border-radius: 24px;
+    margin-bottom: 7px;
   }
 
   .section-left {
@@ -90,7 +172,6 @@ export default {
     flex: 1;
     padding: 40px;
     box-sizing: border-box;
-    margin-bottom: 7px;
 
     .section-content {
       display: flex;
@@ -122,53 +203,6 @@ export default {
     img {
       width: 100%;
       height: auto;
-      border-radius: 24px;
-    }
-  }
-}
-
-@media (max-width: 1024px) {
-  .home-view {
-    padding: 0 16px;
-
-    .section-left {
-      padding: 20px;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .home-view {
-    flex-direction: column;
-
-    .section-left {
-      padding: 20px;
-    }
-
-    .section-right {
-      margin-top: 16px;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .home-view {
-    .section-left {
-      padding: 20px 10px;
-
-      .section-content {
-        h1 {
-          font-size: 24px;
-        }
-
-        .search {
-          flex-direction: column;
-
-          search-component {
-            margin-top: 16px;
-          }
-        }
-      }
     }
   }
 }
@@ -178,89 +212,58 @@ export default {
 
   .loading {
     text-align: center;
-    font-size: 18px;
-    color: map-get($colors, 'gray-dark');
-  }
-
-  .error {
-    text-align: center;
-    font-size: 18px;
-    color: map-get($colors, 'red');
   }
 
   .listings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    justify-content: space-around;
     gap: 20px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+}
 
-    .listing-item {
-      background-color: map-get($colors, 'white');
-      border: 1px solid map-get($colors, 'gray-light');
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      padding: 16px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+.benefits {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-top: 16px;
+  padding-bottom: 16px;
 
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-      }
+  &:active {
+    cursor: grabbing;
+  }
 
-      h2 {
-        font-size: 20px;
-        color: map-get($colors, 'gray-dark');
-        margin-bottom: 10px;
-      }
+    .frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 300px;
+    height: 100%;
+    border-radius: 16px;
+    padding: 32px 0 32px 0;
+    background-color: map-get($colors, 'light-gray');
+    min-width: 200px;
+    user-select: none;
+    font-size: 18px;
 
-      p {
-        font-size: 16px;
-        color: map-get($colors, 'gray');
-        margin-bottom: 8px;
+    .content-text {
+      display: block;
+      text-align: left;
 
-        &:last-child {
-          font-weight: bold;
-          color: map-get($colors, 'green');
-        }
+      description-text {
+        font-family: Poppins;
+        font-size: 12px;
       }
     }
   }
 }
 
-@media (max-width: 768px) {
-  .listings-container {
-    .listings {
-      gap: 16px;
-
-      .listing-item {
-        padding: 12px;
-        h2 {
-          font-size: 18px;
-        }
-
-        p {
-          font-size: 14px;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .listings-container {
-    .listings {
-      gap: 12px;
-
-      .listing-item {
-        padding: 10px;
-        h2 {
-          font-size: 16px;
-        }
-
-        p {
-          font-size: 12px;
-        }
-      }
-    }
-  }
+.benefits::-webkit-scrollbar {
+  display: none;
 }
 </style>

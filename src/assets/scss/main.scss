@@ -1,6 +1,6 @@
 @import 'base/reset';
 @import 'base/variables';
-@import 'abstracts/base';
+@import 'abstracts';
 @import 'base/mixins';
-@import 'components/button.scss';
-@import 'components/header.scss';
+@import 'components/header';
+@import 'components/form';
