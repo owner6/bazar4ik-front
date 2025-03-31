@@ -94,12 +94,7 @@ export default {
   a {
     display: flex;
     align-items: center;
-    color: #333;
     font-size: 1rem;
-
-    &:hover {
-      color: map-get($colors, peach);
-    }
 
     .icon {
       width: 16px;
@@ -114,11 +109,10 @@ export default {
   gap: 20px;
 
   a {
-    color: #333;
+    color: $color-text;
     font-size: 0.9rem;
 
     &:hover {
-      color: #555;
       text-decoration: underline;
     }
   }

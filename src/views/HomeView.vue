@@ -235,7 +235,7 @@ export default {
     cursor: grabbing;
   }
 
-  .frame {
+    .frame {
     display: flex;
     justify-content: center;
     align-items: center;
